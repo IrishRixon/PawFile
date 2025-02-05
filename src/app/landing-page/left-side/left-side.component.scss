@@ -1,0 +1,30 @@
+@use '../../../styleVariables.scss' as styleVariables;
+
+.leftSide {
+    height: 100%;
+    width: 100%;
+    background-color: styleVariables.$sixty;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    h1 {
+        font-family: 'Lucida';
+        font-size: 2.5rem;
+        color: styleVariables.$bg-color2;
+        text-align: center;
+    }
+
+    .image {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        img {
+            max-width: 350px;
+            width: 80%;
+        }
+    }
+}

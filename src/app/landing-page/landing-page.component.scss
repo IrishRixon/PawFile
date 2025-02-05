@@ -1,0 +1,18 @@
+@use "../../styleVariables.scss" as styleVariables;
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: styleVariables.$bg-color2;
+
+  .leftSide {
+    height: 100%;
+    width: 50%;
+  }
+
+  .rightSide {
+    height: 100%;
+    width: 50%;
+  }
+}
