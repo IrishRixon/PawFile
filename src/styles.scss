@@ -3,6 +3,16 @@
     src: url('/assets/fonts/lucida-handwriting/Lucida Handwriting Italic.ttf') format(truetype);
 }
 
+@font-face {
+    font-family: 'Poppins';
+    src: url('/assets/fonts/Poppins/Poppins-Black.ttf') format(truetype);
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('/assets/fonts/Inter/Inter_18pt-Black.ttf');
+}
+
 html, body {
     height: 100%;
     width: 100%;

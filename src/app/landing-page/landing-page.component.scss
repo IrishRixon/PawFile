@@ -6,13 +6,16 @@
   height: 100%;
   background-color: styleVariables.$bg-color2;
 
-  .leftSide {
+  app-left-side {
     height: 100%;
     width: 50%;
   }
 
-  .rightSide {
+  app-right-side {
     height: 100%;
     width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
