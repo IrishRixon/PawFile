@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Lucida';
+    src: url('/assets/fonts/lucida-handwriting/Lucida Handwriting Italic.ttf') format(truetype);
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
