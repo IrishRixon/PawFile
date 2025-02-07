@@ -6,47 +6,30 @@
     </div>
   </div>
 
-  <div class="email">
-    <p-inputgroup>
-      <p-inputgroup-addon>
-        <i class="pi pi-user" style="font-size: 1rem"></i>
-      </p-inputgroup-addon>
-      <p-floatlabel variant="in">
-        <input pInputText id="in_label" [(ngModel)]="value" />
-        <label for="in_label">Email</label>
-      </p-floatlabel>
-    </p-inputgroup>
+  <div #content class="content">
+    @if (formState == signInformState) {
+      <app-sign-in (forgotFormState)="changeFormStateToForgotPass($event)"></app-sign-in>
+    }
+    @else if (formState == createAccountformState) {
+      <app-create-account></app-create-account>
+    }
+    @else if (formState == forgotPassformState) {
+      <app-forgot-pass></app-forgot-pass>
+    }
   </div>
 
-  <div class="password">
-    <p-inputgroup>
-      <p-inputgroup-addon>
-        <i class="pi pi-lock" style="font-size: 1rem"></i>
-      </p-inputgroup-addon>
-      <p-floatlabel variant="in">
-        <input pInputText id="in_label" [(ngModel)]="value" />
-        <label for="in_label">Password</label>
-      </p-floatlabel>
-    </p-inputgroup>
-  </div>
-
-  <div class="forgotPass">
-    <span>Forgot Password?</span>
-  </div>
-
-  <div class="signIn">
-    <p-button pripple fluid="false" label="Sign in" [rounded]="true" />
-
-    <div class="line-container">
-      <hr class="line">
-      <p>or</p>
-    </div>
-
-    <div class="google-signIn-container">
-      <button type="button" class="google-signIn">
-        <img src="\assets\Images\48131.png" alt="google" />
-        <span>Sign in with Google</span>
-      </button>
-    </div>
-  </div>
 </div>
+
+@if (formState == signInformState) {
+  <div class="bottomText">
+    <span>New to PawFile?</span>
+    <span class="createAccountBtn" (click)="changeFormStateToCreateAccount()">Create account</span>
+  </div>
+}
+@else if (formState == createAccountformState) {
+  <div class="bottomText">
+    <span>Already has account?</span>
+    <span class="createAccountBtn" (click)="changeFormStateToSignIn()">Sign in</span>
+  </div>
+}
+

@@ -1,0 +1,54 @@
+<div class="email">
+    <p-inputgroup>
+      <p-inputgroup-addon>
+        <i class="pi pi-user" style="font-size: 1rem"></i>
+      </p-inputgroup-addon>
+      <p-floatlabel variant="in">
+        <input pInputText id="in_label" [(ngModel)]="value" />
+        <label for="in_label">Email</label>
+      </p-floatlabel>
+    </p-inputgroup>
+  </div>
+
+  <div class="password">
+    <p-inputgroup>
+      <p-inputgroup-addon>
+        <i class="pi pi-lock" style="font-size: 1rem"></i>
+      </p-inputgroup-addon>
+
+      <p-floatlabel variant="in">
+        <p-password [(ngModel)]="value1" inputId="in_label">
+
+        <ng-template #footer>
+          <ul class="pl-2 ml-2 my-0 leading-normal">
+              <li>At least one lowercase</li>
+              <li>At least one uppercase</li>
+              <li>At least one numeric</li>
+              <li>Minimum 8 characters</li>
+          </ul>
+      </ng-template>
+    </p-password>
+    <label for="in_label">Password</label>
+    </p-floatlabel>
+    </p-inputgroup>
+  </div>
+
+  <div class="forgotPass">
+    <span (click)="forgotFormStateEmit()">Forgot Password?</span>
+  </div>
+
+  <div class="signIn">
+    <p-button pripple fluid="false" label="Sign in" [rounded]="true" />
+
+    <div class="line-container">
+      <hr class="line">
+      <p>or</p>
+    </div>
+
+    <div class="google-signIn-container">
+      <button type="button" class="google-signIn">
+        <img src="\assets\Images\48131.png" alt="google" />
+        <span>Sign in with Google</span>
+      </button>
+    </div>
+  </div>
