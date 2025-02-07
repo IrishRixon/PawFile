@@ -1,6 +1,5 @@
 @use "../../../styleVariables.scss" as styleVariables;
 
-$boxShadow-color: #a2ebeb;
 
 .card {
     background-color: styleVariables.$bg-color2;
@@ -12,12 +11,7 @@ $boxShadow-color: #a2ebeb;
     padding: 40px 45px;
     width: 60%;
     max-width: 450px;
-
-    .email,
-    .password {
-        display: flex;
-        justify-content: center;
-    }
+    transition: height 1s linear;
 
     .logo {
         display: flex;
@@ -36,138 +30,55 @@ $boxShadow-color: #a2ebeb;
         }
     }
 
-    label {
-        font-family: "Poppins";
-        font-weight: styleVariables.$medium;
-    }
+    .content {
+        transition: height 1s;
+        // overflow: hidden;
+        height: 0px;
 
-    .forgotPass {
-        width: 100%;
-        display: flex;
-        justify-content: end;
-
-        span {
-            font-family: "Inter";
-            font-weight: styleVariables.$light;
-            color: styleVariables.$sixty;
-            font-size: 14px;
-        }
-
-        span:hover {
-            text-decoration: underline;
-            cursor: pointer;
-        }
-    }
-
-    .signIn {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        gap: 30px;
-
-        p-button {
-            width: 50%;
-        }
-    }
-
-    .line-container {
-        width: 100%;
-        // height: 20px;
-        display: flex;
-        justify-content: center;
-        position: relative;
-
-        .line {
-            width: 40%;
-            margin: 0px;
-            border-top: 2px solid styleVariables.$textPlaceholder-color;
-        }
-
-        p {
-            position: absolute;
-            bottom: -12px;
-            margin: 0;
-            display: block;
-            background-color: styleVariables.$bg-color2;
-            font-family: "Poppins";
-            font-weight: styleVariables.$regular;
-            font-size: 16px;
-            padding: 5px;
-            color: styleVariables.$textPlaceholder-color;
-        }
-    }
-
-    .google-signIn-container {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-
-        .google-signIn {
-            width: 60%;
-            border: none;
+        app-sign-in,
+        app-create-account,
+        app-forgot-pass {
             display: flex;
-            align-items: center;
-            gap: 5px;
-            padding: 10px 15px;
-            border-radius: 5px;
-            background-color: styleVariables.$bg-color2;
+            flex-direction: column;
+            gap: 20px;
+            transition: height 1s;
 
-            img {
-                width: 15%;
-            }
-
-            span {
-                font-family: "Poppins";
-                font-weight: styleVariables.$medium;
-                font-size: 0.9rem;
-            }
         }
 
-        .google-signIn:hover {
-            cursor: pointer;
-            background-color: #faf0e1;
-            transition-duration: 0.4s;
+        app-sign-in {
+            height: 374px;
         }
 
-        .google-signIn:active {
-            background-color: #f9ecd7;
+        app-create-account {
+            height: 418px;
         }
+    }
+
+    .open-sign-in {
+        height: 374px;
+    }
+
+    .open-create-account {
+        height: 418px;
     }
 }
 
-// NG overrides
-:host ::ng-deep {
-    --p-inputtext-hover-border-color: #{styleVariables.$thirty};
-}
+.bottomText {
+    display: flex;
+    gap: 5px;
 
-:host ::ng-deep .p-inputtext:enabled:focus {
-    border-color: styleVariables.$thirty;
-    box-shadow: 0 0 0 0.2rem $boxShadow-color;
-}
+    span {
+        font-family: 'Poppins';
+        font-weight: styleVariables.$light;
+        font-size: 14px;
+    }
 
-:host ::ng-deep .card .p-inputtext {
-    background-color: styleVariables.$bg-color2;
-    font-family: "Inter";
-    font-weight: 500;
-}
+    .createAccountBtn {
+        color: styleVariables.$five1;
+    }
 
-:host ::ng-deep .p-inputgroupaddon {
-    background-color: styleVariables.$bg-color2;
-}
-
-:host ::ng-deep .signIn p-button button {
-    background-color: styleVariables.$thirty;
-    border-color: styleVariables.$thirty;
-    width: 100%;
-    height: 50px;
-}
-
-:host ::ng-deep .p-button-label {
-    font-family: "Poppins" !important;
-    font-weight: styleVariables.$semi-bold;
-}
-
-.p-floatlabel:has(input:focus) label {
-    color: styleVariables.$thirty;
+    .createAccountBtn:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
 }

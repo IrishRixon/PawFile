@@ -1,28 +1,58 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { InputGroupModule } from 'primeng/inputgroup';
-import { InputTextModule } from 'primeng/inputtext';
-import { InputNumberModule } from 'primeng/inputnumber';
-import { FloatLabelModule } from 'primeng/floatlabel';
-import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
-import { ButtonModule } from 'primeng/button';
-import { RippleModule } from 'primeng/ripple';
+import { Component, ElementRef, ViewChild, Renderer2 } from '@angular/core';
+import { SignInComponent } from "./sign-in/sign-in.component";
+import { CreateAccountComponent } from "./create-account/create-account.component";
+import { ForgotPassComponent } from "./forgot-pass/forgot-pass.component";
+import { FORMSTATE } from '../enum/formState';
 
 @Component({
   selector: 'app-right-side',
   imports: [
-    InputTextModule,
-    FloatLabelModule,
-    FormsModule,
-    InputGroupModule,
-    InputNumberModule,
-    InputGroupAddonModule,
-    ButtonModule,
-    RippleModule
-  ],
+    SignInComponent,
+    CreateAccountComponent,
+    ForgotPassComponent
+],
   templateUrl: './right-side.component.html',
   styleUrl: './right-side.component.scss',
 })
 export class RightSideComponent {
-  value: String = '';
+
+  constructor(private renderer: Renderer2) {}
+
+  signInformState: FORMSTATE = FORMSTATE.SignIn;
+  createAccountformState: FORMSTATE = FORMSTATE.CreateAccount;
+  forgotPassformState: FORMSTATE = FORMSTATE.ForgotPassword;
+
+  formState: FORMSTATE = FORMSTATE.SignIn;
+
+  @ViewChild('content') content!: ElementRef;
+
+  removeClasses() {
+    this.renderer.removeClass(this.content.nativeElement, 'open-sign-in');
+    this.renderer.removeClass(this.content.nativeElement, 'open-create-account')
+  }
+
+  changeFormStateToSignIn() {
+    this.removeClasses();
+    setTimeout(() => {
+      this.formState = FORMSTATE.SignIn;
+      this.renderer.addClass(this.content.nativeElement, 'open-sign-in');
+    }, 500);
+  }
+
+  changeFormStateToCreateAccount() {
+    this.removeClasses();
+    setTimeout(() => {
+      this.formState = FORMSTATE.CreateAccount;
+      this.renderer.addClass(this.content.nativeElement, 'open-create-account');
+    }, 500);
+  }
+
+  changeFormStateToForgotPass(event: FORMSTATE) {
+    this.removeClasses();
+    this.formState = event;
+  }
+
+  ngAfterViewInit() {
+    this.changeFormStateToSignIn();
+  }
 }

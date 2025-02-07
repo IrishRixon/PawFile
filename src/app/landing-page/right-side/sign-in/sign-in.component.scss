@@ -1,0 +1,169 @@
+@use "../../../../styleVariables.scss" as styleVariables;
+
+$boxShadow-color: #a2ebeb;
+
+.email,
+.password {
+    display: flex;
+    justify-content: center;
+
+    p-password {
+        width: 100%;
+    }
+}
+
+label {
+    font-family: "Poppins";
+    font-weight: styleVariables.$medium;
+}
+
+.forgotPass {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+
+    span {
+        font-family: "Inter";
+        font-weight: styleVariables.$light;
+        color: styleVariables.$sixty;
+        font-size: 14px;
+    }
+
+    span:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+.signIn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+
+    p-button {
+        width: 50%;
+    }
+}
+
+.line-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    .line {
+        width: 40%;
+        margin: 0px;
+        border-top: 2px solid styleVariables.$textPlaceholder-color;
+    }
+
+    p {
+        position: absolute;
+        bottom: -12px;
+        margin: 0;
+        display: block;
+        background-color: styleVariables.$bg-color2;
+        font-family: "Poppins";
+        font-weight: styleVariables.$regular;
+        font-size: 16px;
+        padding: 5px;
+        color: styleVariables.$textPlaceholder-color;
+    }
+}
+
+.google-signIn-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .google-signIn {
+        width: 60%;
+        border: none;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 10px 15px;
+        border-radius: 5px;
+        background-color: styleVariables.$bg-color2;
+
+        img {
+            width: 15%;
+        }
+
+        span {
+            font-family: "Poppins";
+            font-weight: styleVariables.$medium;
+            font-size: 0.9rem;
+        }
+    }
+
+    .google-signIn:hover {
+        cursor: pointer;
+        background-color: #faf0e1;
+        transition-duration: 0.4s;
+    }
+
+    .google-signIn:active {
+        background-color: #f9ecd7;
+    }
+}
+
+// NG overrides
+:host ::ng-deep {
+    --p-inputtext-hover-border-color: #{styleVariables.$thirty};
+}
+
+:host ::ng-deep p-password div {
+    width: 100% !important;
+
+    input {
+        border-radius: 0px 5px 5px 0px;
+    }
+}
+
+:host ::ng-deep label {
+    z-index: 2;
+}
+
+:host ::ng-deep p-floatlabel {
+
+    .p-password-meter-text, li {
+        font-family: "Inter";
+        font-weight: styleVariables.$regular;
+        font-size: 14px;
+        list-style: none;
+    }
+}
+
+:host ::ng-deep .p-inputtext:enabled:focus {
+    border-color: styleVariables.$thirty;
+    box-shadow: 0 0 0 0.2rem $boxShadow-color;
+}
+
+:host ::ng-deep .p-inputtext {
+    background-color: styleVariables.$bg-color2;
+    font-family: "Inter";
+    font-weight: 500;
+}
+
+:host ::ng-deep .p-inputgroupaddon {
+    background-color: styleVariables.$bg-color2;
+}
+
+:host ::ng-deep .signIn p-button button {
+    background-color: styleVariables.$thirty;
+    border-color: styleVariables.$thirty;
+    width: 100%;
+    height: 50px;
+}
+
+:host ::ng-deep .p-button-label {
+    font-family: "Poppins" !important;
+    font-weight: styleVariables.$semi-bold;
+}
+
+.p-floatlabel:has(input:focus) label {
+    color: styleVariables.$thirty;
+}
