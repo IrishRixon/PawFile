@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, EventEmitter, inject, Injectable, Output } from '@angular/core';
+import { FormBuilder, FormsModule, Validators, ReactiveFormsModule } from '@angular/forms';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputNumberModule } from 'primeng/inputnumber';
@@ -9,6 +9,8 @@ import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { FORMSTATE } from '../../enum/formState';
+import { FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-sign-in',
@@ -21,16 +23,29 @@ import { FORMSTATE } from '../../enum/formState';
     InputGroupAddonModule,
     ButtonModule,
     RippleModule,
-    PasswordModule
+    PasswordModule,
+    ReactiveFormsModule
   ],
   templateUrl: './sign-in.component.html',
-  styleUrl: './sign-in.component.scss'
+  styleUrl: './sign-in.component.scss',
+  standalone: true,
+  providers: [FormBuilder]
 })
 export class SignInComponent {
+  constructor(
+    private formBuilder: FormBuilder
+  ) {}
+  
   @Output() forgotFormState: EventEmitter<FORMSTATE> = new EventEmitter<FORMSTATE>();
 
-  value: string = "";
-  value1: string = "";
+  signInForm!: FormGroup;
+
+  ngOnInit(): void {
+    this.signInForm = this.formBuilder.group({
+      email: ['', [Validators.email, Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+    })
+  }
 
   forgotFormStateEmit() {
     this.forgotFormState.emit(FORMSTATE.ForgotPassword)

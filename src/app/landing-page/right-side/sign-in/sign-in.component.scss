@@ -115,7 +115,7 @@ label {
     --p-inputtext-hover-border-color: #{styleVariables.$thirty};
 }
 
-:host ::ng-deep p-password div {
+:host ::ng-deep p-password div.p-password {
     width: 100% !important;
 
     input {
@@ -123,13 +123,23 @@ label {
     }
 }
 
-:host ::ng-deep label {
-    z-index: 2;
+:host ::ng-deep .password.input label {
+    z-index: 1;
+}
+
+:host ::ng-deep .p-inputgroup .p-component:focus,
+:host ::ng-deep .p-inputgroup .p-component.p-focus,
+:host ::ng-deep .p-inputgroup .p-inputwrapper-focus,
+:host ::ng-deep .p-inputgroup .p-component:focus~label,
+:host ::ng-deep .p-inputgroup .p-component.p-focus~label,
+:host ::ng-deep .p-inputgroup .p-inputwrapper-focus~label {
+    z-index: 0 !important;
 }
 
 :host ::ng-deep p-floatlabel {
 
-    .p-password-meter-text, li {
+    .p-password-meter-text,
+    li {
         font-family: "Inter";
         font-weight: styleVariables.$regular;
         font-size: 14px;
