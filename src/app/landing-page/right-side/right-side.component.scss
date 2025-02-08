@@ -32,7 +32,8 @@
 
     .content {
         transition: height 1s;
-        // overflow: hidden;
+        padding: 5px;
+        overflow: hidden;
         height: 0px;
 
         app-sign-in,

@@ -12,7 +12,7 @@ import { FORMSTATE } from '../enum/formState';
     ForgotPassComponent
 ],
   templateUrl: './right-side.component.html',
-  styleUrl: './right-side.component.scss',
+  styleUrl: './right-side.component.scss'
 })
 export class RightSideComponent {
 

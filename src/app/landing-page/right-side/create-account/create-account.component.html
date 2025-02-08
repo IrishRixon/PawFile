@@ -1,51 +1,88 @@
-<div class="email">
-    <p-inputgroup>
-      <p-inputgroup-addon>
-        <i class="pi pi-user" style="font-size: 1rem"></i>
-      </p-inputgroup-addon>
-      <p-floatlabel variant="in">
-        <input pInputText id="in_label" [(ngModel)]="value" />
-        <label for="in_label">Email</label>
-      </p-floatlabel>
-    </p-inputgroup>
+<div class="email" [formGroup]="createAccountForm">
+  <p-inputgroup>
+    <p-inputgroup-addon>
+      <i class="pi pi-user" style="font-size: 1rem"></i>
+    </p-inputgroup-addon>
+    <p-floatlabel variant="in">
+      <input
+        pInputText
+        id="in_label"
+        formControlName="email"
+        (ngModelChange)="checkIfPasswordMatch()"
+      />
+      <label for="in_label">Email</label>
+    </p-floatlabel>
+  </p-inputgroup>
+</div>
+
+<div class="password input" [formGroup]="createAccountForm">
+  <p-inputgroup>
+    <p-inputgroup-addon>
+      <i class="pi pi-lock" style="font-size: 1rem"></i>
+    </p-inputgroup-addon>
+
+    <p-floatlabel variant="in">
+      <p-password
+        [toggleMask]="true"
+        inputId="in_label"
+        formControlName="password"
+        (ngModelChange)="checkIfPasswordMatch()"
+      >
+        <ng-template #footer>
+          <ul class="pl-2 ml-2 my-0 leading-normal">
+            <li>At least one lowercase</li>
+            <li>At least one uppercase</li>
+            <li>At least one numeric</li>
+            <li>Minimum 8 characters</li>
+          </ul>
+        </ng-template>
+      </p-password>
+      <label for="in_label">Password</label>
+    </p-floatlabel>
+  </p-inputgroup>
+</div>
+
+<div class="password input">
+  <p-inputgroup>
+    <p-inputgroup-addon>
+      <i class="pi pi-lock" style="font-size: 1rem"></i>
+    </p-inputgroup-addon>
+
+    <p-floatlabel variant="in">
+      <p-password
+        class="confirm-input"
+        #confirmInput
+        [toggleMask]="true"
+        [feedback]="false"
+        inputId="n_label"
+        ariaLabel="Confirm"
+        [(ngModel)]="confirmPassValue"
+        (ngModelChange)="checkIfPasswordMatch()"
+      />
+      <label for="n_label">Confirm Password</label>
+    </p-floatlabel>
+  </p-inputgroup>
+  <span #errormsg class="">Password does not match</span>
+</div>
+
+<div class="signIn">
+  <p-button
+    pripple
+    fluid="false"
+    label="Sign up"
+    [rounded]="true"
+    [disabled]="!isBtnEnable"
+  />
+
+  <div class="line-container">
+    <hr class="line" />
+    <p>or</p>
   </div>
 
-  <div class="password">
-    <p-inputgroup>
-      <p-inputgroup-addon>
-        <i class="pi pi-lock" style="font-size: 1rem"></i>
-      </p-inputgroup-addon>
-      <p-floatlabel variant="in">
-        <input pInputText id="in_label" [(ngModel)]="value" />
-        <label for="in_label">Password</label>
-      </p-floatlabel>
-    </p-inputgroup>
+  <div class="google-signIn-container">
+    <button type="button" class="google-signIn">
+      <img src="\assets\Images\48131.png" alt="google" />
+      <span>Sign up with Google</span>
+    </button>
   </div>
-
-  <div class="password">
-    <p-inputgroup>
-      <p-inputgroup-addon>
-        <i class="pi pi-lock" style="font-size: 1rem"></i>
-      </p-inputgroup-addon>
-      <p-floatlabel variant="in">
-        <input pInputText id="in_label" [(ngModel)]="value" />
-        <label for="in_label">Confirm Password</label>
-      </p-floatlabel>
-    </p-inputgroup>
-  </div>
-
-  <div class="signIn">
-    <p-button pripple fluid="false" label="Sign up" [rounded]="true" />
-
-    <div class="line-container">
-      <hr class="line">
-      <p>or</p>
-    </div>
-
-    <div class="google-signIn-container">
-      <button type="button" class="google-signIn">
-        <img src="\assets\Images\48131.png" alt="google" />
-        <span>Sign up with Google</span>
-      </button>
-    </div>
-  </div>
+</div>
