@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { InputOtp } from 'primeng/inputotp';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
+import { User } from '../../../interfaces/User';
 
 @Component({
   selector: 'app-email-verification',
@@ -10,5 +11,6 @@ import { ButtonModule } from 'primeng/button';
   styleUrl: './email-verification.component.scss'
 })
 export class EmailVerificationComponent {
+  @Input() userCredentials!: User;
   value: string = '';
 }

@@ -8,32 +8,37 @@
 
   <div #content class="content">
     @if (formState == signInformState) {
-      <app-sign-in (forgotFormState)="changeFormStateToForgotPass($event)"></app-sign-in>
-    }
+    <app-sign-in
+      (forgotFormState)="changeFormStateToForgotPass($event)"
+    ></app-sign-in>
+    } 
     @else if (formState == createAccountformState) {
-      <app-create-account></app-create-account>
-    }
+    <app-create-account
+      (formState)="emittedFormState($event)"
+      (userCredentials)="emittedUserCredentials($event)"
+    ></app-create-account>
+    } 
     @else if (formState == forgotPassformState) {
-      <app-forgot-pass></app-forgot-pass>
-    }
+    <app-forgot-pass></app-forgot-pass>
+    } 
     @else if(formState == emailVerification) {
-      <app-email-verification></app-email-verification>
+    <app-email-verification [userCredentials]="createdUserCredentials"></app-email-verification>
     }
-
   </div>
-
 </div>
 
 @if (formState == signInformState) {
-  <div class="bottomText">
-    <span>New to PawFile?</span>
-    <span class="createAccountBtn" (click)="changeFormStateToCreateAccount()">Create account</span>
-  </div>
+<div class="bottomText">
+  <span>New to PawFile?</span>
+  <span class="createAccountBtn" (click)="changeFormStateToCreateAccount()"
+    >Create account</span
+  >
+</div>
+} @else if (formState == createAccountformState) {
+<div class="bottomText">
+  <span>Already has account?</span>
+  <span class="createAccountBtn" (click)="changeFormStateToSignIn()"
+    >Sign in</span
+  >
+</div>
 }
-@else if (formState == createAccountformState) {
-  <div class="bottomText">
-    <span>Already has account?</span>
-    <span class="createAccountBtn" (click)="changeFormStateToSignIn()">Sign in</span>
-  </div>
-}
-

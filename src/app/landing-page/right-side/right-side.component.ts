@@ -4,6 +4,7 @@ import { CreateAccountComponent } from "./create-account/create-account.componen
 import { ForgotPassComponent } from "./forgot-pass/forgot-pass.component";
 import { FORMSTATE } from '../enum/formState';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
+import { User } from '../../interfaces/User';
 
 @Component({
   selector: 'app-right-side',
@@ -26,6 +27,7 @@ export class RightSideComponent {
   emailVerification: FORMSTATE = FORMSTATE.EmailVerification;
 
   formState: FORMSTATE = FORMSTATE.SignIn;
+  createdUserCredentials!: User;
 
   @ViewChild('content') content!: ElementRef;
 
@@ -63,8 +65,17 @@ export class RightSideComponent {
     })
   }
 
-  ngAfterViewInit() {
+  emittedFormState(event: FORMSTATE) {
+    this.formState = event;
     this.changeFormStateToEmailVerification();
+  }
+
+  emittedUserCredentials(event: User) {
+    this.createdUserCredentials = event;
+  }
+
+  ngAfterViewInit() {
+    this.changeFormStateToSignIn();
     console.log(this.formState);
   }
 }

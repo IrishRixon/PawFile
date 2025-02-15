@@ -41,7 +41,7 @@ export class SignInComponent {
   
   @Output() forgotFormState: EventEmitter<FORMSTATE> = new EventEmitter<FORMSTATE>();
 
-  urlRoot: string = "http://localhost:3000";
+  urlRoot: string = "http://localhost:3000/pawfile";
   signInForm!: FormGroup;
 
   ngOnInit(): void {
@@ -56,7 +56,7 @@ export class SignInComponent {
   }
 
   onSubmit() {
-    this.authenticationService.signIn(`${this.urlRoot}/pawfile/signin`, this.signInForm.value)
+    this.authenticationService.signIn(`${this.urlRoot}/signin`, this.signInForm.value)
     .subscribe( res => {
       console.log(res);
     })
