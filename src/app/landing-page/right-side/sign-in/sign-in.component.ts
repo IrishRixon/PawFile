@@ -10,7 +10,9 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { FORMSTATE } from '../../enum/formState';
 import { FormGroup } from '@angular/forms';
-
+import { ApiService } from '../../../services/api-service.service';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
+import { AuthenticationService } from '../../../services/authentication/authentication.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -24,7 +26,7 @@ import { FormGroup } from '@angular/forms';
     ButtonModule,
     RippleModule,
     PasswordModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss',
@@ -33,11 +35,13 @@ import { FormGroup } from '@angular/forms';
 })
 export class SignInComponent {
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authenticationService: AuthenticationService
   ) {}
   
   @Output() forgotFormState: EventEmitter<FORMSTATE> = new EventEmitter<FORMSTATE>();
 
+  urlRoot: string = "http://localhost:3000";
   signInForm!: FormGroup;
 
   ngOnInit(): void {
@@ -49,5 +53,12 @@ export class SignInComponent {
 
   forgotFormStateEmit() {
     this.forgotFormState.emit(FORMSTATE.ForgotPassword)
+  }
+
+  onSubmit() {
+    this.authenticationService.signIn(`${this.urlRoot}/pawfile/signin`, this.signInForm.value)
+    .subscribe( res => {
+      console.log(res);
+    })
   }
 }
