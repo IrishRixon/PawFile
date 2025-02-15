@@ -27,3 +27,7 @@
 .confirm-input.dirty.ng-touched {
     border-color: rgb(225, 0, 0) !important;
 }
+
+:host ::ng-deep p-floatlabel div {
+    width: 100% !important;
+}

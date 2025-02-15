@@ -17,7 +17,11 @@
     </p-inputgroup-addon>
 
     <p-floatlabel variant="in">
-      <p-password formControlName="password" [toggleMask]="true" inputId="in_label">
+      <p-password
+        formControlName="password"
+        [toggleMask]="true"
+        inputId="in_label"
+      >
         <ng-template #footer>
           <ul class="pl-2 ml-2 my-0 leading-normal">
             <li>At least one lowercase</li>
@@ -37,7 +41,14 @@
 </div>
 
 <div class="signIn">
-  <p-button pripple fluid="false" label="Sign in" [rounded]="true" [disabled]="!signInForm.valid" />
+  <p-button
+    pripple
+    fluid="false"
+    label="Sign in"
+    [rounded]="true"
+    [disabled]="!signInForm.valid"
+    (onClick)="onSubmit()"
+  />
 
   <div class="line-container">
     <hr class="line" />

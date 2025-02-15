@@ -3,13 +3,15 @@ import { SignInComponent } from "./sign-in/sign-in.component";
 import { CreateAccountComponent } from "./create-account/create-account.component";
 import { ForgotPassComponent } from "./forgot-pass/forgot-pass.component";
 import { FORMSTATE } from '../enum/formState';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
 
 @Component({
   selector: 'app-right-side',
   imports: [
     SignInComponent,
     CreateAccountComponent,
-    ForgotPassComponent
+    ForgotPassComponent,
+    EmailVerificationComponent
 ],
   templateUrl: './right-side.component.html',
   styleUrl: './right-side.component.scss'
@@ -21,6 +23,7 @@ export class RightSideComponent {
   signInformState: FORMSTATE = FORMSTATE.SignIn;
   createAccountformState: FORMSTATE = FORMSTATE.CreateAccount;
   forgotPassformState: FORMSTATE = FORMSTATE.ForgotPassword;
+  emailVerification: FORMSTATE = FORMSTATE.EmailVerification;
 
   formState: FORMSTATE = FORMSTATE.SignIn;
 
@@ -52,7 +55,16 @@ export class RightSideComponent {
     this.formState = event;
   }
 
+  changeFormStateToEmailVerification() {
+    this.removeClasses();
+    setTimeout(() => {
+      this.formState = FORMSTATE.EmailVerification;
+      this.renderer.addClass(this.content.nativeElement, 'open-email-verification');
+    })
+  }
+
   ngAfterViewInit() {
-    this.changeFormStateToSignIn();
+    this.changeFormStateToEmailVerification();
+    console.log(this.formState);
   }
 }

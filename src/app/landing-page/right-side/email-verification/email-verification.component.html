@@ -1,0 +1,12 @@
+<header>
+    <h2>Verify it's you</h2>
+    <p>We sent verification code to . Please check your inbox and enter the code below.</p>
+</header>
+
+<article>
+    <p-inputotp [(ngModel)]="value" [length]="6" [integerOnly]="true"/>
+</article>
+
+<footer>
+    <p-button label="Verify code" severity="info"/>
+</footer>

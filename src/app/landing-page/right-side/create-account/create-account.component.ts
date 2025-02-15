@@ -55,16 +55,16 @@ export class CreateAccountComponent {
     this.isBtnEnable = this.createAccountForm.valid && this.isPasswordMatched;
 
     if(!this.isPasswordMatched) {
-      console.log(this.confirmInput.nativeElement.classList.contains('ng-touched'));
-      
-      if(this.confirmInput.nativeElement.classList.contains('ng-touched')) {
-        this.renderer.addClass(this.errormsg.nativeElement, 'open')
-      }
+      this.renderer.addClass(this.errormsg.nativeElement, 'open')
       this.renderer.addClass(this.confirmInput.nativeElement, 'dirty')
     }
     else {
       this.renderer.removeClass(this.errormsg.nativeElement, 'open')
       this.renderer.removeClass(this.confirmInput.nativeElement, 'dirty')
     }
+  }
+
+  ngAfterViewInit(): void {
+    this.checkIfPasswordMatch();
   }
 }
