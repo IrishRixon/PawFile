@@ -13,4 +13,8 @@ export class AuthenticationService {
   signIn = (url: string, body: User): Observable<User> => {
     return this.api.post(url, body);
   }
+
+  emailVerification = (url: string, body: User): Observable<User> => {
+    return this.api.post(url, body);
+  }
 }
