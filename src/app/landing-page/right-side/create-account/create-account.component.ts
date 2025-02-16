@@ -22,7 +22,7 @@ import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { FORMSTATE } from '../../enum/formState';
-import { User } from '../../../interfaces/User';
+import { User } from '../../../interfaces/authentication';
 import { AuthenticationService } from '../../../services/authentication/authentication.service';
 
 @Component({
@@ -46,7 +46,6 @@ export class CreateAccountComponent {
   constructor(
     private formBuilder: FormBuilder,
     private renderer: Renderer2,
-    private authenticationService: AuthenticationService
   ) {}
 
   createAccountForm!: FormGroup;
@@ -59,7 +58,6 @@ export class CreateAccountComponent {
   confirmPassValue: string = '';
   isPasswordMatched: boolean = false;
   isBtnEnable!: boolean;
-  urlRoot: string = 'http://locahost:3000/pawfile';
 
   ngOnInit(): void {
     this.createAccountForm = this.formBuilder.group({
@@ -87,7 +85,6 @@ export class CreateAccountComponent {
   onSignUp() {
     this.emitUserCredentials();
     this.emitFormState();
-    this.sendEmailVerification();
   }
 
   emitUserCredentials() {
@@ -96,15 +93,6 @@ export class CreateAccountComponent {
 
   emitFormState() {
     this.formState.emit(FORMSTATE.EmailVerification);
-  }
-
-  sendEmailVerification() {
-    this.authenticationService.emailVerification(
-      `${this.urlRoot}/emailverif`,
-      this.createAccountForm.value
-    ).subscribe( res => {
-      console.log(res);
-    });
   }
 
   ngAfterViewInit(): void {

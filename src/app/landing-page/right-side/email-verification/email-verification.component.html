@@ -8,11 +8,11 @@
   </header>
 
   <article>
-    <p-inputotp [(ngModel)]="value" [length]="6" [integerOnly]="true" />
+    <p-inputotp [(ngModel)]="code" [length]="6" [integerOnly]="true" />
   </article>
 
   <footer>
-    <p-button label="Verify code" severity="info" />
+    <p-button label="Verify code" severity="info" (onClick)="onCodeSubmit()"/>
     <span>Didn't receive code? </span> <span class="resend"> Resend</span>
   </footer>
 </div>

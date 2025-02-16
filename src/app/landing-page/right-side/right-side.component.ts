@@ -4,7 +4,7 @@ import { CreateAccountComponent } from "./create-account/create-account.componen
 import { ForgotPassComponent } from "./forgot-pass/forgot-pass.component";
 import { FORMSTATE } from '../enum/formState';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
-import { User } from '../../interfaces/User';
+import { User } from '../../interfaces/authentication';
 
 @Component({
   selector: 'app-right-side',
