@@ -28,6 +28,6 @@
     border-color: rgb(225, 0, 0) !important;
 }
 
-:host ::ng-deep p-floatlabel div {
+:host ::ng-deep p-floatlabel.confirm-input div {
     width: 100% !important;
 }
