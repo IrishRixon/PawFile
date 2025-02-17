@@ -19,6 +19,8 @@ export class EmailVerificationComponent {
 
   code: string = '';
   urlRoot: string = 'http://localhost:3000/pawfile';
+  resendCountdown: number = 120;
+  isResendCountdownActive: boolean = false;
 
   sendEmailVerification() {
     this.authenticationService
@@ -43,6 +45,26 @@ export class EmailVerificationComponent {
           })
         }
       });
+  }
+
+  
+  resendEmailVerification() {
+    console.log('Hello');
+    this.isResendCountdownActive = true;
+    this.sendEmailVerification();
+
+    const intervalID = setInterval(() => {
+      console.log(this.resendCountdown, 'resendCountdow');
+      console.log(this.isResendCountdownActive, 'isResendCountdownActive');
+
+      this.resendCountdown--;
+
+        if(!this.resendCountdown) {
+          this.isResendCountdownActive = false;
+          this.resendCountdown = 120;
+          clearInterval(intervalID)
+        }
+    }, 1000)
   }
 
   ngAfterViewInit(): void {

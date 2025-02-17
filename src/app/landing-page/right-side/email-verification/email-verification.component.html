@@ -13,6 +13,12 @@
 
   <footer>
     <p-button label="Verify code" severity="info" (onClick)="onCodeSubmit()"/>
-    <span>Didn't receive code? </span> <span class="resend"> Resend</span>
+    <span>Didn't receive code? </span> 
+    @if(isResendCountdownActive) {
+      <span class="resend" style="margin-left: 5px;"> {{resendCountdown}}s</span>
+    }
+    @else {
+      <span (click)="resendEmailVerification()" class="resend"> Resend</span>
+    }
   </footer>
 </div>
