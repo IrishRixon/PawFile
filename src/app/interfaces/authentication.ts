@@ -6,4 +6,5 @@ export interface User {
 export interface Code {
     code: string;
     isMatch?: boolean;
+    codeExpired?: boolean;
 }

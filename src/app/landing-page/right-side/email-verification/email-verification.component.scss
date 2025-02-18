@@ -24,11 +24,28 @@
         p {
             font-family: "Inter";
             font-weight: styleVariables.$regular;
-            font-size: 14px;
+            font-size: 12px;
             color: styleVariables.$text-color;
             line-height: 1.5rem;
+            text-align: left;
         }
+
     }
+
+    span {
+        font-family: "Inter";
+        font-weight: styleVariables.$light;
+        font-size: 14px;
+    }
+    .resend, .incorrect-email {
+        color: styleVariables.$five1;
+    }
+
+    .resend:hover, .incorrect-email:hover {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
 
     footer {
         display: flex;
@@ -38,21 +55,6 @@
 
         p-button {
             width: 100%;
-        }
-
-        span {
-            font-family: "Inter";
-            font-weight: styleVariables.$light;
-            font-size: 14px;
-        }
-
-        .resend {
-            color: styleVariables.$five1;
-        }
-
-        .resend:hover {
-            cursor: pointer;
-            text-decoration: underline;
         }
     }
 }

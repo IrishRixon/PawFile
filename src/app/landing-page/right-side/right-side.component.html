@@ -22,7 +22,7 @@
     <app-forgot-pass></app-forgot-pass>
     } 
     @else if(formState == emailVerification) {
-    <app-email-verification [userCredentials]="createdUserCredentials"></app-email-verification>
+    <app-email-verification [userCredentials]="createdUserCredentials" (incorrectEmail)="onIncorrectEmail($event)"></app-email-verification>
     }
   </div>
 </div>
