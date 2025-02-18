@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { InputOtp } from 'primeng/inputotp';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { Code, User } from '../../../interfaces/authentication';
 import { AuthenticationService } from '../../../services/authentication/authentication.service';
+import { FORMSTATE } from '../../enum/formState';
 
 @Component({
   selector: 'app-email-verification',
@@ -16,6 +17,7 @@ export class EmailVerificationComponent {
   constructor(private authenticationService: AuthenticationService) {}
 
   @Input() userCredentials!: User;
+  @Output() incorrectEmail: EventEmitter<FORMSTATE> = new EventEmitter<FORMSTATE>();
 
   code: string = '';
   urlRoot: string = 'http://localhost:3000/pawfile';
@@ -44,12 +46,14 @@ export class EmailVerificationComponent {
             console.log(res);
           })
         }
+        else if(res.codeExpired) {
+          console.log('code expired');
+        }
       });
   }
 
   
   resendEmailVerification() {
-    console.log('Hello');
     this.isResendCountdownActive = true;
     this.sendEmailVerification();
 
@@ -65,6 +69,10 @@ export class EmailVerificationComponent {
           clearInterval(intervalID)
         }
     }, 1000)
+  }
+
+  emitIncorrectEmail() {
+    this.incorrectEmail.emit(FORMSTATE.EmailVerification)
   }
 
   ngAfterViewInit(): void {

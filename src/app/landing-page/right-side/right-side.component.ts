@@ -33,7 +33,8 @@ export class RightSideComponent {
 
   removeClasses() {
     this.renderer.removeClass(this.content.nativeElement, 'open-sign-in');
-    this.renderer.removeClass(this.content.nativeElement, 'open-create-account')
+    this.renderer.removeClass(this.content.nativeElement, 'open-create-account');
+    this.renderer.removeClass(this.content.nativeElement, 'open-email-verification');
   }
 
   changeFormStateToSignIn() {
@@ -54,7 +55,18 @@ export class RightSideComponent {
 
   changeFormStateToForgotPass(event: FORMSTATE) {
     this.removeClasses();
-    this.formState = event;
+    setTimeout(() => {
+      this.formState = event;
+      this.renderer.addClass(this.content.nativeElement, 'open-forgot-pass');
+    }, 500);
+  }
+
+  changeFormStateToForgotPassTEST() {
+    this.removeClasses();
+    setTimeout(() => {
+      this.formState = FORMSTATE.ForgotPassword;
+      this.renderer.addClass(this.content.nativeElement, 'open-forgot-pass');
+    }, 500);
   }
 
   changeFormStateToEmailVerification() {
@@ -74,8 +86,12 @@ export class RightSideComponent {
     this.createdUserCredentials = event;
   }
 
+  onIncorrectEmail(event: FORMSTATE) {
+    this.changeFormStateToCreateAccount();
+  }
+
   ngAfterViewInit() {
-    this.changeFormStateToSignIn();
+    this.changeFormStateToForgotPassTEST();
     console.log(this.formState);
   }
 }
