@@ -42,8 +42,6 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
-            transition: height 1s;
-
         }
 
         app-sign-in {
@@ -68,6 +66,9 @@
     }
 
     .open-forgot-pass {
+        height: 260px;
+    }
+    .open-new-pass {
         height: auto;
     }
 }
@@ -90,4 +91,13 @@
         text-decoration: underline;
         cursor: pointer;
     }
+}
+
+:host ::ng-deep .p-toast-summary,
+:host ::ng-deep .p-toast-detail {
+    font-family: "Inter";   
+}
+
+:host ::ng-deep .p-toast-close-button {
+    color: inherit !important;
 }

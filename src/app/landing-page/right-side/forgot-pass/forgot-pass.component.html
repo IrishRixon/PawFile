@@ -1,19 +1,30 @@
 <div class="container">
-    <header>
-        <h2>Reset Password</h2>
-    </header>
-    <p>
-        Please enter your email
-    </p>
+  <header>
+    <h2>Reset Password</h2>
+    <p>Please enter the email address of your account.</p>
+  </header>
 
-    <article>
-        <p-floatlabel variant="in">
-            <input pInputText id="in_label" [(ngModel)]="value" autocomplete="off" />
-            <label for="in_label">In Label</label>
-        </p-floatlabel>
-    </article>
+  <article [formGroup]="forgotPassForm">
+    <p-floatlabel variant="in">
+      <input
+        pInputText
+        id="in_label"
+        autocomplete="off"
+        [fluid]="true"
+        formControlName="email"
+      />
+      <label for="in_label">Email</label>
+    </p-floatlabel>
+  </article>
 
-    <footer>
-        
-    </footer>
+  <footer>
+    <p-button
+      class="proceed"
+      [fluid]="true"
+      label="Proceed"
+      (onClick)="onProceed()"
+      [disabled]="!forgotPassForm.valid"
+    />
+    <span (click)="emitSigninFormState()">Back to sign in</span>
+  </footer>
 </div>

@@ -1,3 +1,5 @@
+<p-toast />
+
 <div class="card">
   <div class="card-header">
     <div class="logo">
@@ -9,7 +11,7 @@
   <div #content class="content">
     @if (formState == signInformState) {
     <app-sign-in
-      (forgotFormState)="changeFormStateToForgotPass($event)"
+      (forgotFormState)="onForgotPassClicked($event)"
     ></app-sign-in>
     } 
     @else if (formState == createAccountformState) {
@@ -19,10 +21,13 @@
     ></app-create-account>
     } 
     @else if (formState == forgotPassformState) {
-    <app-forgot-pass></app-forgot-pass>
+    <app-forgot-pass (signinFormState)="onBackToSigninClicked($event)" (newPassFormState)="onNewPass($event)" (toastMessage)="showMessage($event)"></app-forgot-pass>
     } 
     @else if(formState == emailVerification) {
-    <app-email-verification [userCredentials]="createdUserCredentials" (incorrectEmail)="onIncorrectEmail($event)"></app-email-verification>
+    <app-email-verification [userCredentials]="createdUserCredentials" (incorrectEmail)="onIncorrectEmailClicked($event)"></app-email-verification>
+    }
+    @else if(formState == newPassformState) {
+      <app-new-pass></app-new-pass>
     }
   </div>
 </div>
