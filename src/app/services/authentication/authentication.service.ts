@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api-service.service';
-import { Code, User } from '../../interfaces/authentication';
+import { Code, User, UserEmail } from '../../interfaces/authentication';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -21,4 +21,8 @@ export class AuthenticationService {
   codeVerification = (url: string, body: Code): Observable<Code> => {
     return this.api.post(url, body);
   }
+
+  findAccount = (url: string, body: UserEmail): Observable<UserEmail> => {
+    return this.api.post(url, body);
+  } 
 }

@@ -5,6 +5,10 @@ import { ForgotPassComponent } from "./forgot-pass/forgot-pass.component";
 import { FORMSTATE } from '../enum/formState';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
 import { User } from '../../interfaces/authentication';
+import { NewPassComponent } from './new-pass/new-pass.component';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import { ToastMessage } from '../../interfaces/toast-message';
 
 @Component({
   selector: 'app-right-side',
@@ -12,19 +16,26 @@ import { User } from '../../interfaces/authentication';
     SignInComponent,
     CreateAccountComponent,
     ForgotPassComponent,
-    EmailVerificationComponent
+    EmailVerificationComponent,
+    NewPassComponent,
+    ToastModule,
 ],
   templateUrl: './right-side.component.html',
-  styleUrl: './right-side.component.scss'
+  styleUrl: './right-side.component.scss',
+  providers: [MessageService]
 })
 export class RightSideComponent {
 
-  constructor(private renderer: Renderer2) {}
+  constructor(
+    private renderer: Renderer2,
+    private messageService: MessageService,
+  ) {}
 
   signInformState: FORMSTATE = FORMSTATE.SignIn;
   createAccountformState: FORMSTATE = FORMSTATE.CreateAccount;
   forgotPassformState: FORMSTATE = FORMSTATE.ForgotPassword;
   emailVerification: FORMSTATE = FORMSTATE.EmailVerification;
+  newPassformState: FORMSTATE = FORMSTATE.NewPassword; 
 
   formState: FORMSTATE = FORMSTATE.SignIn;
   createdUserCredentials!: User;
@@ -35,6 +46,8 @@ export class RightSideComponent {
     this.renderer.removeClass(this.content.nativeElement, 'open-sign-in');
     this.renderer.removeClass(this.content.nativeElement, 'open-create-account');
     this.renderer.removeClass(this.content.nativeElement, 'open-email-verification');
+    this.renderer.removeClass(this.content.nativeElement, 'open-forgot-pass');
+    this.renderer.removeClass(this.content.nativeElement, 'open-new-pass');
   }
 
   changeFormStateToSignIn() {
@@ -42,7 +55,7 @@ export class RightSideComponent {
     setTimeout(() => {
       this.formState = FORMSTATE.SignIn;
       this.renderer.addClass(this.content.nativeElement, 'open-sign-in');
-    }, 500);
+    }, 1100);
   }
 
   changeFormStateToCreateAccount() {
@@ -50,23 +63,15 @@ export class RightSideComponent {
     setTimeout(() => {
       this.formState = FORMSTATE.CreateAccount;
       this.renderer.addClass(this.content.nativeElement, 'open-create-account');
-    }, 500);
+    }, 1100);
   }
 
-  changeFormStateToForgotPass(event: FORMSTATE) {
-    this.removeClasses();
-    setTimeout(() => {
-      this.formState = event;
-      this.renderer.addClass(this.content.nativeElement, 'open-forgot-pass');
-    }, 500);
-  }
-
-  changeFormStateToForgotPassTEST() {
+  changeFormStateToForgotPass() {
     this.removeClasses();
     setTimeout(() => {
       this.formState = FORMSTATE.ForgotPassword;
       this.renderer.addClass(this.content.nativeElement, 'open-forgot-pass');
-    }, 500);
+    }, 1100);
   }
 
   changeFormStateToEmailVerification() {
@@ -74,7 +79,15 @@ export class RightSideComponent {
     setTimeout(() => {
       this.formState = FORMSTATE.EmailVerification;
       this.renderer.addClass(this.content.nativeElement, 'open-email-verification');
-    })
+    }, 1100)
+  }
+
+  changeFormStateToNewpass() {
+    this.removeClasses();
+    setTimeout(() => {
+      this.formState = FORMSTATE.NewPassword;
+      this.renderer.addClass(this.content.nativeElement, 'open-new-pass');
+    }, 1100)
   }
 
   emittedFormState(event: FORMSTATE) {
@@ -86,12 +99,33 @@ export class RightSideComponent {
     this.createdUserCredentials = event;
   }
 
-  onIncorrectEmail(event: FORMSTATE) {
+  onForgotPassClicked(event: FORMSTATE) {
+    this.changeFormStateToForgotPass();
+  }
+
+  onIncorrectEmailClicked(event: FORMSTATE) {
     this.changeFormStateToCreateAccount();
   }
 
+  onBackToSigninClicked(event: FORMSTATE) {
+    this.changeFormStateToSignIn();
+  }
+
+  onNewPass(event: FORMSTATE) {
+    this.changeFormStateToNewpass();
+  }
+
+  showMessage(event: ToastMessage) {
+    this.messageService.add({
+      severity: event.severity,
+      summary: event.summary,
+      detail: event.detail,
+      life: 3000,
+    });
+  }
+
   ngAfterViewInit() {
-    this.changeFormStateToForgotPassTEST();
+    this.changeFormStateToSignIn();
     console.log(this.formState);
   }
 }

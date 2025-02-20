@@ -1,0 +1,67 @@
+@use "../../../../styleVariables.scss" as SV;
+
+.container {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    color: SV.$text-color;
+
+    h2, p {
+        margin: 0;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        h2 {
+            font-family: "Poppins";
+            font-weight: SV.$medium;
+            font-size: 20px;
+        }
+
+        p {
+            font-family: "Inter";
+            font-size: 14px;
+        }
+    }
+
+    footer {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 10px;
+
+        span{
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            color: SV.$five1
+        }
+
+        span:hover {
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        p-button, span {
+            font-family: "Poppins";
+        }
+    }
+
+    input, label {
+        font-family: "Inter";
+    }
+}
+
+:host ::ng-deep p-button.proceed button {
+    background-color: SV.$thirty;
+    border-radius: 5px;
+    border-color: SV.$thirty;
+    color: SV.$bg-color1;
+}
+
+:host ::ng-deep p-button.proceed button:hover {
+    background-color: SV.$thirty-hover !important;
+}
