@@ -1,1 +1,29 @@
-<p>new-pass works!</p>
+<article>
+    <h3>Change Password</h3>
+
+    <p-floatlabel variant="in">
+        <input pInputText id="in_label" [fluid]="true" [(ngModel)]="value2" autocomplete="off" />
+        <label for="in_label">Old Password</label>
+    </p-floatlabel>
+
+    <p-floatlabel variant="in">
+        <p-password
+          [toggleMask]="true"
+          inputId="in_label"
+
+          
+        >
+          <ng-template #footer>
+            <ul class="pl-2 ml-2 my-0 leading-normal">
+              <li>At least one lowercase</li>
+              <li>At least one uppercase</li>
+              <li>At least one numeric</li>
+              <li>Minimum 8 characters</li>
+            </ul>
+          </ng-template>
+        </p-password>
+        <label for="in_label">Password</label>
+      </p-floatlabel>
+
+    <p-button label="Submit" [fluid]="true"/>
+</article>

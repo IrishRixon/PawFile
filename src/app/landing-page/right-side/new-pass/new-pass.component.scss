@@ -1,0 +1,31 @@
+@use '../../../../styleVariables.scss' as SV;
+
+article {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: SV.$text-color;
+    font-family: "Inter";
+
+    h3 {
+        font-family: 'Poppins';
+        font-weight: SV.$medium;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    p-button {
+        margin-top: 10px;
+        font-family: "Poppins";
+    }
+}
+
+:host ::ng-deep .p-button {
+    background-color: SV.$thirty;
+    border-color: SV.$thirty;
+}
+
+:host ::ng-deep .p-button:hover {
+    background-color: SV.$thirty-hover;
+    border-color: SV.$thirty-hover;
+}
