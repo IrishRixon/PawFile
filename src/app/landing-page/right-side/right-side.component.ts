@@ -125,7 +125,7 @@ export class RightSideComponent {
   }
 
   ngAfterViewInit() {
-    this.changeFormStateToSignIn();
+    this.changeFormStateToNewpass();
     console.log(this.formState);
   }
 }
