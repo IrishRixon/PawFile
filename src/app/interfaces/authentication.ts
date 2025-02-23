@@ -1,3 +1,8 @@
+export interface Res {
+    message?: string;
+    isSuccess?: boolean; 
+}
+
 export interface User {
     email: string;
     password: string;
@@ -14,7 +19,8 @@ export interface UserEmail {
     res?: Res;
 }
 
-export interface Res {
-    message?: string;
-    isSuccess?: boolean; 
+export interface NewPass {
+    oldPass: string,
+    newPass: string,
+    res?: Res
 }

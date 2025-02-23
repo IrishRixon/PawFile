@@ -48,6 +48,7 @@ export class RightSideComponent {
     this.renderer.removeClass(this.content.nativeElement, 'open-email-verification');
     this.renderer.removeClass(this.content.nativeElement, 'open-forgot-pass');
     this.renderer.removeClass(this.content.nativeElement, 'open-new-pass');
+    this.renderer.removeClass(this.content.nativeElement, 'overflow-visible');
   }
 
   changeFormStateToSignIn() {
@@ -88,6 +89,10 @@ export class RightSideComponent {
       this.formState = FORMSTATE.NewPassword;
       this.renderer.addClass(this.content.nativeElement, 'open-new-pass');
     }, 1100)
+
+    setTimeout(() => {
+      this.renderer.addClass(this.content.nativeElement, '!overflow-visible');
+    }, 2100)
   }
 
   emittedFormState(event: FORMSTATE) {

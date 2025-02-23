@@ -6,6 +6,8 @@ article {
     gap: 15px;
     color: SV.$text-color;
     font-family: "Inter";
+    overflow: visible !important;
+    position: relative;
 
     h3 {
         font-family: 'Poppins';
@@ -20,6 +22,11 @@ article {
     }
 }
 
+li {
+    list-style-type: disc;
+    margin-left: 10px;
+}
+
 :host ::ng-deep .p-button {
     background-color: SV.$thirty;
     border-color: SV.$thirty;
@@ -29,3 +36,8 @@ article {
     background-color: SV.$thirty-hover;
     border-color: SV.$thirty-hover;
 }
+
+:host ::ng-deep p-floatlabel {
+    overflow: visible;
+}
+

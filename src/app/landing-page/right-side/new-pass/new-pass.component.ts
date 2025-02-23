@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { InputTextModule } from 'primeng/inputtext';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FloatLabel } from 'primeng/floatlabel';
 import { ButtonModule } from 'primeng/button';
 import { PasswordModule } from 'primeng/password';
@@ -15,11 +15,25 @@ import { DividerModule } from 'primeng/divider';
     ButtonModule,
     PasswordModule,
     DividerModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ],
   templateUrl: './new-pass.component.html',
   styleUrl: './new-pass.component.scss'
 })
 export class NewPassComponent {
-  value2: string = "";
+  constructor(
+    private formBuilder: FormBuilder,
+    private renderer: Renderer2
+  ) {}
+
+  @ViewChild('newPass') newPass!: ElementRef;
+
+  newPassForm!: FormGroup;
+
+  ngOnInit() {
+    this.newPassForm = this.formBuilder.group({
+      old: ['', [Validators.required, Validators.minLength(8)]],
+      new: ['', [Validators.required,  Validators.minLength(8)]]
+    });
+  }
 }
