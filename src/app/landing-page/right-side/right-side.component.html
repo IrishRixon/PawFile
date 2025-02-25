@@ -10,24 +10,26 @@
 
   <div #content class="content">
     @if (formState == signInformState) {
-    <app-sign-in
-      (forgotFormState)="onForgotPassClicked($event)"
-    ></app-sign-in>
-    } 
-    @else if (formState == createAccountformState) {
+    <app-sign-in (forgotFormState)="onForgotPassClicked($event)"></app-sign-in>
+    } @else if (formState == createAccountformState) {
     <app-create-account
       (formState)="emittedFormState($event)"
       (userCredentials)="emittedUserCredentials($event)"
     ></app-create-account>
-    } 
-    @else if (formState == forgotPassformState) {
-    <app-forgot-pass (signinFormState)="onBackToSigninClicked($event)" (newPassFormState)="onNewPass($event)" (toastMessage)="showMessage($event)"></app-forgot-pass>
-    } 
-    @else if(formState == emailVerification) {
-    <app-email-verification [userCredentials]="createdUserCredentials" (incorrectEmail)="onIncorrectEmailClicked($event)"></app-email-verification>
-    }
-    @else if(formState == newPassformState) {
-      <app-new-pass></app-new-pass>
+    } @else if (formState == forgotPassformState) {
+    <app-forgot-pass
+      (signinFormState)="onBackToSigninClicked($event)"
+      (newPassFormState)="onNewPass($event)"
+      (toastMessage)="showMessage($event)"
+      (email)="emittedUserEmail($event)"
+    ></app-forgot-pass>
+    } @else if(formState == emailVerification) {
+    <app-email-verification
+      [userCredentials]="createdUserCredentials"
+      (incorrectEmail)="onIncorrectEmailClicked($event)"
+    ></app-email-verification>
+    } @else if(formState == newPassformState) {
+    <app-new-pass [email]="userEmail"></app-new-pass>
     }
   </div>
 </div>

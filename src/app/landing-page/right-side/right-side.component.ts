@@ -4,7 +4,7 @@ import { CreateAccountComponent } from "./create-account/create-account.componen
 import { ForgotPassComponent } from "./forgot-pass/forgot-pass.component";
 import { FORMSTATE } from '../enum/formState';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
-import { User } from '../../interfaces/authentication';
+import { User, UserEmail } from '../../interfaces/authentication';
 import { NewPassComponent } from './new-pass/new-pass.component';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
@@ -39,6 +39,9 @@ export class RightSideComponent {
 
   formState: FORMSTATE = FORMSTATE.SignIn;
   createdUserCredentials!: User;
+
+  userEmail!: UserEmail;
+
 
   @ViewChild('content') content!: ElementRef;
 
@@ -104,6 +107,10 @@ export class RightSideComponent {
     this.createdUserCredentials = event;
   }
 
+  emittedUserEmail(event: UserEmail) {
+    this.userEmail = event;
+  }
+
   onForgotPassClicked(event: FORMSTATE) {
     this.changeFormStateToForgotPass();
   }
@@ -130,7 +137,7 @@ export class RightSideComponent {
   }
 
   ngAfterViewInit() {
-    this.changeFormStateToNewpass();
+    this.changeFormStateToSignIn();
     console.log(this.formState);
   }
 }

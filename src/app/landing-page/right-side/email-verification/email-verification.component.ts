@@ -43,7 +43,7 @@ export class EmailVerificationComponent {
         if(res.isMatch) {
           this.authenticationService.signIn(`${this.urlRoot}/signup`, this.userCredentials)
           .subscribe( res => {
-            console.log(res);
+            
           })
         }
         else if(res.codeExpired) {
