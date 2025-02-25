@@ -13,4 +13,8 @@ export class ApiService {
   post<T>(url: string, body: T): Observable<T> {
     return this.http.post(url, body) as Observable<T>;
   }
+
+  put<T>(url: string, body: T): Observable<T> {
+    return this.http.put(url, body) as Observable<T>;
+  }
 }

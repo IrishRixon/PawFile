@@ -11,7 +11,7 @@ import { FloatLabel } from 'primeng/floatlabel';
 import { ButtonModule } from 'primeng/button';
 import { FORMSTATE } from '../../enum/formState';
 import { AuthenticationService } from '../../../services/authentication/authentication.service';
-import { UserEmail } from '../../../interfaces/authentication';
+import { User, UserEmail } from '../../../interfaces/authentication';
 import { ToastMessage } from '../../../interfaces/toast-message';
 
 
@@ -42,14 +42,16 @@ export class ForgotPassComponent {
   @Output() newPassFormState: EventEmitter<FORMSTATE> =
     new EventEmitter<FORMSTATE>(); 
   @Output() toastMessage: EventEmitter<ToastMessage> = new EventEmitter<ToastMessage>;
+  @Output() email: EventEmitter<UserEmail> = new EventEmitter<UserEmail>;
 
   emitSigninFormState() {
     this.signinFormState.emit(FORMSTATE.SignIn);
   }
 
   onProceed() {
+    const { email } = this.forgotPassForm.value;
     const value: UserEmail = {
-      email: this.forgotPassForm.get('email')?.value,
+      email: email,
     };
     console.log(value);
 
@@ -64,6 +66,7 @@ export class ForgotPassComponent {
           }
           this.emitToastMessage(successToast);
           this.emitNewPassFormState();
+          this.emitEmail(email  );
         } else {
           const errorToast: ToastMessage = {
             summary: 'Not Found',
@@ -81,6 +84,10 @@ export class ForgotPassComponent {
 
   emitToastMessage(toastMessage: ToastMessage) {
     this.toastMessage.emit(toastMessage)
+  }
+
+  emitEmail(email: UserEmail) {
+    this.email.emit(email);
   }
 
   ngOnInit() {

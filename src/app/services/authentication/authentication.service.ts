@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api-service.service';
-import { Code, User, UserEmail } from '../../interfaces/authentication';
+import { Code, NewPass, User, UserEmail } from '../../interfaces/authentication';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -25,4 +25,8 @@ export class AuthenticationService {
   findAccount = (url: string, body: UserEmail): Observable<UserEmail> => {
     return this.api.post(url, body);
   } 
+
+  changePass = (url: string, body: NewPass): Observable<NewPass> => {
+    return this.api.put(url, body);
+  }
 }

@@ -6,6 +6,7 @@ export interface Res {
 export interface User {
     email: string;
     password: string;
+    res?: Res;
 }
 
 export interface Code {
@@ -20,6 +21,7 @@ export interface UserEmail {
 }
 
 export interface NewPass {
+    email: string,
     oldPass: string,
     newPass: string,
     res?: Res
