@@ -1,0 +1,18 @@
+@use '../../../../styleVariables.scss' as SV;
+
+.wrapper {
+    height: 100%;
+    width: 100%;
+    background-color: SV.$bg-color2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .card {
+        width: 35%;
+        height: 600px;
+        background-color: SV.$bg-color1;
+        padding: 20px;
+        border-radius: 10px;
+    }
+}
