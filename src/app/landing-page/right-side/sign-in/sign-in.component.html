@@ -45,6 +45,8 @@
     pripple
     fluid="false"
     label="Sign in"
+    [loading]="isLoading"
+    loadingIcon="pi pi-spin pi-spinner"
     [rounded]="true"
     [disabled]="!signInForm.valid"
     (onClick)="onSubmit()"

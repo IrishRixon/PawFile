@@ -13,6 +13,9 @@ import { FormGroup } from '@angular/forms';
 import { ApiService } from '../../../services/api-service.service';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { AuthenticationService } from '../../../services/authentication/authentication.service';
+import { Router } from '@angular/router';
+import { ToastMessage } from '../../../interfaces/toast-message';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-sign-in',
@@ -36,13 +39,17 @@ import { AuthenticationService } from '../../../services/authentication/authenti
 export class SignInComponent {
   constructor(
     private formBuilder: FormBuilder,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private route: Router
   ) {}
   
   @Output() forgotFormState: EventEmitter<FORMSTATE> = new EventEmitter<FORMSTATE>();
+  @Output() message: EventEmitter<ToastMessage> = new EventEmitter<ToastMessage>();
 
   urlRoot: string = "http://localhost:3000/pawfile";
   signInForm!: FormGroup;
+
+  isLoading: boolean = false;
 
   ngOnInit(): void {
     this.signInForm = this.formBuilder.group({
@@ -56,9 +63,29 @@ export class SignInComponent {
   }
 
   onSubmit() {
+    this.isLoading = true;
+    
     this.authenticationService.signIn(`${this.urlRoot}/signin`, this.signInForm.value)
+    .pipe(
+      finalize(() => this.isLoading = false)
+    )
     .subscribe( res => {
-      console.log(res);
+      if(res.res?.isSuccess) {
+        this.route.navigate(['set-up-profile']);
+      }
+      else {
+        const mess: ToastMessage = {
+          summary: 'Incorrect Credentials',
+          detail: 'Please check your credentials',
+          severity: 'error'
+        }
+
+        this.emitMessage(mess);
+      }
     })
+  }
+
+  emitMessage(message: ToastMessage) {
+    this.message.emit(message)
   }
 }
