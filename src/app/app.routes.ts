@@ -8,6 +8,6 @@ export const routes: Routes = [
     },
     {
         path: 'set-up-profile',
-        loadChildren: () => import('./modules/set-up-profile/set-up-profile.module').then((m) => m.SetUpProfileModule)
+        loadChildren: () => import('./modules/setup-profile/setup-profile.module').then((m) => m.SetupProfileModule)
     }
 ];

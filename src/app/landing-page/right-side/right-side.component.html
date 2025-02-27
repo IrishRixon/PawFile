@@ -10,7 +10,7 @@
 
   <div #content class="content">
     @if (formState == signInformState) {
-    <app-sign-in (forgotFormState)="onForgotPassClicked($event)"></app-sign-in>
+    <app-sign-in (forgotFormState)="onForgotPassClicked($event)" (message)="showMessage($event)"></app-sign-in>
     } @else if (formState == createAccountformState) {
     <app-create-account
       (formState)="emittedFormState($event)"

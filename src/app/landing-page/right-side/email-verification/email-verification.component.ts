@@ -5,6 +5,8 @@ import { ButtonModule } from 'primeng/button';
 import { Code, User } from '../../../interfaces/authentication';
 import { AuthenticationService } from '../../../services/authentication/authentication.service';
 import { FORMSTATE } from '../../enum/formState';
+import { finalize } from 'rxjs';
+import { ToastMessage } from '../../../interfaces/toast-message';
 
 @Component({
   selector: 'app-email-verification',
@@ -18,11 +20,14 @@ export class EmailVerificationComponent {
 
   @Input() userCredentials!: User;
   @Output() incorrectEmail: EventEmitter<FORMSTATE> = new EventEmitter<FORMSTATE>();
+  @Output() message: EventEmitter<ToastMessage> = new EventEmitter<ToastMessage>();
 
   code: string = '';
   urlRoot: string = 'http://localhost:3000/pawfile';
   resendCountdown: number = 120;
   isResendCountdownActive: boolean = false;
+
+  isLoading: boolean = false;
 
   sendEmailVerification() {
     this.authenticationService
@@ -33,21 +38,32 @@ export class EmailVerificationComponent {
   }
 
   onCodeSubmit() {
+    this.isLoading = true;
+
     const codeObj: Code = {
       code: this.code
     }
 
     this.authenticationService
       .codeVerification(`${this.urlRoot}/verifcode`, codeObj)
+      .pipe(
+        finalize(() => this.isLoading = false)
+      )
       .subscribe( res => {
         if(res.isMatch) {
           this.authenticationService.signIn(`${this.urlRoot}/signup`, this.userCredentials)
           .subscribe( res => {
-            
+            console.log(res);
           })
         }
         else if(res.codeExpired) {
-          console.log('code expired');
+          const mess: ToastMessage = {
+            severity: 'error',
+            summary: 'Code Expired',
+            detail: 'The code you entered has expired. Please request a new one.'
+          }
+
+          this.emitMessage(mess);
         }
       });
   }
@@ -73,6 +89,10 @@ export class EmailVerificationComponent {
 
   emitIncorrectEmail() {
     this.incorrectEmail.emit(FORMSTATE.EmailVerification)
+  }
+
+  emitMessage(mess: ToastMessage) {
+    this.message.emit(mess);
   }
 
   ngAfterViewInit(): void {
