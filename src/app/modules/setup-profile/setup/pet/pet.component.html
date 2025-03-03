@@ -1,0 +1,49 @@
+<div class="wrapper">
+  <h1>Set up profile for your pet</h1>
+
+  <div class="profile-pic">
+    <span>Profile Picture: </span>
+    <p-fileupload
+      #fu
+      mode="basic"
+      chooseLabel="Choose"
+      chooseIcon="pi pi-upload"
+      name="demo[]"
+      url=""
+      accept="image/*"
+      maxFileSize="1000000"
+    />
+  </div>
+
+  <div class="input-fields">
+    <p-floatlabel variant="in">
+        <input pInputText id="in_label" autocomplete="off" />
+        <label for="in_label">Name</label>
+    </p-floatlabel>
+
+    <p-floatlabel variant="in">
+        <input pInputText id="in_label" autocomplete="off" />
+        <label for="in_label">Species</label>
+    </p-floatlabel>
+
+    <p-floatlabel variant="in">
+        <input pInputText id="in_label" autocomplete="off" />
+        <label for="in_label">Breed</label>
+    </p-floatlabel>
+
+    <p-floatlabel variant="in">
+        <p-inputnumber inputId="in_label" inputId="integeronly" [showButtons]="true" [min]="0" />
+        <label for="in_label">Age</label>
+    </p-floatlabel>
+
+    <p-floatlabel variant="in">
+        <input pInputText id="in_label" autocomplete="off" />
+        <label for="in_label">Color</label>
+    </p-floatlabel>
+
+    <p-floatlabel variant="in">
+        <input pInputText id="in_label" autocomplete="off" />
+        <label for="in_label">Temperament</label>
+    </p-floatlabel>
+  </div>
+</div>

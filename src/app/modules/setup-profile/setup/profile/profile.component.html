@@ -1,14 +1,43 @@
-<div class="wrapper">
+<div class="wrapper" [formGroup]="profileForm">
     <h1>Set up your profile</h1>
     <div class="name">
         <p-floatlabel variant="in">
-            <input pInputText id="in_label" autocomplete="off" [fluid]="true"/>
+            <input pInputText id="in_label" autocomplete="off" [fluid]="true" formControlName="lastName"/>
             <label for="in_label">Lastname</label>
         </p-floatlabel>
 
         <p-floatlabel variant="in">
-            <input pInputText id="in_label" autocomplete="off" [fluid]="true"/>
+            <input pInputText id="in_label" autocomplete="off" [fluid]="true" formControlName="firstName"/>
             <label for="in_label">Firstname</label>
         </p-floatlabel> 
+    </div>
+
+    <div class="phone">
+        <p-floatlabel variant="in">
+            <p-inputmask id="in_label" mask="(+63)999-999-9999" formControlName="phone"/>
+            <label for="in_label">Phone number</label>
+        </p-floatlabel>
+    </div>
+
+    <div class="address" formGroupName="address">
+        <p-floatlabel variant="in">
+            <input pInputText id="in_label" autocomplete="off" formControlName="street"/>
+            <label for="in_label">Street</label>
+        </p-floatlabel>
+
+        <p-floatlabel variant="in">
+            <input pInputText id="in_label" autocomplete="off" formControlName="barangay"/>
+            <label for="in_label">Barangay</label>
+        </p-floatlabel>
+
+        <p-floatlabel variant="in">
+            <input pInputText id="in_label" autocomplete="off" formControlName="municipality"/>
+            <label for="in_label">Municipality or City</label>
+        </p-floatlabel>
+
+        <p-floatlabel variant="in">
+            <input pInputText id="in_label" autocomplete="off" formControlName="province"/>
+            <label for="in_label">Province</label>
+        </p-floatlabel>
     </div>
 </div>

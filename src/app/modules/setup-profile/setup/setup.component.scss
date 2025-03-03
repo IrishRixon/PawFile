@@ -1,18 +1,31 @@
-@use '../../../../styleVariables.scss' as SV;
+@use "../../../../styleVariables.scss" as SV;
 
 .wrapper {
-    height: 100%;
-    width: 100%;
-    background-color: SV.$bg-color2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: SV.$bg-color2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    .card {
-        width: 35%;
-        height: 600px;
-        background-color: SV.$bg-color1;
-        padding: 20px;
-        border-radius: 10px;
-    }
+  .card {
+    width: 485px;
+    height: 600px;
+    background-color: SV.$bg-color1;
+    padding: 20px;
+    border-radius: 10px;
+  }
+}
+
+:host ::ng-deep .p-step-active .p-step-number {
+  background-color: SV.$sixty;
+  border-color: SV.$sixty;
+}
+
+:host ::ng-deep .p-step-active .p-step-title {
+    color: SV.$sixty;
+}
+
+:host ::ng-deep .p-step:has(~ .p-step-active) .p-stepper-separator {
+    background-color: SV.$sixty;
 }

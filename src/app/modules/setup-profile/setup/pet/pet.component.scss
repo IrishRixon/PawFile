@@ -1,0 +1,34 @@
+@use '../../../../../styleVariables.scss' as SV;
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .input-fields {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        row-gap: 10px;
+    }
+
+    .profile-pic {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 10px 0;
+    }
+
+    h1 {
+        font-weight: SV.$medium;
+    }
+}
+
+:host ::ng-deep .p-fileupload button {
+    padding: 7px;
+}
+
+:host ::ng-deep p-fileupload button {
+    background-color: SV.$sixty;
+    border-color: SV.$sixty;
+}
