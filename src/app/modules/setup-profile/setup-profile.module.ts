@@ -7,13 +7,20 @@ import { ButtonModule } from 'primeng/button';
 import { ProfileComponent } from './setup/profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
-import { FloatLabelModule } from 'primeng/floatlabel'
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { InputMaskModule } from 'primeng/inputmask';
+import { PetComponent } from './setup/pet/pet.component';
+import { FileUploadModule } from 'primeng/fileupload';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { ProceedComponent } from './setup/proceed/proceed.component';
 
 
 @NgModule({
   declarations: [
     SetupComponent,
-    ProfileComponent
+    ProfileComponent,
+    PetComponent,
+    ProceedComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +29,10 @@ import { FloatLabelModule } from 'primeng/floatlabel'
     ButtonModule,
     InputTextModule,
     ReactiveFormsModule,
-    FloatLabelModule 
-  ]
+    FloatLabelModule,
+    InputMaskModule,
+    FileUploadModule,
+    InputNumberModule,
+]
 })
 export class SetupProfileModule { }
