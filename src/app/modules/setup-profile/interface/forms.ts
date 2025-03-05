@@ -1,3 +1,8 @@
+export interface Res {
+    message?: string;
+    isSuccess?: boolean; 
+}
+
 export interface Address {
     street: string,
     barangay: string,
@@ -9,14 +14,16 @@ export interface UserForm {
     lastname: string,
     firstname: string,
     phoneNumber: number,
-    address: Address
+    address: Address,
+    res?: Res
 }
 
 export interface PetForm {
     name: string,
     species: string,
     breed: string,
-    age: number,
+    age: string,
     color: string,
-    temperament: string
+    temperament: string,
+    res?: Res
 }

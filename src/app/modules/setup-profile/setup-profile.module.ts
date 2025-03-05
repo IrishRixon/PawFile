@@ -13,6 +13,7 @@ import { PetComponent } from './setup/pet/pet.component';
 import { FileUploadModule } from 'primeng/fileupload';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ProceedComponent } from './setup/proceed/proceed.component';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ProceedComponent } from './setup/proceed/proceed.component';
     InputMaskModule,
     FileUploadModule,
     InputNumberModule,
+    ProgressBarModule
 ]
 })
 export class SetupProfileModule { }

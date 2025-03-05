@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" [formGroup]="petForm">
   <h1>Set up profile for your pet</h1>
 
   <div class="profile-pic">
@@ -17,32 +17,32 @@
 
   <div class="input-fields">
     <p-floatlabel variant="in">
-        <input pInputText id="in_label" autocomplete="off" />
+        <input pInputText id="in_label" autocomplete="off" formControlName="name"/>
         <label for="in_label">Name</label>
     </p-floatlabel>
 
     <p-floatlabel variant="in">
-        <input pInputText id="in_label" autocomplete="off" />
+        <input pInputText id="in_label" autocomplete="off" formControlName="species"/>
         <label for="in_label">Species</label>
     </p-floatlabel>
 
     <p-floatlabel variant="in">
-        <input pInputText id="in_label" autocomplete="off" />
+        <input pInputText id="in_label" autocomplete="off" formControlName="breed"/>
         <label for="in_label">Breed</label>
     </p-floatlabel>
 
     <p-floatlabel variant="in">
-        <p-inputnumber inputId="in_label" inputId="integeronly" [showButtons]="true" [min]="0" />
+        <p-inputnumber inputId="in_label" inputId="integeronly" [showButtons]="true" [min]="0" formControlName="age"/>
         <label for="in_label">Age</label>
     </p-floatlabel>
 
     <p-floatlabel variant="in">
-        <input pInputText id="in_label" autocomplete="off" />
+        <input pInputText id="in_label" autocomplete="off" formControlName="color"/>
         <label for="in_label">Color</label>
     </p-floatlabel>
 
     <p-floatlabel variant="in">
-        <input pInputText id="in_label" autocomplete="off" />
+        <input pInputText id="in_label" autocomplete="off" formControlName="temperament"/>
         <label for="in_label">Temperament</label>
     </p-floatlabel>
   </div>
