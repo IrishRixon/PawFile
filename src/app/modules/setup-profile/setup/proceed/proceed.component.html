@@ -1,4 +1,10 @@
 <div class="wrapper">
+    @if (isProceeded) {
+    <div class="progressBar">
+        <p-progressbar [value]="progressBarValue" [style]="{ width: '100%' }" />
+    </div>
+    } @else {
     <h1>You can also edit the profiles later, do you want to proceed?</h1>
     <p-button label="Proceed" />
+    }
 </div>

@@ -20,5 +20,6 @@ export class FormsValueHolderService {
 
   setPetForm(petForm: PetForm) {
     this.petForm = petForm;
+    console.log(petForm);
   }
 }
