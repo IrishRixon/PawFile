@@ -1,7 +1,13 @@
 <div class="wrapper">
     @if (isProceeded) {
     <div class="progressBar">
+        <div class="spinner">
+            <p-progress-spinner ariaLabel="loading" />
+        </div>
+
         <p-progressbar [value]="progressBarValue" [style]="{ width: '100%' }" />
+
+        <h1>Submiting forms ...</h1>
     </div>
     } @else {
     <h1>You can also edit the profiles later, do you want to proceed?</h1>
