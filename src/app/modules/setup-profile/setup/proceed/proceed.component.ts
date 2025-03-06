@@ -18,7 +18,7 @@ export class ProceedComponent {
   isProceeded: boolean = false;
 
   finished: number = 0;
-  progressBarValue: number = this.finished / 100;
+  progressBarValue: number = this.finished / 2 * 100;
 
   urlRoot: string = 'http://localhost:3000/pawfile';
 
@@ -27,14 +27,19 @@ export class ProceedComponent {
    }
 
   submitUserForm() {
+    this.isProceeded = true;
+
     this.reqForms
       .submitUserForm(
         `${this.urlRoot}/submitInitialUserForm`,
         this.formValHolder.userForm
       )
-      .pipe(finalize(() => this.submitPetForm()))
+      // .pipe(finalize(() => this.submitPetForm()))
       .subscribe((res) => {
-        console.log(res);
+        this.finished++;
+        if(!res.res?.isSuccess) {
+          console.log('error user form');          
+        }
       });
   }
 
@@ -44,7 +49,9 @@ export class ProceedComponent {
         `${this.urlRoot}/submitInitialPetForm`,
         this.formValHolder.petForm
       )
-      .pipe()
+      .pipe(
+        finalize(() => this.isProceeded = false)
+      )
       .subscribe((res) => {
         console.log(res);
       });
