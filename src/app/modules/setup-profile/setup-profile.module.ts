@@ -14,7 +14,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ProceedComponent } from './setup/proceed/proceed.component';
 import { ProgressBarModule } from 'primeng/progressbar';
-
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,8 @@ import { ProgressBarModule } from 'primeng/progressbar';
     InputMaskModule,
     FileUploadModule,
     InputNumberModule,
-    ProgressBarModule
+    ProgressBarModule,
+    ProgressSpinnerModule
 ]
 })
 export class SetupProfileModule { }

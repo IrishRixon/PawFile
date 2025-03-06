@@ -10,8 +10,6 @@ export class ProtectedApiService {
   constructor(private http: HttpClient) { }
 
   post<T>(url: string, body: T): Observable<T> {
-    return this.http.post(url, body, {
-      withCredentials: true
-    }) as Observable<T>;
+    return this.http.post(url, body) as Observable<T>;
   }
 }

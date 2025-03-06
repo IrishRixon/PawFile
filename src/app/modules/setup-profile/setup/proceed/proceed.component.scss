@@ -15,7 +15,20 @@
 
     .progressBar {
         width: 80%;
+
+        .spinner {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+    
+        h1 {
+            text-align: center;
+            margin-top: 15px;
+        }
     }
+
 }
 
 :host ::ng-deep .p-progressbar-value {

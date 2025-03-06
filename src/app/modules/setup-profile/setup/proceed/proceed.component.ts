@@ -18,7 +18,7 @@ export class ProceedComponent {
   isProceeded: boolean = false;
 
   finished: number = 0;
-  progressBarValue: number = this.finished / 2 * 100;
+  progressBarValue!: number;
 
   urlRoot: string = 'http://localhost:3000/pawfile';
 
@@ -37,6 +37,9 @@ export class ProceedComponent {
       // .pipe(finalize(() => this.submitPetForm()))
       .subscribe((res) => {
         this.finished++;
+        this.updateProgressBar(this.finished);
+        console.log(this.finished);
+        console.log(this.progressBarValue);
         if(!res.res?.isSuccess) {
           console.log('error user form');          
         }
@@ -55,5 +58,9 @@ export class ProceedComponent {
       .subscribe((res) => {
         console.log(res);
       });
+  }
+
+  updateProgressBar(num: number) {
+    this.progressBarValue = num / 2 * 100;
   }
 }
