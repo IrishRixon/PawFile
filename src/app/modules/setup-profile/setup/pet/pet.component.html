@@ -4,14 +4,16 @@
   <div class="profile-pic">
     <span>Profile Picture: </span>
     <p-fileupload
-      #fu
+      #fileUpload
       mode="basic"
       chooseLabel="Choose"
       chooseIcon="pi pi-upload"
-      name="demo[]"
+      name="petProfilePic"
       url=""
       accept="image/*"
       maxFileSize="1000000"
+      [auto]="false"
+      (onSelect)="emitFileSelected($event)"
     />
   </div>
 

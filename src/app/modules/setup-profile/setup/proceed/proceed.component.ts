@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { RequestFormsService } from '../services/submitForms/request-forms.service';
 import { FormsValueHolderService } from '../services/forms-value-holder.service';
-import { finalize } from 'rxjs';
+import { finalize, retry, switchMap } from 'rxjs';
+import { FileUpload } from 'primeng/fileupload';
 
 @Component({
   selector: 'app-proceed',
@@ -13,54 +14,54 @@ export class ProceedComponent {
   constructor(
     private reqForms: RequestFormsService,
     private formValHolder: FormsValueHolderService
-  ) { }
+  ) {}
+
+  @ViewChild('fileUpload') fileUpload!: FileUpload;
 
   isProceeded: boolean = false;
 
   finished: number = 0;
+  done: boolean = false;
+  totalSteps: number = 3;
   progressBarValue!: number;
 
   urlRoot: string = 'http://localhost:3000/pawfile';
 
   submitForms() {
-    this.submitUserForm()
-   }
-
-  submitUserForm() {
     this.isProceeded = true;
-
-    this.reqForms
-      .submitUserForm(
-        `${this.urlRoot}/submitInitialUserForm`,
-        this.formValHolder.userForm
-      )
-      // .pipe(finalize(() => this.submitPetForm()))
-      .subscribe((res) => {
-        this.finished++;
-        this.updateProgressBar(this.finished);
-        console.log(this.finished);
-        console.log(this.progressBarValue);
-        if(!res.res?.isSuccess) {
-          console.log('error user form');          
-        }
-      });
+    this.reqForms.submitUserForm(
+      `${this.urlRoot}/submitInitialUserForm`,
+      this.formValHolder.userForm
+    )
+    .pipe(
+      switchMap( resUser => {
+        this.updateProgressBar();
+        return this.reqForms.submitPetForm(
+          `${this.urlRoot}/submitInitialPetForm`,
+          this.formValHolder.petForm
+        );
+      }),
+      retry({count: 2, delay: 3000}),
+    )
+    .subscribe({
+      next: () => {
+        this.cleanUp();
+        this.updateProgressBar();
+      },
+      error: (err) => console.log(err)
+    })
   }
 
-  submitPetForm() {
-    this.reqForms
-      .submitPetForm(
-        `${this.urlRoot}/submitInitialPetForm`,
-        this.formValHolder.petForm
-      )
-      .pipe(
-        finalize(() => this.isProceeded = false)
-      )
-      .subscribe((res) => {
-        console.log(res);
-      });
+  cleanUp() {
+    setTimeout(() => {
+      this.isProceeded = false;
+      this.finished = 0;
+      this.done = true;
+    }, 1000)
   }
 
-  updateProgressBar(num: number) {
-    this.progressBarValue = num / 2 * 100;
+  updateProgressBar() {
+    this.finished++;
+    this.progressBarValue = Math.floor((this.finished / 3) * 100);
   }
 }

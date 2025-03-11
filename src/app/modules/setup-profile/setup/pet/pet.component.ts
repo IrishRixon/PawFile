@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsValueHolderService } from '../services/forms-value-holder.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -13,8 +13,12 @@ export class PetComponent {
     private formValHolder: FormsValueHolderService,
     private formBuilder: FormBuilder
   ) {}
-
+  
   petForm!: FormGroup;
+
+  emitFileSelected(event: any) {
+    this.formValHolder.petProfileImage = event.currentFiles[0];
+  }
 
   ngOnInit(): void {
     this.petForm = this.formBuilder.group({
