@@ -7,9 +7,9 @@ import { PetForm, UserForm } from '../../interface/forms';
 export class FormsValueHolderService {
 
   constructor() { }
-
+  
+  petProfileImage!: File;
   userForm!: UserForm;
-
   petForm!: PetForm;
 
   setUserForm(userForm: UserForm) {
