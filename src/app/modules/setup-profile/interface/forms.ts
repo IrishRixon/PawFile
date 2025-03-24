@@ -1,6 +1,7 @@
 export interface Res {
     message?: string;
     isSuccess?: boolean; 
+    id?: string;
 }
 
 export interface Address {
@@ -26,4 +27,9 @@ export interface PetForm {
     color: string,
     temperament: string,
     res?: Res
+}
+
+export interface PetImageFormData {
+    petID: string,
+    formData: FormData
 }

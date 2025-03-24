@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { User } from '../interfaces/authentication';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,6 +13,13 @@ export class ApiService {
 
   post<T>(url: string, body: T): Observable<T> {
     return this.http.post(url, body) as Observable<T>;
+  }
+
+  postPetImage<T>(url: string, body: T): Observable<T> {
+    return this.http.post(url, body, {
+      reportProgress: true,
+      observe: 'events'
+    }) as Observable<T>;
   }
 
   put<T>(url: string, body: T): Observable<T> {
