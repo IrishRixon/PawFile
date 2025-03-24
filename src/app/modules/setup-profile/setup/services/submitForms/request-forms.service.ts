@@ -9,7 +9,7 @@ import { ProtectedApiService } from '../../../../../services/protected-api/prote
 })
 export class RequestFormsService {
 
-  constructor(private api: ProtectedApiService) { }
+  constructor(private api: ApiService) { }
 
   submitUserForm = (url: string, body: UserForm): Observable<UserForm> => {
     return this.api.post(url, body);
@@ -17,5 +17,9 @@ export class RequestFormsService {
 
   submitPetForm = (url: string, body: PetForm): Observable<PetForm> => {
     return this.api.post(url, body);
+  }
+
+  uploadPetImage = (url: string, body: FormData): Observable<FormData> => {
+    return this.api.postPetImage(url, body);
   }
 }
