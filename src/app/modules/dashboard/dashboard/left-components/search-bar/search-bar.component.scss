@@ -1,0 +1,31 @@
+@use '../../../../../../styleVariables.scss' as SV;
+
+.search-bar {
+    width: 100%;
+    position: relative;
+
+    input {
+        width: 100%;
+        height: 40px;
+        border: 1px solid SV.$bg-color1-border;
+        border-radius: 40px;
+        background-color: SV.$bg-color1;
+        font-family: 'Inter';
+        font-size: 1rem;
+        color: SV.$text-color;
+        padding: 10px 10px 10px 40px;
+
+        &:focus-visible {
+            outline: none;
+            border: 1px solid SV.$bg-color1-border;
+            box-shadow: 0 0 0 0.1rem SV.$sixty;
+        }
+    }
+
+    i {
+        position: absolute;
+        top: 12px;
+        left: 15px;
+        color: SV.$textPlaceholder-color;
+    }
+}

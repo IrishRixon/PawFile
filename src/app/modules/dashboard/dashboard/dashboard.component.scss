@@ -1,0 +1,60 @@
+@use '../../../../styleVariables.scss' as SV;
+.wrapper {
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    background-color: SV.$bg-color1;
+
+    .board {
+        height: 100%;
+        width: 100%;
+        background-color: SV.$bg-color2;
+        border: 1px solid SV.$bg-color1-border;
+        border-radius: 20px;
+        box-shadow: 0 0 5px SV.$bg-color1-border;
+        padding: 10px;
+        display: flex;
+
+        aside.left {
+            width: 30%;
+            height: 100%;
+
+            .logo {
+                height: 50px;
+                width: 115px;
+    
+                img {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+
+            article {
+                height: calc(100% - 50px);
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                app-search-bar {
+                    width: 90%;
+                    height: 20%;
+                    display: flex;
+                    align-items: center;
+                }
+
+                .cards {
+                    height: 70%;
+                    overflow-y: scroll;
+                    scrollbar-width: none;
+                }
+            }
+        }
+
+        aside.right {
+            width: 70%;
+            height: 100%;
+        }
+        
+    }
+}

@@ -1,0 +1,26 @@
+@use '../../../../../../styleVariables.scss' as SV;
+
+.card {
+    background-color: SV.$bg-color1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: 'Inter';
+    align-items: center;
+    justify-content: center;
+    height: 220px;
+    
+    img {
+        height: 150px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    p {
+        width: 100%;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
