@@ -3,8 +3,7 @@ import { RequestFormsService } from '../services/submitForms/request-forms.servi
 import { FormsValueHolderService } from '../services/forms-value-holder.service';
 import { filter, finalize, retry, switchMap } from 'rxjs';
 import { FileUpload } from 'primeng/fileupload';
-import { HttpEvent, HttpEventType } from '@angular/common/http';
-import { PetImageFormData } from '../../interface/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-proceed',
@@ -15,7 +14,8 @@ import { PetImageFormData } from '../../interface/forms';
 export class ProceedComponent {
   constructor(
     private reqForms: RequestFormsService,
-    private formValHolder: FormsValueHolderService
+    private formValHolder: FormsValueHolderService,
+    private router: Router
   ) {}
 
   @ViewChild('fileUpload') fileUpload!: FileUpload;
@@ -45,24 +45,23 @@ export class ProceedComponent {
           );
         }),
         switchMap((resPet) => {
-          this.updateProgressBar();
-
           const formData = new FormData();
   
           formData.append('image', this.formValHolder.petProfileImage);
+          formData.append('_id', resPet.res!._id!)
 
           return this.reqForms.uploadPetImage(
             `${this.urlRoot}/uploadPetImage`,
             formData
           );
         }),
-
-        retry({ count: 2, delay: 3000 })
       )
       .subscribe({
         next: () => {
           this.cleanUp();
           this.updateProgressBar();
+          this.done = true;
+          this.redirectToDashboard();
         },
         error: (err) => console.log(err),
       });
@@ -79,5 +78,11 @@ export class ProceedComponent {
   updateProgressBar() {
     this.finished++;
     this.progressBarValue = Math.floor((this.finished / 3) * 100);
+  }
+
+  redirectToDashboard() {
+    setTimeout( () =>{
+      this.router.navigate(['dashboard']);
+    }, 1000)
   }
 }

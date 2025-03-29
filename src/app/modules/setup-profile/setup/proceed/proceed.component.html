@@ -1,5 +1,10 @@
 <div class="wrapper">
-    @if (isProceeded) {
+    @if (done) {
+        <i class="pi pi-check text-green-800" style="font-size: 3.5rem; color: green"></i>
+        <h1 class="text-green-800">Done</h1>
+        <h2>Redirecting to dashboard ... </h2>
+    }
+    @else if (isProceeded) {
     <div class="progressBar">
         <div class="spinner">
             <p-progress-spinner ariaLabel="loading" />
