@@ -1,8 +1,8 @@
 export interface PetCards {
-    cards: PetCard[],
+    petsCard: PetCard[],
 }
 
 export interface PetCard {
-    url: string,
+    profilePic: string,
     name: string
 }

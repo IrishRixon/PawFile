@@ -10,12 +10,14 @@ import { SearchBarComponent } from './dashboard/left-components/search-bar/searc
 import { CardComponent } from './dashboard/left-components/card/card.component';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { MainSectionComponent } from './dashboard/right-components/main-section/main-section.component';
 
 @NgModule({
   declarations: [
     DashboardComponent,
     SearchBarComponent,
-    CardComponent
+    CardComponent,
+    MainSectionComponent
   ],
   imports: [
     CommonModule,
