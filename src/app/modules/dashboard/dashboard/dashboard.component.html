@@ -9,13 +9,14 @@
                 <app-search-bar></app-search-bar>
 
                 <div class="cards w-full grid grid-cols-2 gap-4">
-                    <app-card class="col-span-1"></app-card>
-                    <app-card class="col-span-1"></app-card>
-                    <app-card class="col-span-1"></app-card>
-                    <app-card class="col-span-1"></app-card>
-                    <app-card class="col-span-1"></app-card>
-                    <app-card class="col-span-1"></app-card>
-                    <app-card class="col-span-1"></app-card>
+                    @if(petsCard.petsCard.length){
+                        @for(card of petsCard.petsCard; track card) {
+                            <app-card class="col-span-1" [name]="card.name" [profilePic]="card.profilePic"></app-card>
+                        }
+                    }
+                    else {
+                        
+                    }
                 </div>
             </article>
         </aside>

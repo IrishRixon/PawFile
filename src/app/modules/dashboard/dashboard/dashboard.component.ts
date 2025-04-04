@@ -14,14 +14,19 @@ export class DashboardComponent {
 
   urlRoot: string = 'http://localhost:3000/pawfile';
 
-  petCards!: PetCards;
+  petsCard: PetCards = {
+    petsCard: []
+  };
 
   ngOnInit(): void {
-    this.getPetsCardAPI.getPetsCard(`${this.urlRoot}/getPetsCard`)
+    this.getPetsCardAPI.getPetsCard(`${this.urlRoot}/dashboard/getPetsCard`)
     .subscribe({
       next: (res) => {
         console.log(res);
-        this.petCards = res;
+        this.petsCard = res;
+      },
+      error: (err) => {
+        console.log(err);
       }
     })
   }
