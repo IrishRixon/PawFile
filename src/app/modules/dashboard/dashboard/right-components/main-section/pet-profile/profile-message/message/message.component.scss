@@ -1,0 +1,29 @@
+@use '../../../../../../../../../styleVariables.scss' as SV;
+
+.wrapper {
+    textarea {
+        min-height: 100px;
+        max-height: 100px !important;
+        overflow-y: auto;
+        box-shadow: none !important;
+    }
+
+    h1 {
+        display: inline-block;
+        background-color: SV.$sixty;
+        color: white;
+        padding: 10px;
+        margin-left: 5px;
+        font-size: 0.7rem;
+        font-family: "Inter";
+        border-radius: 10px 10px 0 0;
+        width: 80px;
+        text-align: center;
+    }
+
+    footer {
+        display: none;
+        justify-content: end;
+        gap: 10px;
+    }
+}
