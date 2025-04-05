@@ -1,0 +1,17 @@
+<div class="wrapper" [formGroup]="message">
+  <h1>Message</h1>
+  <textarea
+    rows="5"
+    pTextarea
+    formControlName="text"
+    [fluid]="true"
+    [autoResize]="false"
+    placeholder="Write a message how will your pet greet the people who scanned the QR code."
+  ></textarea>
+
+  <footer>
+    <p-button label="Cancel" severity="secondary" variant="text" [rounded]="true"/>
+    <p-button label="Save" severity="success" [rounded]="true"/>
+  </footer>
+
+</div>

@@ -14,15 +14,20 @@
                             <app-card class="col-span-1" [name]="card.name" [profilePic]="card.profilePic"></app-card>
                         }
                     }
-                    else {
-                        
+                    @else {
+                        <p-skeleton height="220px" width="100%" class="col-span-1" />
+                        <p-skeleton height="220px" width="100%" class="col-span-1" />
+                        <p-skeleton height="220px" width="100%" class="col-span-1" />
+                        <p-skeleton height="220px" width="100%" class="col-span-1" />
+                        <p-skeleton height="220px" width="100%" class="col-span-1" />
+                        <p-skeleton height="220px" width="100%" class="col-span-1" />
                     }
                 </div>
             </article>
         </aside>
 
         <aside class="right">
-            
+            <app-main-section></app-main-section>
         </aside>
     </div>
 </div>

@@ -1,0 +1,9 @@
+@use '../../../../../../styleVariables.scss' as SV;
+
+.wrapper {
+    height: 100%;
+    width: 100%;
+    background-color: SV.$bg-color1;
+    border: 1px solid SV.$bg-color1-border;
+    border-radius: 10px;
+}

@@ -1,0 +1,7 @@
+<nav>
+    <ul>
+        @for(list of navBtns; track list) {
+            <li><p-button [label]="list.label" (onClick)="list.command()"/></li>
+        }
+    </ul>
+</nav>
