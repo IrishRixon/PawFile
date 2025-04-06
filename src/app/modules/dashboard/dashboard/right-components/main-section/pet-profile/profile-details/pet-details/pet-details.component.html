@@ -14,11 +14,13 @@
 
   <div class="col-span-1">
     <input
+      class="readOnly"
       pInputText
       type="text"
       placeholder="Species"
       variant="filled"
       [readonly]="true"
+      [disabled]="true"
       formControlName="species"
     />
   </div>

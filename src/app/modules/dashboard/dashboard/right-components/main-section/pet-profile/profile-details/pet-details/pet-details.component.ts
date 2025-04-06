@@ -15,7 +15,7 @@ export class PetDetailsComponent {
 
   ngOnInit(): void {
     this.petDetailsForm = this.formBuilder.group({
-      species: ['dog'],
+      species: [''],
       breed: [''],
       age: [''],
       color: [''],
