@@ -12,6 +12,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { ImageModule } from 'primeng/image';
 import { TabsModule } from 'primeng/tabs';
 import { InputTextModule } from 'primeng/inputtext';
+import { InputMaskModule } from 'primeng/inputmask';
 
 import { SearchBarComponent } from './dashboard/left-components/search-bar/search-bar.component';
 import { CardComponent } from './dashboard/left-components/card/card.component';
@@ -28,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TextareaModule } from 'primeng/textarea';
 import { ProfileDetailsComponent } from './dashboard/right-components/main-section/pet-profile/profile-details/profile-details.component';
 import { PetDetailsComponent } from './dashboard/right-components/main-section/pet-profile/profile-details/pet-details/pet-details.component';
+import { OwnerDetailsComponent } from './dashboard/right-components/main-section/pet-profile/profile-details/owner-details/owner-details.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { PetDetailsComponent } from './dashboard/right-components/main-section/p
     MessageComponent,
     ProfileDetailsComponent,
     PetDetailsComponent,
+    OwnerDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -58,7 +61,8 @@ import { PetDetailsComponent } from './dashboard/right-components/main-section/p
     ReactiveFormsModule,
     TextareaModule,
     TabsModule,
-    InputTextModule
+    InputTextModule,
+    InputMaskModule
   ]
 })
 export class DashboardModule { }
