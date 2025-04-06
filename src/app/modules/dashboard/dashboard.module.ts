@@ -10,6 +10,8 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { ImageModule } from 'primeng/image';
+import { TabsModule } from 'primeng/tabs';
+import { InputTextModule } from 'primeng/inputtext';
 
 import { SearchBarComponent } from './dashboard/left-components/search-bar/search-bar.component';
 import { CardComponent } from './dashboard/left-components/card/card.component';
@@ -24,6 +26,8 @@ import { ProfilePicComponent } from './dashboard/right-components/main-section/p
 import { MessageComponent } from './dashboard/right-components/main-section/pet-profile/profile-message/message/message.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextareaModule } from 'primeng/textarea';
+import { ProfileDetailsComponent } from './dashboard/right-components/main-section/pet-profile/profile-details/profile-details.component';
+import { PetDetailsComponent } from './dashboard/right-components/main-section/pet-profile/profile-details/pet-details/pet-details.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +42,8 @@ import { TextareaModule } from 'primeng/textarea';
     ProfileMessageComponent,
     ProfilePicComponent,
     MessageComponent,
+    ProfileDetailsComponent,
+    PetDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -50,7 +56,9 @@ import { TextareaModule } from 'primeng/textarea';
     ButtonModule,
     ImageModule,
     ReactiveFormsModule,
-    TextareaModule
+    TextareaModule,
+    TabsModule,
+    InputTextModule
   ]
 })
 export class DashboardModule { }

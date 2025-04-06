@@ -1,0 +1,34 @@
+@use '../../../../../../../../styleVariables.scss' as SV;
+
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: SV.$bg-color2;
+    border: 1px solid SV.$bg-color1-border; 
+    position: relative;
+    padding: 10px;
+
+    p-tabs {
+        height: 100%;
+    }
+
+    .p-tab {
+        font-family: 'Poppins';
+    }
+
+    .p-tab-active {
+        color: SV.$sixty;
+        border-top: none;
+        background-color: SV.$sixty;
+        color: white;
+        border-radius: 5px 5px 0 0;
+    }
+
+    p-tabpanels {
+        box-shadow: 0 0 5px grey;
+        height: 100%;
+        border-radius: 0 0 5px 5px;
+        padding: 0;
+    }
+}
