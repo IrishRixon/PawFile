@@ -4,5 +4,6 @@ export interface PetCards {
 
 export interface PetCard {
     profilePic: string,
-    name: string
+    name: string,
+    _id: string
 }

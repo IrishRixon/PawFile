@@ -3,18 +3,25 @@
     padding: 30px;
     padding-top: 50px;
     height: calc(100% - 80px);
+    // height: auto;
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    overflow-y: auto;
 
     app-profile-message {
-        height: 53%;
+        min-height: 280px;
         width: 100%;
     }
 
     app-profile-details {
-        height: 47%;
+        min-height: 235px;
+        width: 100%;
+    }
+
+    app-carousel {
+        min-height: 235px;
         width: 100%;
     }
 }

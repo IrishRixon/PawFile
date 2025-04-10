@@ -24,11 +24,29 @@
 
     .name {
         position: absolute;
-        bottom: -30px;
+        left: 28%;
+        bottom: -40px;
         font-family: 'Poppins';
         font-size: 1.3rem;
         font-weight: SV.$medium;
         color: SV.$text-color;
+        padding: 10px;
+        width: 100px;
+        z-index: 1;
+
+        &:hover {
+            .btn {
+                visibility: visible;
+                cursor: pointer;
+            }
+        }
+
+        .btn {
+            position: absolute;
+            top: 10%;
+            right: 0;
+            visibility: hidden;
+        }
     }
 }
 
