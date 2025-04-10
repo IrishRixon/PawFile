@@ -13,6 +13,7 @@ import { ImageModule } from 'primeng/image';
 import { TabsModule } from 'primeng/tabs';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputMaskModule } from 'primeng/inputmask';
+import { CarouselModule } from 'primeng/carousel';
 
 import { SearchBarComponent } from './dashboard/left-components/search-bar/search-bar.component';
 import { CardComponent } from './dashboard/left-components/card/card.component';
@@ -30,6 +31,8 @@ import { TextareaModule } from 'primeng/textarea';
 import { ProfileDetailsComponent } from './dashboard/right-components/main-section/pet-profile/profile-details/profile-details.component';
 import { PetDetailsComponent } from './dashboard/right-components/main-section/pet-profile/profile-details/pet-details/pet-details.component';
 import { OwnerDetailsComponent } from './dashboard/right-components/main-section/pet-profile/profile-details/owner-details/owner-details.component';
+import { MedicalDetailsComponent } from './dashboard/right-components/main-section/pet-profile/profile-details/medical-details/medical-details.component';
+import { CarouselComponent } from './dashboard/right-components/main-section/pet-profile/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,8 @@ import { OwnerDetailsComponent } from './dashboard/right-components/main-section
     ProfileDetailsComponent,
     PetDetailsComponent,
     OwnerDetailsComponent,
+    MedicalDetailsComponent,
+    CarouselComponent,
   ],
   imports: [
     CommonModule,
@@ -62,7 +67,8 @@ import { OwnerDetailsComponent } from './dashboard/right-components/main-section
     TextareaModule,
     TabsModule,
     InputTextModule,
-    InputMaskModule
+    InputMaskModule,
+    CarouselModule
   ]
 })
 export class DashboardModule { }

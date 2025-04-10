@@ -15,6 +15,7 @@ export class PetComponent {
   ) {}
   
   petForm!: FormGroup;
+  ingredient!: string;
 
   emitFileSelected(event: any) {
     this.formValHolder.petProfileImage = event.currentFiles[0];
@@ -28,6 +29,7 @@ export class PetComponent {
       age: [],
       color: [''],
       temperament: [''],
+      gender: [''],
     });
 
     this.petForm.patchValue(this.formValHolder.petForm);

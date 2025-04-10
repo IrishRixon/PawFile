@@ -7,7 +7,9 @@ import { ButtonModule } from 'primeng/button';
 import { ProfileComponent } from './setup/profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
+import { RadioButtonModule } from 'primeng/radiobutton';
 import { FloatLabelModule } from 'primeng/floatlabel';
+import { FormsModule } from '@angular/forms';
 import { InputMaskModule } from 'primeng/inputmask';
 import { PetComponent } from './setup/pet/pet.component';
 import { FileUploadModule } from 'primeng/fileupload';
@@ -21,7 +23,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     SetupComponent,
     ProfileComponent,
     PetComponent,
-    ProceedComponent
+    ProceedComponent,
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,9 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     FileUploadModule,
     InputNumberModule,
     ProgressBarModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    RadioButtonModule,
+    FormsModule
 ]
 })
 export class SetupProfileModule { }
