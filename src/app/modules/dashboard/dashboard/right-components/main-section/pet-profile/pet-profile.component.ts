@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { PetProfileDetails } from '../../../../interfaces/pet-profile-details/pet-profile-details';
 
 @Component({
   selector: 'app-pet-profile',
@@ -8,5 +9,15 @@ import { Component } from '@angular/core';
   styleUrl: './pet-profile.component.scss'
 })
 export class PetProfileComponent {
+  constructor() { }
 
+  @Input() set petProfileDetails(value: PetProfileDetails) {
+    this.isPetSelected = true;
+  }
+
+  isPetSelected: boolean = false;
+
+  ngOnInit(): void {
+    
+  }
 }

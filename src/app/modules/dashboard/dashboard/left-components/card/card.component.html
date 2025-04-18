@@ -1,4 +1,5 @@
 <div class="card p-4 rounded-lg shadow-lg">
     <img [src]="profilePicUrl" alt="Pet">
     <p [innerHTML]="petName"></p>
+    <button type="button" (click)="onPetSelected(petName)"></button>
 </div>

@@ -18,6 +18,10 @@ export class DashboardComponent {
     petsCard: []
   };
 
+  onPetSelected(name: string) {
+    
+  }
+
   ngOnInit(): void {
     this.getPetsCardAPI.getPetsCard(`${this.urlRoot}/dashboard/getPetsCard`)
     .subscribe({
