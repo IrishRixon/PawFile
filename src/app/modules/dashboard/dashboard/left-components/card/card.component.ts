@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card',
@@ -25,4 +25,12 @@ export class CardComponent {
     this.profilePicUrl = `${this.Url}${value}`;
   }
 
+  @Output() petSelected: EventEmitter<string> = new EventEmitter<string>();
+
+  onPetSelected(name: string) {
+    if(name == 'No name') {
+      name = '';
+    } 
+    this.petSelected.emit(name);
+  }
 }

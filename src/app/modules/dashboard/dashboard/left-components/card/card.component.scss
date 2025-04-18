@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: center;
     height: 220px;
+    position: relative;
     
     img {
         height: 150px;
@@ -22,5 +23,16 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+    }
+
+    button {
+        position: absolute;
+        background-color: transparent;
+        height: 100%;
+        width: 100%;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.079);
+        }
     }
 }
