@@ -10,7 +10,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class CardComponent {
   constructor() {}
 
-  Url: string = "https://res.cloudinary.com/ducdal81b/image/upload/v1743384513/";
+  Url: string = "https://res.cloudinary.com/ducdal81b/image/upload/";
 
   petName: string = "No name";
   profilePicUrl!: string;
@@ -28,9 +28,7 @@ export class CardComponent {
   @Output() petSelected: EventEmitter<string> = new EventEmitter<string>();
 
   onPetSelected(name: string) {
-    if(name == 'No name') {
-      name = '';
-    } 
+
     this.petSelected.emit(name);
   }
 }

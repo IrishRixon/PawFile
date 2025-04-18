@@ -1,4 +1,10 @@
 export interface PetProfileDetails {
+    petDetails: PetDetails;
+    ownerDetails: Owner;
+    medicalDetails: Medical;
+}
+
+interface PetDetails {
     owner: string;
     message: string;
     name: string;
@@ -10,16 +16,15 @@ export interface PetProfileDetails {
     gender: string,
     profilePic: string;
     images: string[];
-    ownerDetails: Owner;
-    medicalDetails: Medical;
 }
 
 interface Owner {
     profilePic: string;
-    name: string;
+    firstname: string;
+    lastname: string;
     phoneNumber: string;
     email: string;
-    address: string;
+    address: Address;
 }
 
 interface Medical {
@@ -28,4 +33,11 @@ interface Medical {
     vaccination: string;
     allergies: string;
     medications: string;
+}
+
+interface Address {
+    street: string,
+    barangay: string,
+    municipality: string,
+    province: string
 }

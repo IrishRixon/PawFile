@@ -11,7 +11,7 @@
                 <div class="cards w-full grid grid-cols-2 gap-4">
                     @if(petsCard.petsCard.length){
                         @for(card of petsCard.petsCard; track card) {
-                            <app-card class="col-span-1" [name]="card.name" [profilePic]="card.profilePic"></app-card>
+                            <app-card class="col-span-1" [name]="card.name" [profilePic]="card.profilePic" (petSelected)="onPetSelected($event)"></app-card>
                         }
                     }
                     @else {
