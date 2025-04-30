@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { RequestFormsService } from '../services/submitForms/request-forms.service';
 import { FormsValueHolderService } from '../services/forms-value-holder.service';
-import { filter, finalize, retry, switchMap } from 'rxjs';
+import { filter, finalize, retry, switchMap, tap } from 'rxjs';
 import { FileUpload } from 'primeng/fileupload';
 import { Router } from '@angular/router';
 
@@ -16,7 +16,7 @@ export class ProceedComponent {
     private reqForms: RequestFormsService,
     private formValHolder: FormsValueHolderService,
     private router: Router
-  ) {}
+  ) { }
 
   @ViewChild('fileUpload') fileUpload!: FileUpload;
 
@@ -46,23 +46,26 @@ export class ProceedComponent {
         }),
         switchMap((resPet) => {
           const formData = new FormData();
-  
+
           formData.append('image', this.formValHolder.petProfileImage);
           formData.append('_id', resPet.res!._id!)
 
           return this.reqForms.uploadPetImage(
             `${this.urlRoot}/uploadPetImage`,
             formData
+          ).pipe(
+            tap({
+              complete: () => {
+                this.cleanUp();
+                this.updateProgressBar();
+                this.done = true;
+                this.redirectToDashboard();
+              }
+            }),
           );
         }),
       )
       .subscribe({
-        next: () => {
-          this.cleanUp();
-          this.updateProgressBar();
-          this.done = true;
-          this.redirectToDashboard();
-        },
         error: (err) => console.log(err),
       });
   }
@@ -81,7 +84,7 @@ export class ProceedComponent {
   }
 
   redirectToDashboard() {
-    setTimeout( () =>{
+    setTimeout(() => {
       this.router.navigate(['dashboard']);
     }, 1000)
   }

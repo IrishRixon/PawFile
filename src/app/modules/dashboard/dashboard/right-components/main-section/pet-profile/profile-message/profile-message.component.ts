@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { PetProfileDetails } from '../../../../../interfaces/pet-profile-details/pet-profile-details';
 
 @Component({
   selector: 'app-profile-message',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './profile-message.component.scss'
 })
 export class ProfileMessageComponent {
-
+  @Input() petProfileDetails!: PetProfileDetails;
 }
