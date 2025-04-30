@@ -33,8 +33,10 @@ import { PetDetailsComponent } from './dashboard/right-components/main-section/p
 import { OwnerDetailsComponent } from './dashboard/right-components/main-section/pet-profile/profile-details/owner-details/owner-details.component';
 import { MedicalDetailsComponent } from './dashboard/right-components/main-section/pet-profile/profile-details/medical-details/medical-details.component';
 import { CarouselComponent } from './dashboard/right-components/main-section/pet-profile/carousel/carousel.component';
+import { PetProfileDetailsService } from './services/main-section/petProfileDetails/pet-profile-details.service';
 
 @NgModule({
+  providers: [PetProfileDetailsService],
   declarations: [
     DashboardComponent,
     SearchBarComponent,

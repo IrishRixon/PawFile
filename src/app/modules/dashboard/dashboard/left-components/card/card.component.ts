@@ -28,7 +28,6 @@ export class CardComponent {
   @Output() petSelected: EventEmitter<string> = new EventEmitter<string>();
 
   onPetSelected(name: string) {
-
     this.petSelected.emit(name);
   }
 }

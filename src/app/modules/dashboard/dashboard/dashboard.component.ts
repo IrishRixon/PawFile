@@ -27,7 +27,6 @@ export class DashboardComponent {
     this.getPetDetailsAPI.getPetDetails(`${this.urlRoot}/dashboard/getPetProfileDetails/${name}`)
     .subscribe({
       next: (res) => {
-        console.log(res);
         this.petProfileDetails = res;
       },
       error: (err) => {
@@ -40,7 +39,7 @@ export class DashboardComponent {
     this.getPetsCardAPI.getPetsCard(`${this.urlRoot}/dashboard/getPetsCard`)
     .subscribe({
       next: (res) => {
-        console.log(res);
+        console.log(res, 'getting pets cards');
         this.petsCard = res;
       },
       error: (err) => {

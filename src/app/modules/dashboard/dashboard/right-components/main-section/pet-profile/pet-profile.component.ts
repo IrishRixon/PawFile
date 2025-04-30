@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { PetProfileDetails } from '../../../../interfaces/pet-profile-details/pet-profile-details';
+import { PetProfileDetailsService } from '../../../../services/main-section/petProfileDetails/pet-profile-details.service';
 
 @Component({
   selector: 'app-pet-profile',
@@ -9,15 +10,17 @@ import { PetProfileDetails } from '../../../../interfaces/pet-profile-details/pe
   styleUrl: './pet-profile.component.scss'
 })
 export class PetProfileComponent {
-  constructor() { }
+  constructor(private petProfileDetailsService: PetProfileDetailsService) { }
 
-  @Input() set petProfileDetails(value: PetProfileDetails) {
-    this.isPetSelected = true;
-  }
+  petProfileDetails!: PetProfileDetails;
 
-  isPetSelected: boolean = false;
+  isPetSelected!: boolean;
 
   ngOnInit(): void {
-    
+    this.petProfileDetails = this.petProfileDetailsService.petProfileDetails;
+
+    this.petProfileDetailsService.isPetSelectedSubjectObs.subscribe( val => {
+      this.isPetSelected = val;
+    })
   }
 }
