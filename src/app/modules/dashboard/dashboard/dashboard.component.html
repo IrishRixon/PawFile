@@ -27,7 +27,21 @@
         </aside>
 
         <aside class="right">
-            <app-main-section [petProfileDetails]="this.petProfileDetails"></app-main-section>
+            <app-nav></app-nav>
+
+            <section>
+                @if(isThereSelectedPet) {
+                    <div class="profile-message">
+                        <app-profile-pic></app-profile-pic>
+                        <app-message></app-message>
+                    </div>
+                }
+                @else {
+                    <div class="empty">
+                        <h1>Select a Pet you want to display</h1>
+                    </div>
+                }
+            </section>
         </aside>
     </div>
 </div>

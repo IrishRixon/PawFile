@@ -17,43 +17,23 @@ import { CarouselModule } from 'primeng/carousel';
 
 import { SearchBarComponent } from './dashboard/left-components/search-bar/search-bar.component';
 import { CardComponent } from './dashboard/left-components/card/card.component';
-import { MainSectionComponent } from './dashboard/right-components/main-section/main-section.component';
 import { SkeletonModule } from 'primeng/skeleton';
 import { SpeedDialComponent } from './dashboard/right-components/speed-dial/speed-dial.component';
-import { NavBarComponent } from './dashboard/right-components/main-section/nav-bar/nav-bar.component';
-import { PetProfileComponent } from './dashboard/right-components/main-section/pet-profile/pet-profile.component';
-import { GraphComponent } from './dashboard/right-components/main-section/graph/graph.component';
-import { ProfileMessageComponent } from './dashboard/right-components/main-section/pet-profile/profile-message/profile-message.component';
-import { ProfilePicComponent } from './dashboard/right-components/main-section/pet-profile/profile-message/profile-pic/profile-pic.component';
-import { MessageComponent } from './dashboard/right-components/main-section/pet-profile/profile-message/message/message.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextareaModule } from 'primeng/textarea';
-import { ProfileDetailsComponent } from './dashboard/right-components/main-section/pet-profile/profile-details/profile-details.component';
-import { PetDetailsComponent } from './dashboard/right-components/main-section/pet-profile/profile-details/pet-details/pet-details.component';
-import { OwnerDetailsComponent } from './dashboard/right-components/main-section/pet-profile/profile-details/owner-details/owner-details.component';
-import { MedicalDetailsComponent } from './dashboard/right-components/main-section/pet-profile/profile-details/medical-details/medical-details.component';
-import { CarouselComponent } from './dashboard/right-components/main-section/pet-profile/carousel/carousel.component';
-import { PetProfileDetailsService } from './services/main-section/petProfileDetails/pet-profile-details.service';
+import { NavComponent } from './dashboard/right-components/nav/nav.component';
+import { ProfilePicComponent } from './dashboard/right-components/profile-pic/profile-pic.component';
+import { MessageComponent } from './dashboard/right-components/message/message.component';
 
 @NgModule({
-  providers: [PetProfileDetailsService],
   declarations: [
     DashboardComponent,
     SearchBarComponent,
     CardComponent,
-    MainSectionComponent,
     SpeedDialComponent,
-    NavBarComponent,
-    PetProfileComponent,
-    GraphComponent,
-    ProfileMessageComponent,
+    NavComponent,
     ProfilePicComponent,
     MessageComponent,
-    ProfileDetailsComponent,
-    PetDetailsComponent,
-    OwnerDetailsComponent,
-    MedicalDetailsComponent,
-    CarouselComponent,
   ],
   imports: [
     CommonModule,

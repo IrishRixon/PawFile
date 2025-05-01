@@ -6,7 +6,7 @@
     </div>
 
     <div class="name">
-        <h1>{{ petProfileDetails?.petDetails?.name }}</h1>
+        <h1>{{petProfileDetails.petDetails.name || ''}}</h1>
 
         <div class="btn">
             <p-button icon="pi pi-pen-to-square" [rounded]="true" [text]="true" severity="secondary" />
