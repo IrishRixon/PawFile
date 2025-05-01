@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { PetProfileDetails } from '../../../../interfaces/pet-profile-details/pet-profile-details';
 import { PetProfileDetailsService } from '../../../../services/main-section/petProfileDetails/pet-profile-details.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-pet-profile',
@@ -17,8 +18,6 @@ export class PetProfileComponent {
   isPetSelected!: boolean;
 
   ngOnInit(): void {
-    this.petProfileDetails = this.petProfileDetailsService.petProfileDetails;
-
     this.petProfileDetailsService.isPetSelectedSubjectObs.subscribe( val => {
       this.isPetSelected = val;
     })

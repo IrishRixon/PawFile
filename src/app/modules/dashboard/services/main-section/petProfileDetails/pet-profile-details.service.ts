@@ -9,23 +9,27 @@ export class PetProfileDetailsService {
   constructor() { }
 
   private isPetSelectedSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private petProfileDetails: BehaviorSubject<PetProfileDetails | null> = new BehaviorSubject<PetProfileDetails | null>(null);
   isPetSelectedSubjectObs = this.isPetSelectedSubject.asObservable();
-
-  petProfileDetails!: PetProfileDetails; 
+  petProfileDetailsObs = this.petProfileDetails.asObservable();
 
   setIsPetSelected(val: boolean) {
     this.isPetSelectedSubject.next(val);
   }
 
+  setPetProfileDetails(val: PetProfileDetails) {
+    this.petProfileDetails.next(val);
+  }
+
   onPetProfileDetailsChanged(val: PetProfileDetails) {
-    if(this.petProfileDetails != null) {
-      if(val !== this.petProfileDetails) {
-        this.petProfileDetails = val;
+    if(this.petProfileDetails.value != null) {
+      if(val !== this.petProfileDetails.value) {
+        this.setPetProfileDetails(val);
       }
       this.setIsPetSelected(true);
     }
     
-    console.log(this.petProfileDetails);
-    console.log(this.isPetSelectedSubject.getValue());
+    console.log(this.petProfileDetails.value);
+    console.log(this.isPetSelectedSubject.value);
   }
 }

@@ -10,15 +10,14 @@ import { PetProfileDetailsService } from '../../../../../../services/main-sectio
   styleUrl: './profile-pic.component.scss'
 })
 export class ProfilePicComponent {
-  constructor(private petProfileDetailsService: PetProfileDetailsService) {
-    console.log(petProfileDetailsService.petProfileDetails, 'profile pic');
-  }
+  constructor(private petProfileDetailsService: PetProfileDetailsService) {}
   
-  profilePic!: string;
-  name!: string;
+  petProfileDetails!: PetProfileDetails | null;
 
   ngOnInit(): void {
-    this.profilePic = this.petProfileDetailsService.petProfileDetails.petDetails.profilePic;
-    this.name = this.petProfileDetailsService.petProfileDetails.petDetails.name;
+    this.petProfileDetailsService.petProfileDetailsObs.subscribe( petProfileDetails => {
+      console.log(petProfileDetails, 'sub');
+      this.petProfileDetails = petProfileDetails; 
+    })
   }
 }

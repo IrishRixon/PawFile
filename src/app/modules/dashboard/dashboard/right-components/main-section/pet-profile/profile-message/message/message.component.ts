@@ -12,8 +12,6 @@ import { PetProfileDetails } from '../../../../../../interfaces/pet-profile-deta
 export class MessageComponent {
   constructor(private formBuilder: FormBuilder) {}
 
-  @Input() petProfileDetails!: PetProfileDetails;
-
   message!: FormGroup;
 
   ngOnInit(): void {

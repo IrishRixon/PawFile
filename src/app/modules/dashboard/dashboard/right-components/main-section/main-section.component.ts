@@ -14,8 +14,8 @@ export class MainSectionComponent {
   constructor(private petProfileDetailsService: PetProfileDetailsService) {}
 
   @Input() set petProfileDetails(value: PetProfileDetails) {
-    this.petProfileDetailsService.petProfileDetails = value;
-
+    this.petProfileDetailsService.setPetProfileDetails(value);
     this.petProfileDetailsService.onPetProfileDetailsChanged(value);
+    console.log(value, 'main');
   };
 }

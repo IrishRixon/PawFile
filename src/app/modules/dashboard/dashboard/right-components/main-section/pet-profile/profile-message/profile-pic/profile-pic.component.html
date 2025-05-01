@@ -1,12 +1,12 @@
 <div class="wrapper">
     <div class="image">
         <p-image
-            [src]="profilePic"
+            src="https://res.cloudinary.com/ducdal81b/image/upload/v1745976789/Pet_Profile_Picture/68117dcd12ee2bd60ec4f992.jpg"
             alt="Image" width="250" />
     </div>
 
     <div class="name">
-        <h1>{{ name }}</h1>
+        <h1>{{ petProfileDetails?.petDetails?.name }}</h1>
 
         <div class="btn">
             <p-button icon="pi pi-pen-to-square" [rounded]="true" [text]="true" severity="secondary" />
