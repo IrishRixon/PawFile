@@ -9,5 +9,4 @@ import { PetProfileDetails } from '../../../../../interfaces/pet-profile-details
   styleUrl: './profile-message.component.scss'
 })
 export class ProfileMessageComponent {
-  @Input() petProfileDetails!: PetProfileDetails;
 }
