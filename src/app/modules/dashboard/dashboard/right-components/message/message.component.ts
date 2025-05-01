@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { PetProfileDetails } from '../../../../../../interfaces/pet-profile-details/pet-profile-details';
 
 @Component({
   selector: 'app-message',

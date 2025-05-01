@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { Nav } from '../../../../interfaces/nav/nav';
+import { Nav } from '../../../interfaces/nav/nav';
 import { Router } from '@angular/router';
 
+
 @Component({
-  selector: 'app-nav-bar',
+  selector: 'app-nav',
   standalone: false,
   
-  templateUrl: './nav-bar.component.html',
-  styleUrl: './nav-bar.component.scss'
+  templateUrl: './nav.component.html',
+  styleUrl: './nav.component.scss'
 })
-export class NavBarComponent {
+export class NavComponent {
   constructor(private router: Router) {}
   navBtns: Nav[] = [
     {
