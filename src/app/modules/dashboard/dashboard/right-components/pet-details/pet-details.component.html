@@ -1,0 +1,109 @@
+<div class="wrapper grid grid-cols-3 gap-5" [formGroup]="petDetailsForm">
+  <div class="btn">
+    <p-button
+      icon="pi pi-pen-to-square"
+      [rounded]="true"
+      [text]="true"
+      severity="secondary"
+    />
+
+    <!-- <p-button icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary" />
+      <p-button icon="pi pi-check" [rounded]="true" [text]="true" severity="success" /> -->
+  </div>
+
+  <div class="col-span-1">
+    <p-floatlabel variant="on">
+      <input
+        pInputText
+        id="on_label"
+        pInputText
+        type="text"
+        variant="filled"
+        [readonly]="true"
+        [disabled]="true"
+        formControlName="species"
+      />
+      <label for="on_label">Species</label>
+    </p-floatlabel>
+  </div>
+
+  <div class="col-span-1">
+    <p-floatlabel variant="on">
+      <input
+        pInputText
+        id="on_label"
+        pInputText
+        type="text"
+        variant="filled"
+        [readonly]="true"
+        [disabled]="true"
+        formControlName="breed"
+      />
+      <label for="on_label">Breed</label>
+    </p-floatlabel>
+  </div>
+
+  <div class="col-span-1">
+    <p-floatlabel variant="on">
+      <input
+        pInputText
+        id="on_label"
+        pInputText
+        type="text"
+        variant="filled"
+        [readonly]="true"
+        [disabled]="true"
+        formControlName="age"
+      />
+      <label for="on_label">Age</label>
+    </p-floatlabel>
+  </div>
+
+  <div class="col-span-1">
+    <p-floatlabel variant="on">
+      <input
+        pInputText
+        id="on_label"
+        pInputText
+        type="text"
+        variant="filled"
+        [readonly]="true"
+        [disabled]="true"
+        formControlName="color"
+      />
+      <label for="on_label">Color</label>
+    </p-floatlabel>
+  </div>
+
+  <div class="col-span-1">
+    <p-floatlabel variant="on">
+      <input
+        pInputText
+        id="on_label"
+        pInputText
+        type="text"
+        variant="filled"
+        [readonly]="true"
+        [disabled]="true"
+        formControlName="gender"
+      />
+      <label for="on_label">Gender</label>
+    </p-floatlabel>
+  </div>
+
+  <div class="col-span-1">
+    <p-floatlabel variant="on">
+      <input
+        pInputText
+        id="on_label"
+        pInputText
+        type="text"
+        variant="filled"
+        [readonly]="true"
+        [disabled]="true"
+        formControlName="temperament"
+      />
+      <label for="on_label">Temperament</label>
+    </p-floatlabel>
+  </div>
+</div>

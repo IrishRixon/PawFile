@@ -24,6 +24,14 @@ import { TextareaModule } from 'primeng/textarea';
 import { NavComponent } from './dashboard/right-components/nav/nav.component';
 import { ProfilePicComponent } from './dashboard/right-components/profile-pic/profile-pic.component';
 import { MessageComponent } from './dashboard/right-components/message/message.component';
+import { CarouselComponent } from './dashboard/right-components/carousel/carousel.component';
+import { PetDetailsComponent } from './dashboard/right-components/pet-details/pet-details.component';
+import { MedicalDetailsComponent } from './dashboard/right-components/medical-details/medical-details.component';
+import { OwnerDetailsComponent } from './dashboard/right-components/owner-details/owner-details.component';
+import { FormsModule } from '@angular/forms';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { SpeedDialModule } from 'primeng/speeddial';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +42,10 @@ import { MessageComponent } from './dashboard/right-components/message/message.c
     NavComponent,
     ProfilePicComponent,
     MessageComponent,
+    CarouselComponent,
+    PetDetailsComponent,
+    MedicalDetailsComponent,
+    OwnerDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -50,7 +62,10 @@ import { MessageComponent } from './dashboard/right-components/message/message.c
     TabsModule,
     InputTextModule,
     InputMaskModule,
-    CarouselModule
+    CarouselModule,
+    FormsModule,
+    FloatLabelModule,
+    SpeedDialModule
   ]
 })
 export class DashboardModule { }

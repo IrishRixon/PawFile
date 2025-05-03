@@ -1,0 +1,47 @@
+@use '../../../../../../styleVariables.scss' as SV;
+
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: SV.$bg-color2;
+    border: 1px solid SV.$bg-color1-border; 
+    position: relative;
+    padding: 10px;
+    min-height: 150px;
+
+    .empty {
+        height: calc(100% - 44px);
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Poppins";
+        font-size: 1.7rem;
+        color: #baa88d;
+    }
+}
+
+:host ::ng-deep p-carousel img {
+    height: 200px;
+    object-fit: cover;
+}
+
+:host ::ng-deep p-carousel .border {
+    background-color: SV.$bg-color1;
+}
+
+:host ::ng-deep p-button {
+    display: flex;
+    justify-content: end;
+
+    // button {
+    //     color: SV.$textPlaceholder-color;
+    //     background-color: transparent;
+    //     border-color: transparent;
+
+    //     &:hover {
+
+    //     }
+    // }
+}

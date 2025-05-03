@@ -1,0 +1,65 @@
+<div class="wrapper grid grid-cols-3 gap-5" [formGroup]="ownerDetailsForm">
+  <div class="btn">
+    <p-button
+      icon="pi pi-pen-to-square"
+      [rounded]="true"
+      [text]="true"
+      severity="secondary"
+    />
+
+    <!-- <p-button icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary" />
+        <p-button icon="pi pi-check" [rounded]="true" [text]="true" severity="success" /> -->
+  </div>
+
+  <div class="pic col-span-3">
+    <p-avatar
+      image="\assets\Images\aOQjQ96_700b.jpg"
+      class="mr-2"
+      size="large"
+      shape="circle"
+    />
+    <span>{{ ownerName }}</span>
+  </div>
+
+  <div class="col-span-1">
+    <p-floatlabel variant="on">
+      <input
+        pInputText
+        id="on_label"
+        formControlName="phoneNumber"
+        variant="filled"
+        [readonly]="true"
+        [disabled]="true"
+      />
+      <label for="on_label">Phone Number</label>
+    </p-floatlabel>
+  </div>
+
+  <div class="col-span-1">
+    <p-floatlabel variant="on">
+        <input
+          pInputText
+          id="on_label"
+          formControlName="email"
+          variant="filled"
+          [readonly]="true"
+          [disabled]="true"
+        />
+        <label for="on_label">Email</label>
+      </p-floatlabel>
+  </div>
+
+  <div class="col-span-1">
+    <p-floatlabel variant="on">
+        <input
+          pInputText
+          id="on_label"
+          formControlName="address"
+          variant="filled"
+          [readonly]="true"
+          [disabled]="true"
+        />
+        <label for="on_label">Address</label>
+      </p-floatlabel>
+  </div>
+</div>

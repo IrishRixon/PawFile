@@ -1,0 +1,19 @@
+@use '../../../../../../styleVariables.scss' as SV;
+@import url('../pet-details/pet-details.component.scss');
+
+.wrapper {
+    .pic {
+        display: flex;
+        align-items: center;
+
+        span {
+            font-family: 'Inter';
+            font-weight: SV.$medium;
+        }
+    }
+
+}
+
+:host ::ng-deep p-avatar img {
+    object-fit: cover;
+}

@@ -49,10 +49,12 @@ export class ProfilePicComponent {
     }
   }
 
+  profilePic: string = ``
+
   ngOnInit(): void {
     this.sharedService.petProfileDetailsObs.subscribe( val => {
       this.petProfileDetails = val;
-      console.log(this.petProfileDetails, 'profilecomp');
+      this.profilePic = `https://res.cloudinary.com/ducdal81b/image/upload/${this.petProfileDetails.petDetails.profilePic}`;
     })
   }
 }

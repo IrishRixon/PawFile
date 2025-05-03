@@ -1,11 +1,11 @@
 <div class="wrapper" [formGroup]="message">
-    <h1>Message</h1>
     <textarea
       rows="5"
       pTextarea
       formControlName="text"
       [fluid]="true"
       [autoResize]="false"
+      [readOnly]="true"
       placeholder="Write a message how will your pet greet the people who scanned the QR code."
     ></textarea>
   
