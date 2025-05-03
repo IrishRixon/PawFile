@@ -4,6 +4,9 @@ import { PetCards } from '../interfaces/petcards/petcard';
 import { GetPetDetailsService } from '../services/get-pet-details/get-pet-details.service';
 import { PetProfileDetails } from '../interfaces/pet-profile-details/pet-profile-details';
 import { SharedServiceService } from '../services/shared-service/shared-service.service';
+import { SpeeddialItem } from '../interfaces/speeddial/speeddial';
+import { SpeeddialItemsService } from '../services/speeddial-items/speeddial-items.service';
+
 @Component({
   selector: 'app-dashboard',
   standalone: false,
@@ -15,7 +18,8 @@ export class DashboardComponent {
   constructor(
     private getPetsCardAPI: GetPetsCardService,
     private getPetDetailsAPI: GetPetDetailsService,
-    private SSService: SharedServiceService
+    private SSService: SharedServiceService,
+    private SpeedDialItemsService: SpeeddialItemsService
   ) { }
 
   isThereSelectedPet: boolean = false; 
@@ -24,6 +28,8 @@ export class DashboardComponent {
   petsCard: PetCards = {
     petsCard: [],
   };
+
+  speedDialItems!: SpeeddialItem[];
 
   petProfileDetails: PetProfileDetails = {
     petDetails: {
@@ -78,6 +84,8 @@ export class DashboardComponent {
   }
 
   ngOnInit(): void {
+    this.speedDialItems = this.SpeedDialItemsService.getItems();
+    
     this.getPetsCardAPI
       .getPetsCard(`${this.urlRoot}/dashboard/getPetsCard`)
       .subscribe({
