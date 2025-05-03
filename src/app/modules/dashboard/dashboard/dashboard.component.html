@@ -10,17 +10,18 @@
 
                 <div class="cards w-full grid grid-cols-2 gap-4">
                     @if(petsCard.petsCard.length >= 1){
-                        @for(card of petsCard.petsCard; track card) {
-                            <app-card class="col-span-1" [name]="card.name" [profilePic]="card.profilePic" (petSelected)="onPetSelected($event)"></app-card>
-                        }
+                    @for(card of petsCard.petsCard; track card) {
+                    <app-card class="col-span-1" [name]="card.name" [profilePic]="card.profilePic"
+                        (petSelected)="onPetSelected($event)"></app-card>
+                    }
                     }
                     @else {
-                        <p-skeleton height="220px" width="100%" class="col-span-1" />
-                        <p-skeleton height="220px" width="100%" class="col-span-1" />
-                        <p-skeleton height="220px" width="100%" class="col-span-1" />
-                        <p-skeleton height="220px" width="100%" class="col-span-1" />
-                        <p-skeleton height="220px" width="100%" class="col-span-1" />
-                        <p-skeleton height="220px" width="100%" class="col-span-1" />
+                    <p-skeleton height="220px" width="100%" class="col-span-1" />
+                    <p-skeleton height="220px" width="100%" class="col-span-1" />
+                    <p-skeleton height="220px" width="100%" class="col-span-1" />
+                    <p-skeleton height="220px" width="100%" class="col-span-1" />
+                    <p-skeleton height="220px" width="100%" class="col-span-1" />
+                    <p-skeleton height="220px" width="100%" class="col-span-1" />
                     }
                 </div>
             </article>
@@ -31,17 +32,54 @@
 
             <section>
                 @if(isThereSelectedPet) {
-                    <div class="profile-message">
-                        <app-profile-pic></app-profile-pic>
-                        <app-message></app-message>
+                <div class="profile-message">
+                    <app-profile-pic></app-profile-pic>
+                    <h1>{{ petProfileDetails.petDetails.name }}</h1>
+                    <app-message></app-message>
+                </div>
+
+                <div class="carousel">
+                    <app-carousel></app-carousel>
+                </div>
+
+                <div class="profile-details">
+                    <div class="wrapper">
+                        <p-tabs value="0">
+                            <p-tablist>
+                                <p-tab value="0">Pet</p-tab>
+                                <p-tab value="1">Owner</p-tab>
+                                <p-tab value="2">Medical</p-tab>
+                            </p-tablist>
+                            <p-tabpanels>
+                                <p-tabpanel value="0">
+                                    <p class="m-0">
+                                        <app-pet-details></app-pet-details>
+                                    </p>
+                                </p-tabpanel>
+                                <p-tabpanel value="1">
+                                    <p class="m-0">
+                                        <app-owner-details></app-owner-details>
+                                    </p>
+                                </p-tabpanel>
+                                <p-tabpanel value="2">
+                                    <p class="m-0">
+                                        <app-medical-details></app-medical-details>
+                                    </p>
+                                </p-tabpanel>
+                            </p-tabpanels>
+                        </p-tabs>
                     </div>
+                </div>
                 }
                 @else {
-                    <div class="empty">
-                        <h1>Select a Pet you want to display</h1>
-                    </div>
+                <div class="empty">
+                    <h1>Select a Pet you want to display</h1>
+                </div>
                 }
             </section>
         </aside>
     </div>
+
+    <p-speeddial direction="up" [style]="{ position: 'absolute', right: 0, bottom: 0 }"
+        [buttonProps]="{ severity: 'info', rounded: true }" [tooltipOptions]="{ tooltipPosition: 'left' }" [mask]="true"/>
 </div>

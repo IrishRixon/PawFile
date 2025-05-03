@@ -2,21 +2,22 @@
 
 .wrapper {
     padding: 10px;
-    background-color: SV.$bg-color1;
+    // background-color: SV.$bg-color1;
     display: flex;
     justify-content: center;
     width: 125px;
-    height: 80px;
-    border: 1px solid SV.$bg-color1-border;
-    border-bottom-left-radius: 100px;
-    border-bottom-right-radius: 100px;
-    border-top: 0;
+    height: 90px;
+    // border: 1px solid SV.$bg-color1-border;
+    // border-bottom-left-radius: 100px;
+    // border-bottom-right-radius: 100px;
+    // border-top: 0;
     position: relative;
 
     .image {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px;
         border-radius: 100px;
+        border: 10px solid SV.$bg-color1;
         overflow: hidden;
         position: absolute;
         top: -30px;

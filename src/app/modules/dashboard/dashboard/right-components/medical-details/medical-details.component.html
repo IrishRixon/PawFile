@@ -1,0 +1,85 @@
+<div class="wrapper grid grid-cols-3 gap-5" [formGroup]='medicalDetailsForm'>
+    <div class="btn">
+      <p-button
+        icon="pi pi-pen-to-square"
+        [rounded]="true"
+        [text]="true"
+        severity="secondary"
+      />
+  
+      <!-- <p-button icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary" />
+      <p-button icon="pi pi-check" [rounded]="true" [text]="true" severity="success" /> -->
+  
+    </div>
+  
+    <div class="col-span-1">
+      <p-floatlabel variant="on">
+        <input
+          pInputText
+          id="on_label"
+          formControlName="vetClinicName"
+          variant="filled"
+          [readonly]="true"
+          [disabled]="true"
+        />
+        <label for="on_label">Phone Number</label>
+      </p-floatlabel>
+    </div>
+  
+    <div class="col-span-1">
+      <p-floatlabel variant="on">
+        <input
+          pInputText
+          id="on_label"
+          formControlName="vetClinicPhoneNumber"
+          variant="filled"
+          [readonly]="true"
+          [disabled]="true"
+        />
+        <label for="on_label">Phone Number</label>
+      </p-floatlabel>
+    </div>
+  
+    <div class="col-span-1">
+      <p-floatlabel variant="on">
+        <input
+          pInputText
+          id="on_label"
+          formControlName="vaccinations"
+          variant="filled"
+          [readonly]="true"
+          [disabled]="true"
+        />
+        <label for="on_label">Vaccinations</label>
+      </p-floatlabel>
+    </div>
+  
+    <div class="col-span-1">
+      <p-floatlabel variant="on">
+        <input
+          pInputText
+          id="on_label"
+          formControlName="allergies"
+          variant="filled"
+          [readonly]="true"
+          [disabled]="true"
+        />
+        <label for="on_label">Allergies</label>
+      </p-floatlabel>
+    </div>
+  
+    <div class="col-span-1">
+      <p-floatlabel variant="on">
+        <input
+          pInputText
+          id="on_label"
+          formControlName="medications"
+          variant="filled"
+          [readonly]="true"
+          [disabled]="true"
+        />
+        <label for="on_label">Medications</label>
+      </p-floatlabel>
+    </div>
+  </div>
+  
