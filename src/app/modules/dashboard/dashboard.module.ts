@@ -31,6 +31,8 @@ import { OwnerDetailsComponent } from './dashboard/right-components/owner-detail
 import { FormsModule } from '@angular/forms';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { SpeedDialModule } from 'primeng/speeddial';
+import { DialogModule } from 'primeng/dialog';
+import { QRCodeComponent } from 'angularx-qrcode';
 
 
 @NgModule({
@@ -65,7 +67,9 @@ import { SpeedDialModule } from 'primeng/speeddial';
     CarouselModule,
     FormsModule,
     FloatLabelModule,
-    SpeedDialModule
+    SpeedDialModule,
+    DialogModule,
+    QRCodeComponent
   ]
 })
 export class DashboardModule { }

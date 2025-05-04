@@ -11,6 +11,7 @@ export class SharedServiceService {
 
   private petProfileDetails: BehaviorSubject<PetProfileDetails> = new BehaviorSubject<PetProfileDetails>({
     petDetails: {
+      _id: '',
       owner: '',
       message: '',
       name: 'n',

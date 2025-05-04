@@ -15,6 +15,7 @@ export class ProfilePicComponent {
 
   petProfileDetails: PetProfileDetails = {
     petDetails: {
+      _id: '',
       owner: '',
       message: '',
       name: 'n',
