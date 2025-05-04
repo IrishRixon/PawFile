@@ -5,6 +5,7 @@ export interface PetProfileDetails {
 }
 
 interface PetDetails {
+    _id: string;
     owner: string;
     message: string;
     name: string;

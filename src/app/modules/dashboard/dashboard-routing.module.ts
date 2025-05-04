@@ -17,6 +17,10 @@ const routes: Routes = [
     //   }
     // ]
   },
+  {
+    path: ':id',
+    component: DashboardComponent
+  }
 ];
 
 @NgModule({
