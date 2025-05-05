@@ -21,13 +21,15 @@ export class CardComponent {
     }
   }
 
+  @Input() id!: string;
+
   @Input() set profilePic(value: string) {
     this.profilePicUrl = `${this.Url}${value}`;
   }
 
   @Output() petSelected: EventEmitter<string> = new EventEmitter<string>();
 
-  onPetSelected(name: string) {
-    this.petSelected.emit(name);
+  onPetSelected() {
+    this.petSelected.emit(this.id);
   }
 }
