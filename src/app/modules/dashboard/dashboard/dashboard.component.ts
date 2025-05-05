@@ -74,9 +74,11 @@ export class DashboardComponent {
     },
   };
 
-  onPetSelected(name: string) {
+  onPetSelected(id: string) {
+    console.log(id);
+    
     this.getPetDetailsAPI
-      .getPetDetails(`${this.urlRoot}/dashboard/getPetProfileDetails/${name}`)
+      .getPetDetails(`${this.urlRoot}/dashboard/getPetProfileDetails/${id}`)
       .subscribe({
         next: (res) => {
           this.isThereSelectedPet = true;
@@ -97,8 +99,10 @@ export class DashboardComponent {
 
   getIdUrlParams() {
     const idUrlParams = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log(idUrlParams);
 
+    // if(!idUrlParams) {
+    //   this.getPetDetailsAPI.getPetDetails(`${this.urlRoot}/dashboard/getPetProfileDetails/${}`)
+    // }
   }
 
   ngOnInit(): void {
