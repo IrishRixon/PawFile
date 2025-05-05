@@ -100,9 +100,16 @@ export class DashboardComponent {
   getIdUrlParams() {
     const idUrlParams = this.activatedRoute.snapshot.paramMap.get('id');
 
-    // if(!idUrlParams) {
-    //   this.getPetDetailsAPI.getPetDetails(`${this.urlRoot}/dashboard/getPetProfileDetails/${}`)
-    // }
+    if(idUrlParams != null) {
+      this.getPetDetailsAPI.getPetDetails(`${this.urlRoot}/dashboard/getPetProfileDetails/${idUrlParams}`)
+      .subscribe({
+        next: (res) => {
+          this.isThereSelectedPet = true;
+          this.petProfileDetails = res;
+          this.SSService.setPetProfileDetails(res);
+        }
+      })
+    }
   }
 
   ngOnInit(): void {
