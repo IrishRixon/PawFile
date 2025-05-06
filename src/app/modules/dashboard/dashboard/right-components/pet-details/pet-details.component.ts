@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SharedServiceService } from '../../../services/shared-service/shared-service.service';
 import { UpdateDetailsFormsService } from '../../../services/update-details-forms/update-details-forms.service';
+import { PetDetailsForm } from '../../../interfaces/pet-profile-details/pet-profile-details';
 
 @Component({
   selector: 'app-pet-details',
@@ -16,7 +17,10 @@ export class PetDetailsComponent {
   ) {}
 
   petDetailsForm!: FormGroup;
+
   visible: boolean = false;
+
+  petName!: string;
   value3: string = "";
   gender!: string;
   urlRoot: string = 'http://localhost:3000/pawfile';
@@ -25,10 +29,12 @@ export class PetDetailsComponent {
   }
 
   onSave() {
-    this.updateDetailsForm.updatePetDetails(`${this.urlRoot}/dashboard/updatePetDetails`, this.petDetailsForm.value)
+    const petDetails: PetDetailsForm = {...this.petDetailsForm.value, name: this.petName};
+    
+    this.updateDetailsForm.updatePetDetails(`${this.urlRoot}/dashboard/updatePetDetails`, petDetails)
     .subscribe({
       next: (res) => {
-        console.log(res);
+        this.petDetailsForm.patchValue(res); 
       },
       error: (error) => {
         console.log(error);
@@ -39,6 +45,7 @@ export class PetDetailsComponent {
   ngOnInit(): void {
     this.SSService.petProfileDetailsObs.subscribe(val => {
       this.gender = val.petDetails.gender;
+      this.petName = val.petDetails.name;
 
       this.petDetailsForm = this.formBuilder.group({
         species: [`${val.petDetails.species}`],

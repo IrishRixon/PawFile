@@ -42,3 +42,13 @@ export interface Address {
     municipality: string,
     province: string
 }
+
+export interface PetDetailsForm {
+    name: string;
+    species: string;
+    breed: string;
+    age: number;
+    color: string;
+    temperament: string;
+    gender: string,
+}
