@@ -4,7 +4,7 @@ export interface PetProfileDetails {
     medicalDetails: Medical;
 }
 
-interface PetDetails {
+export interface PetDetails {
     _id: string;
     owner: string;
     message: string;
@@ -19,7 +19,7 @@ interface PetDetails {
     images: string[];
 }
 
-interface Owner {
+export interface Owner {
     profilePic: string;
     firstname: string;
     lastname: string;
@@ -28,7 +28,7 @@ interface Owner {
     address: Address;
 }
 
-interface Medical {
+export interface Medical {
     vetClinicName: string;
     vetClinicPhoneNumber: string;
     vaccination: string;
@@ -36,7 +36,7 @@ interface Medical {
     medications: string;
 }
 
-interface Address {
+export interface Address {
     street: string,
     barangay: string,
     municipality: string,

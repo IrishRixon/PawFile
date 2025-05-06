@@ -12,4 +12,7 @@ export class ApiService {
   get<T> (url: string): Observable<T> {
     return this.http.get(url) as Observable<T>;
   }
+  update<T> (url: string, body: T): Observable<T> {
+    return this.http.put(url, body) as Observable<T>;
+  }
 }

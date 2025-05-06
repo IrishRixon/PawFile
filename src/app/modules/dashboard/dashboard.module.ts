@@ -33,7 +33,7 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { SpeedDialModule } from 'primeng/speeddial';
 import { DialogModule } from 'primeng/dialog';
 import { QRCodeComponent } from 'angularx-qrcode';
-
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 @NgModule({
   declarations: [
@@ -69,7 +69,8 @@ import { QRCodeComponent } from 'angularx-qrcode';
     FloatLabelModule,
     SpeedDialModule,
     DialogModule,
-    QRCodeComponent
+    QRCodeComponent,
+    RadioButtonModule
   ]
 })
 export class DashboardModule { }
