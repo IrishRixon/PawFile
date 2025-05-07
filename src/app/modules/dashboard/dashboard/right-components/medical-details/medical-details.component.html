@@ -5,6 +5,7 @@
         [rounded]="true"
         [text]="true"
         severity="secondary"
+        (click)="visible = true"
       />
   
       <!-- <p-button icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary" />
@@ -22,7 +23,7 @@
           [readonly]="true"
           [disabled]="true"
         />
-        <label for="on_label">Phone Number</label>
+        <label for="on_label">Vet Clinic Name</label>
       </p-floatlabel>
     </div>
   
@@ -45,7 +46,7 @@
         <input
           pInputText
           id="on_label"
-          formControlName="vaccinations"
+          formControlName="vaccination"
           variant="filled"
           [readonly]="true"
           [disabled]="true"
@@ -80,6 +81,83 @@
         />
         <label for="on_label">Medications</label>
       </p-floatlabel>
+    </div>
+
+    <div class="dialog">
+      <p-dialog
+        header="Edit Pet Medical Info"
+        [modal]="true"
+        [(visible)]="visible"
+        [style]="{ width: 'auto' }"
+        maskStyleClass="backdrop-blur-sm"
+      >
+        <div class="grid grid-cols-2 gap-4 pt-2 box-border">
+          <div class="flex items-center gap-4">
+            <p-floatlabel variant="on">
+              <input
+                pInputText
+                id="on_label"
+                autocomplete="off"
+                formControlName="vetClinicName"
+              />
+              <label for="on_label">Vet Clinic Name</label>
+            </p-floatlabel>
+          </div>
+    
+          <div class="flex items-center gap-4">
+            <p-floatlabel variant="on">
+              <input
+                pInputText
+                id="on_label"
+                autocomplete="off"
+                formControlName="vetClinicPhoneNumber"
+              />
+              <label for="on_label">Vet Clinic Phonenumber</label>
+            </p-floatlabel>
+          </div>
+    
+          <div class="flex items-center gap-4">
+            <p-floatlabel variant="on">
+              <input
+                pInputText
+                id="on_label"
+                autocomplete="off"
+                formControlName="vaccination"
+              />
+              <label for="on_label">Vaccinations</label>
+            </p-floatlabel>
+          </div>
+    
+          <div class="flex items-center gap-4">
+            <p-floatlabel variant="on">
+              <input
+                pInputText
+                id="on_label"
+                autocomplete="off"
+                formControlName="allergies"
+              />
+              <label for="on_label">Allergies</label>
+            </p-floatlabel>
+          </div>
+    
+          <div class="flex items-center gap-4">
+            <p-floatlabel variant="on">
+              <input
+                pInputText
+                id="on_label"
+                autocomplete="off"
+                formControlName="medications"
+              />
+              <label for="on_label">Medications</label>
+            </p-floatlabel>
+          </div>
+        </div>
+        <!-- <span class="p-text-secondary block mb-8">Update pet information.</span> -->
+        <div class="flex justify-end gap-2 mt-5">
+          <p-button label="Cancel" severity="secondary" (click)="visible = false" />
+          <p-button label="Save" (click)="visible = false" (onClick)="onSave()"/>
+        </div>
+      </p-dialog>
     </div>
   </div>
   

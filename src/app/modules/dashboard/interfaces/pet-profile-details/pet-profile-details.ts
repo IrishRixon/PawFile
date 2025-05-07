@@ -52,3 +52,12 @@ export interface PetDetailsForm {
     temperament: string;
     gender: string,
 }
+
+export interface MedicalDetailsForm {
+    name: string;
+    vetClinicName: string;
+    vetClinicPhoneNumber: string;
+    vaccination: string;
+    allergies: string;
+    medications: string;
+}
