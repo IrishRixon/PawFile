@@ -61,3 +61,17 @@ export interface MedicalDetailsForm {
     allergies: string;
     medications: string;
 }
+
+export interface OwnerDetailsForm {
+    firstname: string;
+    lastname: string;
+    phoneNumber: string;
+    email: string;
+    profilePic: string;
+    address: {
+        street: string,
+        barangay: string,
+        municipality: string,
+        province: string
+    }
+}

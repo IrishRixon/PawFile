@@ -34,6 +34,7 @@ import { SpeedDialModule } from 'primeng/speeddial';
 import { DialogModule } from 'primeng/dialog';
 import { QRCodeComponent } from 'angularx-qrcode';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     SpeedDialModule,
     DialogModule,
     QRCodeComponent,
-    RadioButtonModule
+    RadioButtonModule,
+    FileUploadModule
   ]
 })
 export class DashboardModule { }
