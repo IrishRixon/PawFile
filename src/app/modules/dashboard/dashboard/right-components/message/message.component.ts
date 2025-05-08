@@ -1,25 +1,49 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SharedServiceService } from '../../../services/shared-service/shared-service.service';
+import { UpdateDetailsFormsService } from '../../../services/update-details-forms/update-details-forms.service';
+import { messageDetailsForm } from '../../../interfaces/pet-profile-details/pet-profile-details';
 
 @Component({
   selector: 'app-message',
   standalone: false,
-  
+
   templateUrl: './message.component.html',
-  styleUrl: './message.component.scss'
+  styleUrl: './message.component.scss',
 })
 export class MessageComponent {
-  constructor(private formBuilder: FormBuilder, private SSService: SharedServiceService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private SSService: SharedServiceService,
+    private updateDetailsForm: UpdateDetailsFormsService
+  ) {}
 
   message!: FormGroup;
 
+  visible: boolean = false;
+
+  petName!: string;
+  urlRoot: string = 'http://localhost:3000/pawfile';
+
+  onSave() {
+    const messageForm: messageDetailsForm = {...this.message.value, name: this.petName};
+    this.updateDetailsForm.updateMessageDetails(`${this.urlRoot}/dashboard/updateMessageDetails`, this.message.value)
+    .subscribe({
+      next: (res) => {
+        this.message.patchValue(res);
+      },
+      error: (err) => {
+        console.error(err);
+      },  
+    });
+  }
+
   ngOnInit(): void {
-    this.SSService.petProfileDetailsObs.subscribe(val => {
+    this.SSService.petProfileDetailsObs.subscribe((val) => {
+      this.petName = val.petDetails.name;
       this.message = this.formBuilder.group({
         text: `${val.petDetails.message}`,
-      })
-    })
-    
+      });
+    });
   }
 }

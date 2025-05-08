@@ -72,3 +72,8 @@ export interface OwnerDetailsForm {
         province: string
     }
 }
+
+export interface messageDetailsForm {
+    name: string;
+    message: string;
+}

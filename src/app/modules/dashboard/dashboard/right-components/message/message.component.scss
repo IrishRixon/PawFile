@@ -1,6 +1,8 @@
 @use '../../../../../../styleVariables.scss' as SV;
 
 .wrapper {
+    position: relative;
+
     textarea {
         min-height: 100px;
         max-height: 100px !important;
@@ -25,5 +27,12 @@
         display: none;
         justify-content: end;
         gap: 10px;
+    }
+
+    .btn {
+        position: absolute;
+        top: 0px;
+        right: 0;
+        z-index: 1;
     }
 }

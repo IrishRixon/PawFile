@@ -1,18 +1,47 @@
 <div class="wrapper" [formGroup]="message">
-    <textarea
-      rows="5"
-      pTextarea
-      formControlName="text"
-      [fluid]="true"
-      [autoResize]="false"
-      [readOnly]="true"
-      placeholder="Write a message how will your pet greet the people who scanned the QR code."
-    ></textarea>
-  
-    <footer>
-      <p-button label="Cancel" severity="secondary" variant="text" [rounded]="true"/>
-      <p-button label="Save" severity="success" [rounded]="true"/>
-    </footer>
-  
+  <div class="btn">
+    <p-button
+      icon="pi pi-pen-to-square"
+      [rounded]="true"
+      [text]="true"
+      severity="secondary"
+      (onClick)="visible = true"
+    />
   </div>
-  
+
+  <textarea
+    rows="5"
+    pTextarea
+    formControlName="text"
+    [fluid]="true"
+    [autoResize]="false"
+    [readOnly]="true"
+    placeholder="Write a message how will your pet greet the people who scanned the QR code."
+  ></textarea>
+
+  <footer>
+    <p-button
+      label="Cancel"
+      severity="secondary"
+      variant="text"
+      [rounded]="true"
+    />
+    <p-button label="Save" severity="success" [rounded]="true" />
+  </footer>
+
+  <p-dialog header="Edit message" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }" maskStyleClass="backdrop-blur-sm">
+    <span class="p-text-secondary block mb-4">Write a message how will your pet greet the people who scanned the QR code.</span>
+    <textarea
+    rows="5"
+    pTextarea
+    formControlName="text"
+    [fluid]="true"
+    [autoResize]="false"
+    placeholder="Write a message how will your pet greet the people who scanned the QR code."
+  ></textarea>
+    <div class="flex justify-end gap-2 mt-5">
+        <p-button label="Cancel" severity="secondary" (click)="visible = false" />
+        <p-button label="Save" (click)="visible = false" />
+    </div>
+</p-dialog>
+</div>

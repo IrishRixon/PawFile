@@ -29,6 +29,7 @@ export class DashboardComponent {
   qrCodeDownloadLink!: SafeUrl;
   isThereSelectedPet: boolean = false;
   visible: boolean = false;
+  dialogVisible: boolean = false;
   urlRoot: string = 'http://localhost:3000/pawfile';
 
   petsCard: PetCards = {
