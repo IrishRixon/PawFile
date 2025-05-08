@@ -41,10 +41,9 @@
       <input
         pInputText
         id="on_label"
-        formControlName="email"
+        [value]="email"
         variant="filled"
         [readonly]="true"
-        [disabled]="true"
       />
       <label for="on_label">Email</label>
     </p-floatlabel>
@@ -72,45 +71,6 @@
       maskStyleClass="backdrop-blur-sm"
     >
       <div class="grid grid-cols-2 gap-4 pt-2 box-border">
-        <div class="flex items-center gap-4 col-span-2 mb-5">
-          <label>Profile Picture: </label>
-          <p-fileupload
-            #fu
-            mode="basic"
-            chooseLabel="Choose"
-            chooseIcon="pi pi-upload"
-            name="demo[]"
-            url="https://www.primefaces.org/cdn/api/upload.php"
-            accept="image/*"
-            maxFileSize="1000000"
-            
-          />
-        </div>
-
-        <div class="flex items-center gap-4 col-span-1">
-          <p-floatlabel variant="on">
-            <input
-              pInputText
-              id="on_label"
-              autocomplete="off"
-              formControlName="firstname"
-            />
-            <label for="on_label">Firstname</label>
-          </p-floatlabel>
-        </div>
-
-        <div class="flex items-center gap-4 col-span-1">
-          <p-floatlabel variant="on">
-            <input
-              pInputText
-              id="on_label"
-              autocomplete="off"
-              formControlName="lastname"
-            />
-            <label for="on_label">Lastname</label>
-          </p-floatlabel>
-        </div> 
-
         <div class="flex items-center gap-4 col-span-1">
           <p-floatlabel variant="on">
             <input

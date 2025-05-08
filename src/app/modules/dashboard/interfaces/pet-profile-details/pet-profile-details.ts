@@ -63,10 +63,7 @@ export interface MedicalDetailsForm {
 }
 
 export interface OwnerDetailsForm {
-    firstname: string;
-    lastname: string;
     phoneNumber: string;
-    email: string;
     profilePic: string;
     address: {
         street: string,

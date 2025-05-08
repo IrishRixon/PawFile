@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SharedServiceService } from '../../../services/shared-service/shared-service.service';
-import { Address } from '../../../interfaces/pet-profile-details/pet-profile-details';
+import { Address, OwnerDetailsForm, PetProfileDetails } from '../../../interfaces/pet-profile-details/pet-profile-details';
 import { group } from '@angular/animations';
 import { UpdateDetailsFormsService } from '../../../services/update-details-forms/update-details-forms.service';
 
@@ -25,6 +25,7 @@ export class OwnerDetailsComponent {
   firstname!: string;
   lastname!: string;
   address!: string;
+  email!: string;
 
   urlRoot: string = 'http://localhost:3000/pawfile';
 
@@ -43,7 +44,6 @@ export class OwnerDetailsComponent {
       .subscribe({
         next: (res) => {
           this.ownerDetailsForm.patchValue(res);
-          this.ownerName = `${res.firstname} ${res.lastname}`;
           this.address =
             res.address.street +
             ' ' +
@@ -62,24 +62,21 @@ export class OwnerDetailsComponent {
   ngOnInit(): void {
     this.SSService.petProfileDetailsObs.subscribe((val) => {
       this.address =
-            val.ownerDetails.address.street +
-            ' ' +
-            val.ownerDetails.address.barangay +
-            ' ' +
-            val.ownerDetails.address.municipality +
-            ' ' +
-            val.ownerDetails.address.province;
+        val.ownerDetails.address.street +
+        ' ' +
+        val.ownerDetails.address.barangay +
+        ' ' +
+        val.ownerDetails.address.municipality +
+        ' ' +
+        val.ownerDetails.address.province;
 
       this.firstname = val.ownerDetails.firstname;
       this.lastname = val.ownerDetails.lastname;
-
       this.ownerName = `${this.firstname} ${this.lastname}`;
+      this.email = val.ownerDetails.email;
 
       this.ownerDetailsForm = this.formBuilder.group({
-        firstname: [`${val.ownerDetails.firstname}`],
-        lastname: [`${val.ownerDetails.lastname}`],
         phoneNumber: [`${val.ownerDetails.phoneNumber}`],
-        email: [`${val.ownerDetails.email}`],
         address: this.formBuilder.group({
           street: [`${val.ownerDetails.address.street}`],
           barangay: [`${val.ownerDetails.address.barangay}`],
