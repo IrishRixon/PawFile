@@ -27,7 +27,7 @@ export class MessageComponent {
 
   onSave() {
     const messageForm: messageDetailsForm = {...this.message.value, name: this.petName};
-    this.updateDetailsForm.updateMessageDetails(`${this.urlRoot}/dashboard/updateMessageDetails`, this.message.value)
+    this.updateDetailsForm.updateMessageDetails(`${this.urlRoot}/dashboard/updateMessageDetails`, messageForm)
     .subscribe({
       next: (res) => {
         this.message.patchValue(res);
@@ -42,7 +42,7 @@ export class MessageComponent {
     this.SSService.petProfileDetailsObs.subscribe((val) => {
       this.petName = val.petDetails.name;
       this.message = this.formBuilder.group({
-        text: `${val.petDetails.message}`,
+        message: `${val.petDetails.message}`,
       });
     });
   }

@@ -12,7 +12,7 @@
   <textarea
     rows="5"
     pTextarea
-    formControlName="text"
+    formControlName="message"
     [fluid]="true"
     [autoResize]="false"
     [readOnly]="true"
@@ -34,14 +34,14 @@
     <textarea
     rows="5"
     pTextarea
-    formControlName="text"
+    formControlName="message"
     [fluid]="true"
     [autoResize]="false"
     placeholder="Write a message how will your pet greet the people who scanned the QR code."
   ></textarea>
     <div class="flex justify-end gap-2 mt-5">
         <p-button label="Cancel" severity="secondary" (click)="visible = false" />
-        <p-button label="Save" (click)="visible = false" />
+        <p-button label="Save" (click)="visible = false" (onClick)="onSave()" />
     </div>
 </p-dialog>
 </div>
