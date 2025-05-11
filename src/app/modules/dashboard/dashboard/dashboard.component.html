@@ -37,7 +37,7 @@
         @if(isThereSelectedPet) {
         <div class="profile-message">
           <app-profile-pic></app-profile-pic>
-          <h1>{{ petProfileDetails.petDetails.name }}</h1>
+          <app-name [petName]="petProfileDetails.petDetails.name"></app-name>
           <app-message></app-message>
         </div>
 

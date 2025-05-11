@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MedicalDetailsForm, messageDetailsForm, OwnerDetailsForm, PetDetails, PetDetailsForm, PetProfileDetails } from '../../interfaces/pet-profile-details/pet-profile-details';
+import { MedicalDetailsForm, MessageDetailsForm, NameForm, OwnerDetailsForm, PetDetails, PetDetailsForm, PetProfileDetails } from '../../interfaces/pet-profile-details/pet-profile-details';
 import { ApiService } from '../api.service';
 import { Observable } from 'rxjs';
 
@@ -22,7 +22,11 @@ export class UpdateDetailsFormsService {
     return this.api.update(url, body);
   }
 
-  updateMessageDetails = (url: string, body: messageDetailsForm ): Observable<messageDetailsForm> => {
+  updateMessageDetails = (url: string, body: MessageDetailsForm ): Observable<MessageDetailsForm> => {
+    return this.api.update(url, body);
+  }
+
+  updateNameDetails = (url: string, body: NameForm ): Observable<NameForm> => {
     return this.api.update(url, body);
   }
 }

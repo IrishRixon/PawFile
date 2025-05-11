@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SharedServiceService } from '../../../services/shared-service/shared-service.service';
 import { UpdateDetailsFormsService } from '../../../services/update-details-forms/update-details-forms.service';
-import { messageDetailsForm } from '../../../interfaces/pet-profile-details/pet-profile-details';
+import { MessageDetailsForm } from '../../../interfaces/pet-profile-details/pet-profile-details';
 
 @Component({
   selector: 'app-message',
@@ -26,7 +26,7 @@ export class MessageComponent {
   urlRoot: string = 'http://localhost:3000/pawfile';
 
   onSave() {
-    const messageForm: messageDetailsForm = {...this.message.value, name: this.petName};
+    const messageForm: MessageDetailsForm = {...this.message.value, name: this.petName};
     this.updateDetailsForm.updateMessageDetails(`${this.urlRoot}/dashboard/updateMessageDetails`, messageForm)
     .subscribe({
       next: (res) => {

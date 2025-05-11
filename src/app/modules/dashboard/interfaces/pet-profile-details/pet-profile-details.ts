@@ -73,7 +73,12 @@ export interface OwnerDetailsForm {
     }
 }
 
-export interface messageDetailsForm {
+export interface MessageDetailsForm {
     name: string;
     message: string;
+}
+
+export interface NameForm {
+    prevName: string,
+    newName: string
 }

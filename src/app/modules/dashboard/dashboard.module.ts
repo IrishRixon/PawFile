@@ -35,6 +35,7 @@ import { DialogModule } from 'primeng/dialog';
 import { QRCodeComponent } from 'angularx-qrcode';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { FileUploadModule } from 'primeng/fileupload';
+import { NameComponent } from './dashboard/right-components/name/name.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { FileUploadModule } from 'primeng/fileupload';
     PetDetailsComponent,
     MedicalDetailsComponent,
     OwnerDetailsComponent,
+    NameComponent,
   ],
   imports: [
     CommonModule,

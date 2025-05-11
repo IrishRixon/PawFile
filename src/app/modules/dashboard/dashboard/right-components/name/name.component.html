@@ -1,0 +1,27 @@
+<div class="wrapper" [formGroup]="nameForm">
+    <div class="name">
+        <span>
+            {{ name }}
+
+            <div class="btn">
+                <p-button icon="pi pi-pen-to-square" [rounded]="true" [text]="true" severity="secondary"
+                    (onClick)="visible = true" />
+            </div>
+        </span>
+    </div>
+
+    <p-dialog header="Edit Pet name" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }"
+         maskStyleClass="backdrop-blur-sm">
+         <div class="pt-2">
+             <p-floatlabel variant="on">
+                 <input pInputText id="on_label" autocomplete="off" formControlName="name" [fluid]="true"/>
+                 <label for="on_label">Pet name</label>
+             </p-floatlabel>
+         </div>
+
+        <div class="flex justify-end gap-2 mt-4">
+            <p-button label="Cancel" severity="secondary" (click)="visible = false" />
+            <p-button label="Save" (click)="visible = false" />
+        </div>
+    </p-dialog>
+</div>

@@ -1,0 +1,21 @@
+@use "../../../../../../styleVariables.scss" as SV;
+
+.wrapper .name {
+    display: flex;
+    justify-content: center;
+
+    span {
+        position: relative;
+        font-size: 1.5rem;
+        font-family: "Poppins";
+        margin: 10px 0;
+        color: SV.$text-color;
+
+        .btn {
+            position: absolute;
+            top: -20px;
+            right: -40px;
+            z-index: 1;
+        }
+    }
+}
