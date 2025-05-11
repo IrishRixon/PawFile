@@ -27,10 +27,14 @@ export class DashboardComponent {
 
   petQRCode: string = '';
   qrCodeDownloadLink!: SafeUrl;
+
   isThereSelectedPet: boolean = false;
   visible: boolean = false;
   dialogVisible: boolean = false;
+
   urlRoot: string = 'http://localhost:3000/pawfile';
+
+  selectedPetIndex!: number;
 
   petsCard: PetCards = {
     petsCard: [],
@@ -111,6 +115,11 @@ export class DashboardComponent {
         }
       })
     }
+  }
+
+  setSelectedPetIndex(val: number) {
+    this.selectedPetIndex = val;
+    console.log(this.selectedPetIndex);
   }
 
   ngOnInit(): void {

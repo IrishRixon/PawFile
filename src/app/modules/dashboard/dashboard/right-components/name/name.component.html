@@ -1,4 +1,4 @@
-<div class="wrapper" [formGroup]="nameForm">
+<div class="wrapper" *ngIf="nameForm" [formGroup]="nameForm">
     <div class="name">
         <span>
             {{ name }}
@@ -21,7 +21,7 @@
 
         <div class="flex justify-end gap-2 mt-4">
             <p-button label="Cancel" severity="secondary" (click)="visible = false" />
-            <p-button label="Save" (click)="visible = false" />
+            <p-button label="Save" (click)="visible = false" (onClick)="onSave()"/>
         </div>
     </p-dialog>
 </div>

@@ -9,22 +9,26 @@
         <app-search-bar></app-search-bar>
 
         <div class="cards w-full grid grid-cols-2 gap-4">
-          @if(petsCard.petsCard.length >= 1){ @for(card of
-          petsCard.petsCard;track card) {
-          <app-card
-            class="col-span-1"
-            [name]="card.name"
-            [id]="card._id"
-            [profilePic]="card.profilePic"
-            (petSelected)="onPetSelected($event)"
-          ></app-card>
-          } } @else {
-          <p-skeleton height="220px" width="100%" class="col-span-1" />
-          <p-skeleton height="220px" width="100%" class="col-span-1" />
-          <p-skeleton height="220px" width="100%" class="col-span-1" />
-          <p-skeleton height="220px" width="100%" class="col-span-1" />
-          <p-skeleton height="220px" width="100%" class="col-span-1" />
-          <p-skeleton height="220px" width="100%" class="col-span-1" />
+          @if(petsCard.petsCard.length >= 1){ 
+            @for(card of petsCard.petsCard;track card; let i = $index) {
+            <app-card
+              class="col-span-1"
+              [name]="card.name"
+              [id]="card._id"
+              [index]="i"
+              [profilePic]="card.profilePic"
+              (petSelected)="onPetSelected($event)"
+              (indexOut)="setSelectedPetIndex($event)"
+            ></app-card>
+            } 
+          } 
+          @else {
+            <p-skeleton height="220px" width="100%" class="col-span-1" />
+            <p-skeleton height="220px" width="100%" class="col-span-1" />
+            <p-skeleton height="220px" width="100%" class="col-span-1" />
+            <p-skeleton height="220px" width="100%" class="col-span-1" />
+            <p-skeleton height="220px" width="100%" class="col-span-1" />
+            <p-skeleton height="220px" width="100%" class="col-span-1" />
           }
         </div>
       </article>
@@ -37,7 +41,7 @@
         @if(isThereSelectedPet) {
         <div class="profile-message">
           <app-profile-pic></app-profile-pic>
-          <app-name [petName]="petProfileDetails.petDetails.name"></app-name>
+          <app-name></app-name>
           <app-message></app-message>
         </div>
 

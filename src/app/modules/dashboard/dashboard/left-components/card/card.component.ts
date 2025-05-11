@@ -21,6 +21,8 @@ export class CardComponent {
     }
   }
 
+  @Input() index!: number;
+
   @Input() id!: string;
 
   @Input() set profilePic(value: string) {
@@ -28,8 +30,14 @@ export class CardComponent {
   }
 
   @Output() petSelected: EventEmitter<string> = new EventEmitter<string>();
+  @Output() indexOut: EventEmitter<number> = new EventEmitter<number>();
 
   onPetSelected() {
     this.petSelected.emit(this.id);
+    this.emitIndex();
+  }
+
+  emitIndex() {
+    this.indexOut.emit(this.index);
   }
 }
