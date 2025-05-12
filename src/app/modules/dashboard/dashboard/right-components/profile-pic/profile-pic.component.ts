@@ -52,6 +52,16 @@ export class ProfilePicComponent {
 
   profilePic: string = ``
 
+  visible: boolean = false;
+
+  onSave() {
+
+  }
+
+  onUpload() {
+    
+  }
+
   ngOnInit(): void {
     this.sharedService.petProfileDetailsObs.subscribe( val => {
       this.petProfileDetails = val;

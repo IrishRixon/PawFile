@@ -11,12 +11,13 @@
         <div class="cards w-full grid grid-cols-2 gap-4">
           @if(petsCard.petsCard.length >= 1){ 
             @for(card of petsCard.petsCard;track card; let i = $index) {
-            <app-card
+              <app-card
               class="col-span-1"
               [name]="card.name"
               [id]="card._id"
               [index]="i"
               [profilePic]="card.profilePic"
+              [selectedPetIndex]="selectedPetIndex"
               (petSelected)="onPetSelected($event)"
               (indexOut)="setSelectedPetIndex($event)"
             ></app-card>

@@ -1,7 +1,19 @@
 <div class="wrapper">
     <div class="image">
-        <p-image
-            [src]="profilePic"
-            alt="Image" width="250" />
+        <p-image [src]="profilePic" alt="Image" width="250" />
+
+        <div class="overlay">
+            <p-button icon="pi pi-pen-to-square" [rounded]="true" severity="secondary" (onClick)="visible = true"/>
+        </div>
     </div>
+
+    <p-dialog header="Upload New Profile Picture" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }" maskStyleClass="backdrop-blur-sm">
+        <!-- <p-fileupload #fu mode="basic" chooseLabel="Choose" chooseIcon="pi pi-upload" name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onUpload($event)" /> -->
+        <!-- <p-button label="Upload" (onClick)="fu.upload()" severity="secondary" /> -->
+
+        <!-- <div class="flex justify-end gap-2 mt-5">
+            <p-button label="Cancel" severity="secondary" (click)="visible = false" />
+            <p-button label="Save" (click)="visible = false" (onClick)="onSave()" />
+        </div> -->
+    </p-dialog>
 </div>

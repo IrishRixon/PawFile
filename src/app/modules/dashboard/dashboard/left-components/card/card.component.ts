@@ -22,6 +22,7 @@ export class CardComponent {
   }
 
   @Input() index!: number;
+  @Input() selectedPetIndex!: number;
 
   @Input() id!: string;
 

@@ -1,4 +1,4 @@
-<div class="card p-4 rounded-lg shadow-lg">
+<div class="card p-4 rounded-lg shadow-lg" [class.selectedPet]="index == selectedPetIndex">
     <img [src]="profilePicUrl" alt="Pet">
     <p [innerHTML]="petName"></p>
     <button type="button" (click)="onPetSelected()"></button>
