@@ -4,6 +4,7 @@
         [rounded]="true"
         [text]="true"
         severity="secondary"
+        (onClick)="visible = true"
       />
       @if(petImages.length == 0) {
         <div class="empty">
@@ -23,4 +24,14 @@
             </ng-template> 
         </p-carousel>
       }
-</div>
+
+      <p-dialog header="Edit Carousel" [modal]="true" [(visible)]="visible" [style]="{ width: 'auto' }">
+        <div class="flex justify-end gap-2">
+            <p-fileupload mode="basic" name="demo[]" chooseIcon="pi pi-plus" chooseLabel="Add Photo" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onBasicUploadAuto($event)" [auto]="true" />
+        </div>
+
+        <div>
+            <img src="">
+        </div>
+    </p-dialog>
+</div> 

@@ -29,4 +29,8 @@ export class UpdateDetailsFormsService {
   updateNameDetails = (url: string, body: NameForm ): Observable<NameForm> => {
     return this.api.update(url, body);
   }
+
+  updateProfilePicDetails = (url: string, body: FormData): Observable<FormData> => {
+    return this.api.update(url, body);
+  }
 }

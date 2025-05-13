@@ -36,6 +36,8 @@ import { QRCodeComponent } from 'angularx-qrcode';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { FileUploadModule } from 'primeng/fileupload';
 import { NameComponent } from './dashboard/right-components/name/name.component';
+import { BadgeModule } from 'primeng/badge';
+import { OverlayBadgeModule } from 'primeng/overlaybadge';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,9 @@ import { NameComponent } from './dashboard/right-components/name/name.component'
     DialogModule,
     QRCodeComponent,
     RadioButtonModule,
-    FileUploadModule
+    FileUploadModule,
+    BadgeModule,
+    OverlayBadgeModule
   ]
 })
 export class DashboardModule { }

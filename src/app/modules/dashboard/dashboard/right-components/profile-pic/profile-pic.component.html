@@ -7,13 +7,16 @@
         </div>
     </div>
 
-    <p-dialog header="Upload New Profile Picture" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }" maskStyleClass="backdrop-blur-sm">
-        <!-- <p-fileupload #fu mode="basic" chooseLabel="Choose" chooseIcon="pi pi-upload" name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onUpload($event)" /> -->
-        <!-- <p-button label="Upload" (onClick)="fu.upload()" severity="secondary" /> -->
-
-        <!-- <div class="flex justify-end gap-2 mt-5">
-            <p-button label="Cancel" severity="secondary" (click)="visible = false" />
-            <p-button label="Save" (click)="visible = false" (onClick)="onSave()" />
-        </div> -->
-    </p-dialog>
+    <div class="dialog">
+        <p-dialog header="Upload New Profile Picture" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }" maskStyleClass="backdrop-blur-sm">
+            <p-fileupload #fu mode="basic" chooseLabel="Choose" chooseIcon="pi pi-upload" name="petProfilePic" url="" accept="image/*" maxFileSize="1000000" (onSelect)="emitSelectedFile($event)" />
+            
+    
+            <div class="gap-2 mt-5">
+                <p-button label="Upload" (onClick)="onUpload()" severity="success" [fluid]="true" />
+                <!-- <p-button label="Cancel" severity="secondary" (click)="visible = false" />
+                <p-button label="Save" (click)="visible = false" (onClick)="onSave()" /> -->
+            </div>
+        </p-dialog>
+    </div>
 </div>

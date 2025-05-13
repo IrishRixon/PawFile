@@ -13,7 +13,13 @@ export class CarouselComponent {
 
   petImages: string[] = [];
 
+  visible: boolean = false;
+
   responsiveOptions: any[] | undefined;
+  
+  onBasicUploadAuto(event: any) {
+
+  }
 
   ngOnInit(): void {
     this.SSService.petProfileDetailsObs.subscribe( val => {
