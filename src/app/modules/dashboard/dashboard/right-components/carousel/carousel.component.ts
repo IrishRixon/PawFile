@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SharedServiceService } from '../../../services/shared-service/shared-service.service';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-carousel',
@@ -7,9 +8,10 @@ import { SharedServiceService } from '../../../services/shared-service/shared-se
 
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.scss',
+  providers: [ConfirmationService]
 })
 export class CarouselComponent {
-  constructor(private SSService: SharedServiceService) {}
+  constructor(private SSService: SharedServiceService, private confirmationService: ConfirmationService) {}
 
   petImages: string[] = [];
 
@@ -20,6 +22,29 @@ export class CarouselComponent {
   onBasicUploadAuto(event: any) {
 
   }
+
+  deleteConfirm(event: Event) {
+    this.confirmationService.confirm({
+        target: event.target as EventTarget,
+        message: 'Do you want to delete this record?',
+        icon: 'pi pi-info-circle',
+        rejectButtonProps: {
+            label: 'Cancel',
+            severity: 'secondary',
+            outlined: true
+        },
+        acceptButtonProps: {
+            label: 'Delete',
+            severity: 'danger'
+        },
+        accept: () => {
+            
+        },
+        reject: () => {
+
+        }
+    });
+}
 
   ngOnInit(): void {
     this.SSService.petProfileDetailsObs.subscribe( val => {

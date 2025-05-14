@@ -38,6 +38,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { NameComponent } from './dashboard/right-components/name/name.component';
 import { BadgeModule } from 'primeng/badge';
 import { OverlayBadgeModule } from 'primeng/overlaybadge';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { OverlayBadgeModule } from 'primeng/overlaybadge';
     RadioButtonModule,
     FileUploadModule,
     BadgeModule,
-    OverlayBadgeModule
+    OverlayBadgeModule,
+    ConfirmPopupModule
   ]
 })
 export class DashboardModule { }

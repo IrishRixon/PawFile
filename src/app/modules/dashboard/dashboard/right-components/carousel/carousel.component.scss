@@ -22,6 +22,15 @@
     }
 }
 
+.image {
+    border-top: 1px solid rgb(167, 165, 165);
+
+    img {
+        height: 100px;
+    }
+}
+
+
 :host ::ng-deep p-carousel img {
     height: 200px;
     object-fit: cover;
@@ -44,4 +53,16 @@
 
     //     }
     // }
+}
+
+:host ::ng-deep p-fileupload {
+    width: 100%;
+
+    p-button {
+        width: 100%;
+
+        button {
+            width: 100%;
+        }
+    }
 }
