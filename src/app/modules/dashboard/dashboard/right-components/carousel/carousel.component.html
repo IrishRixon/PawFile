@@ -14,7 +14,7 @@
             <div class="border border-surface rounded-border m-2 p-4">
                 <div class="mb-4">
                     <div class="relative mx-auto">
-                        <img [src]="petImage.imageUrl" class="w-full rounded-border" />
+                        <img [src]="petImage" class="w-full rounded-border" />
                     </div>
                 </div>
             </div>
@@ -33,11 +33,13 @@
             <h1 class="mt-5 h-48 flex items-center justify-center text-gray-400" >Add photos to carousel</h1>
         }
         @else {
-            <div class="image flex justify-between p-4 items-center mt-5">
-                <img src="https://res.cloudinary.com/ducdal81b/image/upload/v1744258492/Pet_Profile_Picture/67f745b9da0b0b551f639ba5.jpg"
-                    alt="carousel image">
-                <p-button icon="pi pi-trash" [rounded]="true" severity="danger" [outlined]="true" (onClick)="deleteConfirm($event)" />
-            </div>
+            @for(image of petImages; track image;) {
+                <div class="image flex justify-between p-4 items-center mt-5">
+                    <img [src]="image"
+                        alt="carousel image">
+                    <p-button icon="pi pi-trash" [rounded]="true" severity="danger" [outlined]="true" (onClick)="deleteConfirm($event)" />
+                </div>
+            }
         }
     </p-dialog>
 </div>

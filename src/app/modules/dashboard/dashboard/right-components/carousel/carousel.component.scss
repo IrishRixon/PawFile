@@ -40,6 +40,15 @@
     background-color: SV.$bg-color1;
 }
 
+:host ::ng-deep p-carousel .p-carousel-viewport {
+    display: flex;
+    justify-content: center;   
+}
+
+:host ::ng-deep p-carousel .p-carousel-item-list {
+    max-width: 700px;
+}
+
 :host ::ng-deep p-button {
     display: flex;
     justify-content: end;

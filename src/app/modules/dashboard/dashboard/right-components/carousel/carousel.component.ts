@@ -48,7 +48,9 @@ export class CarouselComponent {
 
   ngOnInit(): void {
     this.SSService.petProfileDetailsObs.subscribe( val => {
-      this.petImages = val.petDetails.images;
+      val.petDetails.images.forEach( image => {
+        this.petImages.push(`https://res.cloudinary.com/ducdal81b/image/upload/${image}`);
+      });
     });
 
     console.log(this.petImages);
