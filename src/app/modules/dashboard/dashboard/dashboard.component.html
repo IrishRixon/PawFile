@@ -47,7 +47,7 @@
         </div>
 
         <div class="carousel">
-          <app-carousel></app-carousel>
+          <app-carousel (toastMessage)="showToastMessage($event)" (clearToastMessage)="clearToastMessage()" ></app-carousel>
         </div>
 
         <div class="profile-details">
@@ -143,3 +143,5 @@
     </p-dialog>
   </div>
 </div>
+
+<p-toast />

@@ -39,6 +39,7 @@ import { NameComponent } from './dashboard/right-components/name/name.component'
 import { BadgeModule } from 'primeng/badge';
 import { OverlayBadgeModule } from 'primeng/overlaybadge';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
     FileUploadModule,
     BadgeModule,
     OverlayBadgeModule,
-    ConfirmPopupModule
+    ConfirmPopupModule,
+    ToastModule,
   ]
 })
 export class DashboardModule { }

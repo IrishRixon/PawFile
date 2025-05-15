@@ -8,6 +8,8 @@ import { SpeeddialItem } from '../interfaces/speeddial/speeddial';
 import { SpeeddialItemsService } from '../services/speeddial-items/speeddial-items.service';
 import { SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { ToastMessage } from '../interfaces/toast-message/toast-message';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,6 +17,7 @@ import { ActivatedRoute } from '@angular/router';
 
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
+  providers: [MessageService]
 })
 export class DashboardComponent {
   constructor(
@@ -22,8 +25,9 @@ export class DashboardComponent {
     private getPetDetailsAPI: GetPetDetailsService,
     private SSService: SharedServiceService,
     private speedDialItemsService: SpeeddialItemsService,
-    private activatedRoute: ActivatedRoute
-  ) { }
+    private activatedRoute: ActivatedRoute,
+    private messageService: MessageService
+  ) {}
 
   petQRCode: string = '';
   qrCodeDownloadLink!: SafeUrl;
@@ -81,7 +85,7 @@ export class DashboardComponent {
 
   onPetSelected(id: string) {
     console.log(id);
-    
+
     this.getPetDetailsAPI
       .getPetDetails(`${this.urlRoot}/dashboard/getPetProfileDetails/${id}`)
       .subscribe({
@@ -89,7 +93,7 @@ export class DashboardComponent {
           this.isThereSelectedPet = true;
           this.petProfileDetails = res;
           this.SSService.setPetProfileDetails(res);
-          this.petQRCode = `http://localhost:4200/dashboard/${res.petDetails._id}`
+          this.petQRCode = `http://localhost:4200/dashboard/${res.petDetails._id}`;
           console.log(this.petQRCode, 'petQRCode');
         },
         error: (err) => {
@@ -105,15 +109,18 @@ export class DashboardComponent {
   getIdUrlParams() {
     const idUrlParams = this.activatedRoute.snapshot.paramMap.get('id');
 
-    if(idUrlParams != null) {
-      this.getPetDetailsAPI.getPetDetails(`${this.urlRoot}/dashboard/getPetProfileDetails/${idUrlParams}`)
-      .subscribe({
-        next: (res) => {
-          this.isThereSelectedPet = true;
-          this.petProfileDetails = res;
-          this.SSService.setPetProfileDetails(res);
-        }
-      })
+    if (idUrlParams != null) {
+      this.getPetDetailsAPI
+        .getPetDetails(
+          `${this.urlRoot}/dashboard/getPetProfileDetails/${idUrlParams}`
+        )
+        .subscribe({
+          next: (res) => {
+            this.isThereSelectedPet = true;
+            this.petProfileDetails = res;
+            this.SSService.setPetProfileDetails(res);
+          },
+        });
     }
   }
 
@@ -122,14 +129,29 @@ export class DashboardComponent {
     console.log(this.selectedPetIndex);
   }
 
+  showToastMessage(toastMessage: ToastMessage) {
+    this.messageService.add({
+      severity: toastMessage.severity,
+      summary: toastMessage.summary,
+      detail: toastMessage.detail,
+      life: toastMessage.life,
+      sticky: (toastMessage.sticky) ? toastMessage.sticky : false,
+      icon: (toastMessage.icon) ? toastMessage.icon : '',
+    });
+  }
+
+  clearToastMessage() {
+    this.messageService.clear();
+  }
+
   ngOnInit(): void {
     this.getIdUrlParams();
-    
+
     this.speedDialItems = this.speedDialItemsService.getItems();
 
-    this.speedDialItemsService.toggleDialogObs.subscribe( val => {
+    this.speedDialItemsService.toggleDialogObs.subscribe((val) => {
       this.visible = val;
-    })
+    });
 
     this.getPetsCardAPI
       .getPetsCard(`${this.urlRoot}/dashboard/getPetsCard`)
