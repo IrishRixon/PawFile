@@ -24,9 +24,9 @@
 
     <p-dialog header="Edit Carousel" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
         <div class="flex justify-end gap-2">
-            <p-fileupload mode="basic" name="demo[]" chooseIcon="pi pi-plus" chooseLabel="Add Photo"
-                url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" maxFileSize="1000000"
-                (onUpload)="onBasicUploadAuto($event)" [auto]="true" [disabled]="petImages.length == 5" />
+            <p-fileupload mode="basic" name="image[]" chooseIcon="pi pi-plus" chooseLabel="Add Photo"
+                 accept="image/*" maxFileSize="1000000"
+                (onSelect)="onBasicUploadAuto($event)" [auto]="true" [disabled]="petImages.length == 5" />
         </div>
 
         @if(petImages.length == 0) {

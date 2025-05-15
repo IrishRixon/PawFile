@@ -33,4 +33,8 @@ export class UpdateDetailsFormsService {
   updateProfilePicDetails = (url: string, body: FormData): Observable<FormData> => {
     return this.api.update(url, body);
   }
+
+  postCarouselImage = (url: string, body: FormData): Observable<{ images: string[] }> => {
+    return this.api.post<FormData, { images: string[]}>(url, body);
+  }
 }
