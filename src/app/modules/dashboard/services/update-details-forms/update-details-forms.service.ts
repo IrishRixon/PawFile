@@ -37,4 +37,8 @@ export class UpdateDetailsFormsService {
   postCarouselImage = (url: string, body: FormData): Observable<{ images: string[] }> => {
     return this.api.post<FormData, { images: string[]}>(url, body);
   }
+
+  deleteCarouselImage = (url: string): Observable<{ message: string }> => {
+    return this.api.delete<{ message: string }>(url);
+  }
 }

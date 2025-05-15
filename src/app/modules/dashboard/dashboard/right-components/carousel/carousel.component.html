@@ -33,11 +33,11 @@
             <h1 class="mt-5 h-48 flex items-center justify-center text-gray-400" >Add photos to carousel</h1>
         }
         @else {
-            @for(image of petImages; track image;) {
+            @for(image of petImages; track image; let i = $index) {
                 <div class="image flex justify-between p-4 items-center mt-5">
                     <img [src]="image"
                         alt="carousel image">
-                    <p-button icon="pi pi-trash" [rounded]="true" severity="danger" [outlined]="true" (onClick)="deleteConfirm($event)" />
+                    <p-button icon="pi pi-trash" [rounded]="true" severity="danger" [outlined]="true" (onClick)="deleteConfirm($event, i)" />
                 </div>
             }
         }

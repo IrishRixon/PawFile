@@ -50,7 +50,7 @@ export class CarouselComponent {
     })
   }
 
-  deleteConfirm(event: Event) {
+  deleteConfirm(event: Event, index: number) {
     this.confirmationService.confirm({
       target: event.target as EventTarget,
       message: 'Do you want to delete this record?',
@@ -64,7 +64,18 @@ export class CarouselComponent {
         label: 'Delete',
         severity: 'danger',
       },
-      accept: () => {},
+      accept: () => {
+        const item = this.petImages[index];
+        this.updateDetailsFormsService.deleteCarouselImage(`${this.urlRoot}/dashboard/deleteCarouselImage/${this._id}/${index}`)
+        .subscribe({
+          next: (res) => {
+            this.petImages.splice(index, 1);
+          },
+          error: (error) => {
+            console.log(error);
+          }
+        })
+      },
       reject: () => {},
     });
   }
