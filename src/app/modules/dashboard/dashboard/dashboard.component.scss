@@ -72,6 +72,13 @@
                 flex-direction: column;
                 gap: 20px;
                 overflow-y: auto;
+                position: relative;
+
+                .delete-btn {
+                    position: absolute;
+                    top: 10px;
+                    right: 10px;
+                }
 
                 .profile-message {
                     // min-height: 280px;

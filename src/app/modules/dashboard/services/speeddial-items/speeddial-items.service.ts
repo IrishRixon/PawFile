@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SpeeddialItem } from '../../interfaces/speeddial/speeddial';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ConfirmationService } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,6 @@ export class SpeeddialItemsService {
   private toggleAddDialog: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   toggleAddDialogObs:Observable<boolean> = this.toggleAddDialog.asObservable();
 
-  private toggleDeleteDialog: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  toggleDeleteDialogObs:Observable<boolean> = this.toggleDeleteDialog.asObservable();
-
   visibleDialog() {
     this.toggleDialog.next(true);
   }
@@ -25,23 +23,12 @@ export class SpeeddialItemsService {
     this.toggleAddDialog.next(val);
   }
 
-  visibileDeleteDialog() {
-    this.toggleDeleteDialog.next(true);
-  }
-
   items: SpeeddialItem[] = [
     {
       label: 'Show QR code',
       icon: 'pi pi-qrcode',
       command: () => {
         this.visibleDialog();
-      }
-    },
-    {
-      label: 'Delete',
-      icon: 'pi pi-trash',
-      command: () => {
-
       }
     },
     {

@@ -115,7 +115,7 @@ export class CarouselComponent {
         this.emitDeletingToastMessage();
 
         const item = this.petImages[index];
-        this.updateDetailsFormsService.deleteCarouselImage(`${this.urlRoot}/dashboard/deleteCarouselImage/${this._id}/${index}`)
+        this.updateDetailsFormsService.delete(`${this.urlRoot}/dashboard/deleteCarouselImage/${this._id}/${index}`)
           .subscribe({
             next: (res) => {
               this.petImages.splice(index, 1);

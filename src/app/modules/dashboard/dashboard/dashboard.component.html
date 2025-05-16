@@ -32,6 +32,10 @@
       <app-nav></app-nav>
 
       <section>
+        <div class="delete-btn" *ngIf="isThereSelectedPet">
+          <p-button (click)="deleteConfirm($event)" icon="pi pi-trash" severity="danger" [outlined]="true" [text]="true" [rounded]="true" />
+        </div>
+
         @if(isThereSelectedPet) {
         <div class="profile-message">
           <app-profile-pic></app-profile-pic>
@@ -160,3 +164,4 @@
 </div>
 
 <p-toast />
+<p-confirmdialog />

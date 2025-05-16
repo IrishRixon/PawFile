@@ -8,7 +8,7 @@ import { SpeeddialItem } from '../interfaces/speeddial/speeddial';
 import { SpeeddialItemsService } from '../services/speeddial-items/speeddial-items.service';
 import { SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastMessage } from '../interfaces/toast-message/toast-message';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UpdateDetailsFormsService } from '../services/update-details-forms/update-details-forms.service';
@@ -19,7 +19,7 @@ import { UpdateDetailsFormsService } from '../services/update-details-forms/upda
 
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
-  providers: [MessageService]
+  providers: [MessageService, ConfirmationService]
 })
 export class DashboardComponent {
   constructor(
@@ -30,8 +30,9 @@ export class DashboardComponent {
     private activatedRoute: ActivatedRoute,
     private messageService: MessageService,
     private formBuilder: FormBuilder,
-    private updateDetailsFormsService: UpdateDetailsFormsService
-  ) {}
+    private updateDetailsFormsService: UpdateDetailsFormsService,
+    private confirmationService: ConfirmationService
+  ) { }
 
   petQRCode: string = '';
   qrCodeDownloadLink!: SafeUrl;
@@ -148,14 +149,14 @@ export class DashboardComponent {
 
   addPet() {
     this.updateDetailsFormsService.postNewPet(`${this.urlRoot}/dashboard/postNewPet`, this.addPetForm.value)
-    .subscribe({
-      next: (res) => {
-        this.petsCard.petsCard.push(res);
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    })
+      .subscribe({
+        next: (res) => {
+          this.petsCard.petsCard.push(res);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      })
   }
 
   clearToastMessage() {
@@ -164,6 +165,62 @@ export class DashboardComponent {
 
   closeAddDialog() {
     this.speedDialItemsService.visibleAddDialog(false);
+  }
+
+  deleteConfirm(event: Event) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Do you want to delete this pet?',
+      header: 'Confirm Delete',
+      icon: 'pi pi-info-circle',
+      rejectLabel: 'Cancel',
+      rejectButtonProps: {
+        label: 'Cancel',
+        severity: 'secondary',
+        outlined: true,
+      },
+      acceptButtonProps: {
+        label: 'Delete',
+        severity: 'danger',
+      },
+      accept: () => {
+        const toast: ToastMessage = {
+          severity: 'info',
+          summary: 'Deleting',
+          detail: 'Deleting image',
+          life: 0,
+          sticky: true,
+          icon: "pi pi-spin pi-spinner"
+        };
+
+        this.showToastMessage(toast);
+
+        this.updateDetailsFormsService.delete(`${this.urlRoot}/dashboard/deletePet/${this.petProfileDetails.petDetails._id}`)
+          .subscribe({
+            next: (res) => {
+              const toast2: ToastMessage = {
+                severity: 'success',
+                summary: 'Deleted',
+                detail: res.message,
+                life: 3000,
+                sticky: false,
+              };
+
+              console.log(this.selectedPetIndex);
+              this.petsCard.petsCard.splice(this.selectedPetIndex, 1);
+              this.clearToastMessage();
+              this.showToastMessage(toast2);
+              this.isThereSelectedPet = false;
+            },
+            error: (error) => {
+              console.log(error);
+            }
+          })
+      },
+      reject: () => {
+        
+      },
+    });
   }
 
   ngOnInit(): void {
