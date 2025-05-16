@@ -27,7 +27,7 @@ export class MedicalDetailsComponent {
   urlRoot: string = 'http://localhost:3000/pawfile';
 
   onSave() {
-    const medicalDetails: MedicalDetailsForm = {...this.medicalDetailsForm.value, name: this.petName };
+    const medicalDetails: MedicalDetailsForm = {...this.medicalDetailsForm.value /*, name: this.petName */ };
 
     this.updateDetailsForm.updateMedicalDetails(`${this.urlRoot}/dashboard/updateMedicalDetailsForm`, medicalDetails)
     .subscribe({

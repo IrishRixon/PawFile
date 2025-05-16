@@ -10,6 +10,8 @@ import { SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ToastMessage } from '../interfaces/toast-message/toast-message';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UpdateDetailsFormsService } from '../services/update-details-forms/update-details-forms.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,7 +28,9 @@ export class DashboardComponent {
     private SSService: SharedServiceService,
     private speedDialItemsService: SpeeddialItemsService,
     private activatedRoute: ActivatedRoute,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private formBuilder: FormBuilder,
+    private updateDetailsFormsService: UpdateDetailsFormsService
   ) {}
 
   petQRCode: string = '';
@@ -34,11 +38,13 @@ export class DashboardComponent {
 
   isThereSelectedPet: boolean = false;
   visible: boolean = false;
-  dialogVisible: boolean = false;
+  addDialogVisible: boolean = false;
 
   urlRoot: string = 'http://localhost:3000/pawfile';
 
   selectedPetIndex!: number;
+
+  addPetForm!: FormGroup;
 
   petsCard: PetCards = {
     petsCard: [],
@@ -140,8 +146,24 @@ export class DashboardComponent {
     });
   }
 
+  addPet() {
+    this.updateDetailsFormsService.postNewPet(`${this.urlRoot}/dashboard/postNewPet`, this.addPetForm.value)
+    .subscribe({
+      next: (res) => {
+        this.petsCard.petsCard.push(res);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
+
   clearToastMessage() {
     this.messageService.clear();
+  }
+
+  closeAddDialog() {
+    this.speedDialItemsService.visibleAddDialog(false);
   }
 
   ngOnInit(): void {
@@ -152,6 +174,20 @@ export class DashboardComponent {
     this.speedDialItemsService.toggleDialogObs.subscribe((val) => {
       this.visible = val;
     });
+
+    this.speedDialItemsService.toggleAddDialogObs.subscribe((val) => {
+      this.addDialogVisible = val;
+    });
+
+    this.addPetForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      species: [''],
+      breed: [''],
+      age: [''],
+      color: [''],
+      temperament: [''],
+      gender: ['male'],
+    })
 
     this.getPetsCardAPI
       .getPetsCard(`${this.urlRoot}/dashboard/getPetsCard`)

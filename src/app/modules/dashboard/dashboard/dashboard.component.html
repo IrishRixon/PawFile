@@ -9,27 +9,20 @@
         <app-search-bar></app-search-bar>
 
         <div class="cards w-full grid grid-cols-2 gap-4">
-          @if(petsCard.petsCard.length >= 1){ 
-            @for(card of petsCard.petsCard;track card; let i = $index) {
-              <app-card
-              class="col-span-1"
-              [name]="card.name"
-              [id]="card._id"
-              [index]="i"
-              [profilePic]="card.profilePic"
-              [selectedPetIndex]="selectedPetIndex"
-              (petSelected)="onPetSelected($event)"
-              (indexOut)="setSelectedPetIndex($event)"
-            ></app-card>
-            } 
-          } 
+          @if(petsCard.petsCard.length >= 1){
+          @for(card of petsCard.petsCard;track card; let i = $index) {
+          <app-card class="col-span-1" [name]="card.name" [id]="card._id" [index]="i" [profilePic]="card.profilePic"
+            [selectedPetIndex]="selectedPetIndex" (petSelected)="onPetSelected($event)"
+            (indexOut)="setSelectedPetIndex($event)"></app-card>
+          }
+          }
           @else {
-            <p-skeleton height="220px" width="100%" class="col-span-1" />
-            <p-skeleton height="220px" width="100%" class="col-span-1" />
-            <p-skeleton height="220px" width="100%" class="col-span-1" />
-            <p-skeleton height="220px" width="100%" class="col-span-1" />
-            <p-skeleton height="220px" width="100%" class="col-span-1" />
-            <p-skeleton height="220px" width="100%" class="col-span-1" />
+          <p-skeleton height="220px" width="100%" class="col-span-1" />
+          <p-skeleton height="220px" width="100%" class="col-span-1" />
+          <p-skeleton height="220px" width="100%" class="col-span-1" />
+          <p-skeleton height="220px" width="100%" class="col-span-1" />
+          <p-skeleton height="220px" width="100%" class="col-span-1" />
+          <p-skeleton height="220px" width="100%" class="col-span-1" />
           }
         </div>
       </article>
@@ -47,7 +40,8 @@
         </div>
 
         <div class="carousel">
-          <app-carousel (toastMessage)="showToastMessage($event)" (clearToastMessage)="clearToastMessage()" ></app-carousel>
+          <app-carousel (toastMessage)="showToastMessage($event)"
+            (clearToastMessage)="clearToastMessage()"></app-carousel>
         </div>
 
         <div class="profile-details">
@@ -87,59 +81,80 @@
     </aside>
   </div>
 
-  <p-speeddial
-    [model]="speedDialItems"
-    direction="up"
-    [style]="{ position: 'absolute', right: 0, bottom: 0 }"
-    [buttonProps]="{ severity: 'info', rounded: true }"
-    [tooltipOptions]="{ tooltipPosition: 'left' }"
-    [mask]="true"
-  />
+  <p-speeddial [model]="speedDialItems" direction="up" [style]="{ position: 'absolute', right: 0, bottom: 0 }"
+    [buttonProps]="{ severity: 'info', rounded: true }" [tooltipOptions]="{ tooltipPosition: 'left' }" [mask]="true" />
 
-  <div class="dialog">
-    <p-dialog
-      header="Your Pet QR code"
-      [modal]="true"
-      [(visible)]="visible"
-      [style]="{ width: '25rem' }"
-      maskStyleClass="backdrop-blur-sm"
-    >
+  <div class="dialog" [formGroup]="addPetForm">
+    <p-dialog header="Your Pet QR code" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }"
+      maskStyleClass="backdrop-blur-sm">
       @if(petProfileDetails.petDetails.name == '') {
       <div class="empty">
-        <h1>Please select pet first.</h1>
+        <h1 class="text-gray-400">Please select pet first.</h1>
       </div>
       } @else {
       <div class="qrcodeImage flex align-center flex-1 flex-col">
-        <qrcode
-          class="flex justify-center"
-          [qrdata]="petQRCode"
-          [allowEmptyString]="true"
-          (qrCodeURL)="onChangeURL($event)"
-          [ariaLabel]="'QR Code image with the following content...'"
-          [cssClass]="'center'"
-          [colorDark]="'#000000ff'"
-          [colorLight]="'#ffffffff'"
-          [elementType]="'canvas'"
-          [errorCorrectionLevel]="'M'"
-          [imageSrc]="'/assets/Logo/logo_2.png'"
-          [imageHeight]="75"
-          [imageWidth]="75"
-          [margin]="4"
-          [scale]="1"
-          [title]="'A custom title attribute'"
-          [width]="300"
-        ></qrcode>
+        <qrcode class="flex justify-center" [qrdata]="petQRCode" [allowEmptyString]="true"
+          (qrCodeURL)="onChangeURL($event)" [ariaLabel]="'QR Code image with the following content...'"
+          [cssClass]="'center'" [colorDark]="'#000000ff'" [colorLight]="'#ffffffff'" [elementType]="'canvas'"
+          [errorCorrectionLevel]="'M'" [imageSrc]="'/assets/Logo/logo_2.png'" [imageHeight]="75" [imageWidth]="75"
+          [margin]="4" [scale]="1" [title]="'A custom title attribute'" [width]="300"></qrcode>
 
         <div class="downloadButton">
-          <a
-            color="primary"
-            [href]="qrCodeDownloadLink"
-            [download]="petProfileDetails.petDetails.name + ' qr-code'"
-            >Download QR Code Image</a
-          >
+          <a color="primary" [href]="qrCodeDownloadLink"
+            [download]="petProfileDetails.petDetails.name + ' qr-code'">Download QR Code Image</a>
         </div>
       </div>
       }
+    </p-dialog>
+
+    <p-dialog header="Your Pet QR code" [modal]="true" [(visible)]="addDialogVisible" [style]="{ width: '30rem' }"
+      maskStyleClass="backdrop-blur-sm">
+      <div class="input-fields p-1">
+        <p-floatlabel variant="in">
+          <input pInputText id="in_label" autocomplete="off" formControlName="name" />
+          <label for="in_label">Name</label>
+        </p-floatlabel>
+
+        <p-floatlabel variant="in">
+          <input pInputText id="in_label" autocomplete="off" formControlName="species" />
+          <label for="in_label">Species</label>
+        </p-floatlabel>
+
+        <p-floatlabel variant="in">
+          <input pInputText id="in_label" autocomplete="off" formControlName="breed" />
+          <label for="in_label">Breed</label>
+        </p-floatlabel>
+
+        <p-floatlabel variant="in">
+          <input pInputText id="in_label" autocomplete="off" formControlName="age" />
+          <label for="in_label">Age</label>
+        </p-floatlabel>
+
+        <p-floatlabel variant="in">
+          <input pInputText id="in_label" autocomplete="off" formControlName="color" />
+          <label for="in_label">Color</label>
+        </p-floatlabel>
+
+        <p-floatlabel variant="in">
+          <input pInputText id="in_label" autocomplete="off" formControlName="temperament" />
+          <label for="in_label">Temperament</label>
+        </p-floatlabel>
+
+        <div class="gender mt-4 flex gap-2">
+          <label>Gender: </label>
+          <p-radiobutton name="gender" value="male" inputId="male" formControlName="gender" />
+          <label for="gender" class="ml-2">Male</label>
+
+          <p-radiobutton name="gender" value="female" inputId="female" formControlName="gender" />
+          <label for="female" class="ml-2">Female</label>
+        </div>
+      </div>
+
+      <div class="flex justify-end gap-2 mt-4">
+        <p-button label="Cancel" severity="secondary" (click)="closeAddDialog()" />
+        <p-button label="Save" (click)="closeAddDialog()" [disabled]="!addPetForm.valid" (onClick)="addPet()" />
+      </div>
+
     </p-dialog>
   </div>
 </div>

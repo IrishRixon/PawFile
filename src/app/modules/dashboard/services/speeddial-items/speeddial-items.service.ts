@@ -11,8 +11,22 @@ export class SpeeddialItemsService {
   private toggleDialog: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   toggleDialogObs:Observable<boolean> = this.toggleDialog.asObservable();
 
+  private toggleAddDialog: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  toggleAddDialogObs:Observable<boolean> = this.toggleAddDialog.asObservable();
+
+  private toggleDeleteDialog: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  toggleDeleteDialogObs:Observable<boolean> = this.toggleDeleteDialog.asObservable();
+
   visibleDialog() {
     this.toggleDialog.next(true);
+  }
+
+  visibleAddDialog(val: boolean) {
+    this.toggleAddDialog.next(val);
+  }
+
+  visibileDeleteDialog() {
+    this.toggleDeleteDialog.next(true);
   }
 
   items: SpeeddialItem[] = [
@@ -21,6 +35,20 @@ export class SpeeddialItemsService {
       icon: 'pi pi-qrcode',
       command: () => {
         this.visibleDialog();
+      }
+    },
+    {
+      label: 'Delete',
+      icon: 'pi pi-trash',
+      command: () => {
+
+      }
+    },
+    {
+      label: "Add Pet",
+      icon: "pi pi-plus",
+      command: () => {
+        this.visibleAddDialog(true);
       }
     }
   ];

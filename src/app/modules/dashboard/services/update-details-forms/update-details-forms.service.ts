@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MedicalDetailsForm, MessageDetailsForm, NameForm, OwnerDetailsForm, PetDetails, PetDetailsForm, PetProfileDetails } from '../../interfaces/pet-profile-details/pet-profile-details';
 import { ApiService } from '../api.service';
 import { Observable } from 'rxjs';
+import { PetCard } from '../../interfaces/petcards/petcard';
 
 @Injectable({
   providedIn: 'root'
@@ -40,5 +41,9 @@ export class UpdateDetailsFormsService {
 
   deleteCarouselImage = (url: string): Observable<{ message: string }> => {
     return this.api.delete<{ message: string }>(url);
+  }
+
+  postNewPet = (url: string, body: PetDetailsForm): Observable<PetCard> => {
+    return this.api.post<PetDetailsForm, PetCard>(url, body);
   }
 }

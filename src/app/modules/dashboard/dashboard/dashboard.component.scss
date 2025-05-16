@@ -49,6 +49,7 @@
                     height: 70%;
                     overflow-y: scroll;
                     scrollbar-width: none;
+                    padding-right: 10px; 
                 }
             }
         }
@@ -175,8 +176,14 @@
                 text-align: center;
                 font-family: 'Poppins';
                 font-size: 1.2rem;
-                color: SV.$text-color;
             }
+        }
+
+        .input-fields {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            row-gap: 10px;
         }
     }
 }
