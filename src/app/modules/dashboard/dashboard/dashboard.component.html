@@ -38,7 +38,7 @@
 
         @if(isThereSelectedPet) {
         <div class="profile-message">
-          <app-profile-pic (toastMessage)="showToastMessage($event)" (clearToastMessage)="clearToastMessage()" ></app-profile-pic>
+          <app-profile-pic (toastMessage)="showToastMessage($event)" (clearToastMessage)="clearToastMessage()" (updateProfilePic)="updateProfilePic($event)" ></app-profile-pic>
           <app-name></app-name>
           <app-message></app-message>
         </div>

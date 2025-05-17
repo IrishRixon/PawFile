@@ -12,27 +12,27 @@ export class UpdateDetailsFormsService {
   constructor(private api: ApiService) { }
 
   updatePetDetails = (url: string, body: PetDetailsForm): Observable<PetDetailsForm> => {
-    return this.api.update(url, body);
+    return this.api.update<PetDetailsForm, PetDetailsForm>(url, body);
   }
 
   updateMedicalDetails = (url: string, body: MedicalDetailsForm): Observable<MedicalDetailsForm> => {
-    return this.api.update(url, body);
+    return this.api.update<MedicalDetailsForm, MedicalDetailsForm>(url, body);
   }
 
   updateOwnerDetails = (url: string, body: OwnerDetailsForm): Observable<OwnerDetailsForm> => {
-    return this.api.update(url, body);
+    return this.api.update<OwnerDetailsForm, OwnerDetailsForm>(url, body);
   }
 
   updateMessageDetails = (url: string, body: MessageDetailsForm ): Observable<MessageDetailsForm> => {
-    return this.api.update(url, body);
+    return this.api.update<MessageDetailsForm, MessageDetailsForm>(url, body);
   }
 
   updateNameDetails = (url: string, body: NameForm ): Observable<NameForm> => {
-    return this.api.update(url, body);
+    return this.api.update<NameForm, NameForm>(url, body);
   }
 
-  updateProfilePicDetails = (url: string, body: FormData): Observable<FormData> => {
-    return this.api.update(url, body);
+  updateProfilePicDetails = (url: string, body: FormData): Observable<{ res: {profilePic: string} }> => {
+    return this.api.update<FormData, { res: {profilePic: string} }>(url, body);
   }
 
   postCarouselImage = (url: string, body: FormData): Observable<{ images: string[] }> => {

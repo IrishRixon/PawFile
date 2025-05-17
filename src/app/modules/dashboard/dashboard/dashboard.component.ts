@@ -223,6 +223,10 @@ export class DashboardComponent {
     });
   }
 
+  updateProfilePic(event: string) {
+    this.petsCard.petsCard[this.selectedPetIndex].profilePic = event;
+  }
+
   ngOnInit(): void {
     this.getIdUrlParams();
 

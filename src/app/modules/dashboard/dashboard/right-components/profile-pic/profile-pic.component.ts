@@ -16,6 +16,7 @@ export class ProfilePicComponent {
 
   @Output() toastMessage: EventEmitter<ToastMessage> = new EventEmitter<ToastMessage>();
   @Output() clearToastMessage: EventEmitter<void> = new EventEmitter<void>();
+  @Output() updateProfilePic: EventEmitter<string> = new EventEmitter<string>();
 
   petProfileDetails: PetProfileDetails = {
     petDetails: {
@@ -95,7 +96,10 @@ export class ProfilePicComponent {
           sticky: false,
         };
 
-        this.SSService.setPetProfileDetails(this.petProfileDetails);
+        this.profilePic = `https://res.cloudinary.com/ducdal81b/image/upload/${res.res.profilePic}`;
+        this.updateProfilePic.emit(res.res.profilePic);
+        
+        // this.SSService.setPetProfileDetails(this.petProfileDetails);
         this.clearToastMessage.emit();
         this.toastMessage.emit(toast2);
       },
@@ -110,6 +114,8 @@ export class ProfilePicComponent {
       this.petProfileDetails = val;
       this._id = val.petDetails._id;
       this.profilePic = `https://res.cloudinary.com/ducdal81b/image/upload/${this.petProfileDetails.petDetails.profilePic}`;
+      console.log(this.profilePic, 'resetDP');
+
     })
   }
 }
