@@ -31,7 +31,8 @@ export class ProfilePicComponent {
       temperament: '',
       gender: '',
       profilePic: '',
-      images: []
+      images: [],
+      isMissing: false
     },
     ownerDetails: {
       profilePic: '',
@@ -59,7 +60,7 @@ export class ProfilePicComponent {
   _id!: string;
   urlRoot: string = 'http://localhost:3000/pawfile';
 
-  visible: boolean = false;
+  visible: boolean = false; 
 
   file!: File;
 

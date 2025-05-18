@@ -40,6 +40,7 @@ export class DashboardComponent {
   isThereSelectedPet: boolean = false;
   visible: boolean = false;
   addDialogVisible: boolean = false;
+  isPetMissing: boolean = false;
 
   urlRoot: string = 'http://localhost:3000/pawfile';
 
@@ -67,6 +68,7 @@ export class DashboardComponent {
       gender: '',
       profilePic: '',
       images: [],
+      isMissing: false
     },
     ownerDetails: {
       profilePic: '',
@@ -102,6 +104,8 @@ export class DashboardComponent {
           this.SSService.setPetProfileDetails(res);
           this.petQRCode = `http://localhost:4200/dashboard/${res.petDetails._id}`;
           console.log(this.petQRCode, 'petQRCode');
+          this.speedDialItemsService.toggleIsPetMissing(res.petDetails.isMissing);
+          this.speedDialItemsService._id = res.petDetails._id;
         },
         error: (err) => {
           console.log(err);
@@ -239,6 +243,10 @@ export class DashboardComponent {
     this.speedDialItemsService.toggleAddDialogObs.subscribe((val) => {
       this.addDialogVisible = val;
     });
+
+    this.speedDialItemsService.isPetMissingObs.subscribe((val) => {
+      this.isPetMissing = val;
+    })
 
     this.addPetForm = this.formBuilder.group({
       name: ['', Validators.required],

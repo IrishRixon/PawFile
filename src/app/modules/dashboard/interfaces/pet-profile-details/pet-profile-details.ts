@@ -17,6 +17,7 @@ export interface PetDetails {
     gender: string,
     profilePic: string;
     images: string[];
+    isMissing: boolean;
 }
 
 export interface Owner {

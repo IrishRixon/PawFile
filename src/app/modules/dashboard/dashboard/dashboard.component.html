@@ -28,8 +28,8 @@
       </article>
     </aside>
 
-    <aside class="right">
-      <app-nav></app-nav>
+    <aside class="right" [class.missing]="isPetMissing">
+      <app-nav [isPetMissing]="isPetMissing"></app-nav>
 
       <section>
         <div class="delete-btn" *ngIf="isThereSelectedPet">

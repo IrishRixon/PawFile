@@ -22,7 +22,8 @@ export class SharedServiceService {
       temperament: '',
       gender: '',
       profilePic: '',
-      images: []
+      images: [],
+      isMissing: false
     },
     ownerDetails: {
       profilePic: '',

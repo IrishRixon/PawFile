@@ -41,8 +41,10 @@ import { OverlayBadgeModule } from 'primeng/overlaybadge';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
+  providers: [MessageService],
   declarations: [
     DashboardComponent,
     SearchBarComponent,

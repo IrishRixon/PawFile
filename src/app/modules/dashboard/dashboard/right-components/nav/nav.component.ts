@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Nav } from '../../../interfaces/nav/nav';
 import { Router } from '@angular/router';
 
@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
 })
 export class NavComponent {
   constructor(private router: Router) {}
+
+  @Input() isPetMissing: boolean = false;
+
   navBtns: Nav[] = [
     {
       label: 'Pet Profile',

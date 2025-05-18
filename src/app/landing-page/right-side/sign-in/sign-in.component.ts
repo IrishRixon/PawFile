@@ -71,7 +71,7 @@ export class SignInComponent {
     )
     .subscribe( res => {
       if(res.res?.isSuccess) {
-        this.route.navigate(['set-up-profile']);
+        this.route.navigate(['dashboard']);
       }
       else {
         const mess: ToastMessage = {

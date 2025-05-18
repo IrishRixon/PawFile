@@ -35,6 +35,10 @@ export class UpdateDetailsFormsService {
     return this.api.update<FormData, { res: {profilePic: string} }>(url, body);
   }
 
+  updateMissing = (url: string, body: { isMissing: boolean, _id: string}): Observable<{ isMissing: boolean, error: string}> => {
+    return this.api.update<{ isMissing: boolean, _id: string} ,{ isMissing: boolean, error: string}>(url, body);
+  }
+
   postCarouselImage = (url: string, body: FormData): Observable<{ images: string[] }> => {
     return this.api.post<FormData, { images: string[]}>(url, body);
   }
