@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div class="board">
-    <aside class="left">
+    <aside class="left w-0 overflow-hidden" [class.drawer-open]="drawer">
       <div class="logo">
         <img src="\assets\Logo\logo_pic.png" alt="Pawfile Logo" />
       </div>
@@ -8,7 +8,7 @@
       <article>
         <app-search-bar></app-search-bar>
 
-        <div class="cards w-full grid grid-cols-2 gap-4">
+        <div class="cards w-full grid grid-cols-1 xl:grid-cols-2 gap-7 px-6 lg:px-10">
           @if(petsCard.petsCard.length >= 1){
           @for(card of petsCard.petsCard;track card; let i = $index) {
           <app-card class="col-span-1" [name]="card.name" [id]="card._id" [index]="i" [profilePic]="card.profilePic"
@@ -26,19 +26,25 @@
           }
         </div>
       </article>
+
+      <div class="drawer-cls-btn" [class.open]="drawer">
+        <p-button icon="pi pi-times" [rounded]="false" size=large [text]="true" severity="secondary" (onClick)="closeDrawer()" />
+      </div>
     </aside>
 
-    <aside class="right" [class.missing]="isPetMissing">
-      <app-nav [isPetMissing]="isPetMissing"></app-nav>
+    <aside class="right w-full" [class.missing]="isPetMissing">
+      <app-nav [isPetMissing]="isPetMissing" (openDrawer)="openDrawer()"></app-nav>
 
       <section>
         <div class="delete-btn" *ngIf="isThereSelectedPet">
-          <p-button (click)="deleteConfirm($event)" icon="pi pi-trash" severity="danger" [outlined]="true" [text]="true" [rounded]="true" />
+          <p-button (click)="deleteConfirm($event)" icon="pi pi-trash" severity="danger" [outlined]="true" [text]="true"
+            [rounded]="true" />
         </div>
 
         @if(isThereSelectedPet) {
         <div class="profile-message">
-          <app-profile-pic (toastMessage)="showToastMessage($event)" (clearToastMessage)="clearToastMessage()" (updateProfilePic)="updateProfilePic($event)" ></app-profile-pic>
+          <app-profile-pic (toastMessage)="showToastMessage($event)" (clearToastMessage)="clearToastMessage()"
+            (updateProfilePic)="updateProfilePic($event)"></app-profile-pic>
           <app-name></app-name>
           <app-message></app-message>
         </div>
@@ -81,6 +87,7 @@
           <h1>Select a Pet you want to display</h1>
         </div>
         }
+
       </section>
     </aside>
   </div>
@@ -165,3 +172,4 @@
 
 <p-toast />
 <p-confirmdialog />
+<div class="cls-mask" [class.open]="drawer"></div>

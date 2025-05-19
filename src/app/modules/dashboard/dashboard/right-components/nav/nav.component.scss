@@ -8,6 +8,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 
     ul {
         display: flex;
@@ -30,9 +31,33 @@ nav {
         text-align: center;
         letter-spacing: 10px;
     }
+
+    .drawer-btn {
+        position: absolute;
+        top: 25%;
+        left: 10px; 
+
+        ::ng-deep p-button button {
+            color: white;
+
+            &:hover {
+                color: SV.$sixty;
+            }
+        }
+    }
 }
 
 nav.missing {
     background-color: rgb(176, 7, 7);
     border-color: rgb(176, 7, 7);
+}
+
+@media(min-width: 768px) {
+    .drawer-btn {
+        display: none;
+    }
+
+    .drawer-btn.open {
+        width: 30
+    }
 }

@@ -41,6 +41,7 @@ export class DashboardComponent {
   visible: boolean = false;
   addDialogVisible: boolean = false;
   isPetMissing: boolean = false;
+  drawer: boolean = false;
 
   urlRoot: string = 'http://localhost:3000/pawfile';
 
@@ -169,6 +170,14 @@ export class DashboardComponent {
 
   closeAddDialog() {
     this.speedDialItemsService.visibleAddDialog(false);
+  }
+
+  openDrawer() {
+    this.drawer = true;
+  }
+
+  closeDrawer() {
+    this.drawer = false;
   }
 
   deleteConfirm(event: Event) {

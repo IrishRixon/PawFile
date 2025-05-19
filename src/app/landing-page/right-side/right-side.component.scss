@@ -101,3 +101,15 @@
 :host ::ng-deep .p-toast-close-button {
     color: inherit !important;
 }
+
+@media(max-width: 1024px) {
+    .card {
+        padding: 40px 20px !important;
+    }
+}
+
+@media(max-width: 768px) {
+    .card {
+        padding: 40px 45px !important;
+    }
+}

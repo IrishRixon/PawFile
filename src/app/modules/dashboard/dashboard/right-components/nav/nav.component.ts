@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Nav } from '../../../interfaces/nav/nav';
 import { Router } from '@angular/router';
 
@@ -14,6 +14,7 @@ export class NavComponent {
   constructor(private router: Router) {}
 
   @Input() isPetMissing: boolean = false;
+  @Output() openDrawer: EventEmitter<void> = new EventEmitter<void>()
 
   navBtns: Nav[] = [
     {
@@ -25,6 +26,10 @@ export class NavComponent {
       command: () => { this.navigateTo('/dashboard/graph') }
     }
   ]
+
+  emitOpenDrawer() {
+    this.openDrawer.emit();
+  }
 
   navigateTo(url: string) {
     this.router.navigateByUrl(url)

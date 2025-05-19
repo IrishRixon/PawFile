@@ -21,3 +21,13 @@
     gap: 20px;
   }
 }
+
+@media(max-width: 768px) {
+  app-left-side {
+    display: none;
+  }
+
+  app-right-side {
+    width: 100% !important;
+  }
+}

@@ -79,6 +79,7 @@ label {
     justify-content: center;
 
     .google-signIn {
+        min-width: 200px;
         width: 60%;
         border: none;
         display: flex;
@@ -181,4 +182,10 @@ label {
 
 .p-floatlabel:has(input:focus) label {
     color: styleVariables.$thirty;
+}
+
+@media(max-width: 1024px) {
+    .forgotPass {
+        justify-content: center;
+    }
 }

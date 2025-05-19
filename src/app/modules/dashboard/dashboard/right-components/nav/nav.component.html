@@ -5,4 +5,8 @@
         }
     </ul> -->
     <h1 *ngIf="isPetMissing">Missing</h1>
+
+    <div class="drawer-btn">
+        <p-button icon="pi pi-bars" [rounded]="false" size=large [outlined]="true" severity="secondary" (onClick)="emitOpenDrawer()"/>
+    </div>
 </nav>
