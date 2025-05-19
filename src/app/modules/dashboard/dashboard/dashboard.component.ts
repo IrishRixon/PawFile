@@ -224,6 +224,8 @@ export class DashboardComponent {
               this.clearToastMessage();
               this.showToastMessage(toast2);
               this.isThereSelectedPet = false;
+              this.selectedPetIndex = -1;
+              this.speedDialItemsService._id = '';
             },
             error: (error) => {
               console.log(error);

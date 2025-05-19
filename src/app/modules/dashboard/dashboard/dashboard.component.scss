@@ -198,10 +198,18 @@
         }
 
         .input-fields {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            row-gap: 10px;
+            // display: flex;
+            // flex-wrap: wrap;
+            // justify-content: space-between;
+            // row-gap: 10px;
+
+            // p-floatlabel {
+            //     width: 50%;
+            // }
+
+            input {
+                width: 100%;
+            }
         }
     }
 }
