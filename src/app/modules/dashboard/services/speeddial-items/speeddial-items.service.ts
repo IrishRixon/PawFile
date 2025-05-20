@@ -23,7 +23,7 @@ export class SpeeddialItemsService {
   // isPetMissing: boolean = false;
   _id: string = '';
 
-  urlRoot: string = 'http://localhost:3000/pawfile';
+  urlRoot: string = 'https://pawfile-server.onrender.com';
 
   visibleDialog() {
     this.toggleDialog.next(true);

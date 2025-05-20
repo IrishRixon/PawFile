@@ -27,7 +27,7 @@ export class ProceedComponent {
   totalSteps: number = 3;
   progressBarValue!: number;
 
-  urlRoot: string = 'http://localhost:3000/pawfile';
+  urlRoot: string = 'https://pawfile-server.onrender.com';
 
   submitForms() {
     this.isProceeded = true;

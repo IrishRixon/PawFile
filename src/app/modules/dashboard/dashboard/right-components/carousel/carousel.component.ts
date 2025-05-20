@@ -25,7 +25,7 @@ export class CarouselComponent {
   _id!: string;
 
   petImages: string[] = [];
-  urlRoot: string = 'http://localhost:3000/pawfile';
+  urlRoot: string = 'https://pawfile-server.onrender.com';
 
   visible: boolean = false;
 

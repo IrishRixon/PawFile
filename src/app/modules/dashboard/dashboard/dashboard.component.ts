@@ -43,7 +43,7 @@ export class DashboardComponent {
   isPetMissing: boolean = false;
   drawer: boolean = false;
 
-  urlRoot: string = 'http://localhost:3000/pawfile';
+  urlRoot: string = 'https://pawfile-server.onrender.com';
 
   selectedPetIndex!: number;
 

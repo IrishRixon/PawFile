@@ -23,7 +23,7 @@ export class PetDetailsComponent {
   petName!: string;
   value3: string = "";
   gender!: string;
-  urlRoot: string = 'http://localhost:3000/pawfile';
+  urlRoot: string = 'https://pawfile-server.onrender.com';
   showDialog() {
     this.visible = true;
   }

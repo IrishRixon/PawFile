@@ -18,7 +18,7 @@ export class NameComponent {
   @Output() newName: EventEmitter<string> = new EventEmitter<string>();
 
   name!: string;
-  urlRoot: string = 'http://localhost:3000/pawfile';
+  urlRoot: string = 'https://pawfile-server.onrender.com';
   visible: boolean = false;
 
   nameForm!: FormGroup;

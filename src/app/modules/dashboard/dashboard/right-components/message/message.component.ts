@@ -23,7 +23,7 @@ export class MessageComponent {
   visible: boolean = false;
 
   petName!: string;
-  urlRoot: string = 'http://localhost:3000/pawfile';
+  urlRoot: string = 'https://pawfile-server.onrender.com';
 
   onSave() {
     const messageForm: MessageDetailsForm = {...this.message.value, name: this.petName};
