@@ -34,7 +34,7 @@ export class NewPassComponent {
 
   newPassForm!: FormGroup;
   
-  urlRoot: string = "http://localhost:3000/pawfile";
+  urlRoot: string = 'https://pawfile-server.onrender.com';
 
   onSubmit() {
     const { oldPass, newPass } = this.newPassForm.value;
