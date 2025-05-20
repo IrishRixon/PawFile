@@ -10,7 +10,9 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   get<T> (url: string): Observable<T> {
-    return this.http.get(url) as Observable<T>;
+    return this.http.get(url, {
+      withCredentials: true
+    }) as Observable<T>;
   }
 
   update<B, R = any> (url: string, body: B): Observable<R> {
