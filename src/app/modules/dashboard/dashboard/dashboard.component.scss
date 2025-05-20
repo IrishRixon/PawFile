@@ -244,6 +244,10 @@
     }
 }
 
+:host ::ng-deep p-tabs .p-tablist-content {
+    
+}
+
 @media(min-width: 768px) {
     .left {
         width: 30% !important;
@@ -276,5 +280,11 @@
     .cls-mask.open {
         display: block;
         transition: 0.3s;
+    }
+}
+
+@media(max-width: 400px) {
+    .right section {
+        padding: 50px 10px 10px 10px!important;
     }
 }

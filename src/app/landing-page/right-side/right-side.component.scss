@@ -66,7 +66,7 @@
     }
 
     .open-forgot-pass {
-        height: 260px;
+        height: 270px;
     }
     .open-new-pass {
         height: 306px;
@@ -111,5 +111,12 @@
 @media(max-width: 768px) {
     .card {
         padding: 40px 45px !important;
+    }
+}
+
+@media(max-width: 400px) {
+    .card {
+        height: auto;
+        width: 100%;
     }
 }

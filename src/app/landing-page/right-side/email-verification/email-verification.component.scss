@@ -83,3 +83,9 @@
     background-color: #217272 !important;
     color: styleVariables.$bg-color1;
 }
+
+@media(max-width: 400px) {
+    :host ::ng-deep p-inputotp input {
+        font-size: 1rem !important;
+    }
+}

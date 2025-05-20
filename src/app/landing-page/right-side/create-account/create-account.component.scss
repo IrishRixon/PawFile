@@ -33,6 +33,11 @@ li {
     border-color: rgb(225, 0, 0) !important;
 }
 
+.google-signIn {
+    min-width: 200px;
+    text-wrap: nowrap;
+}
+
 :host ::ng-deep p-floatlabel.confirm-input div {
     width: 100% !important;
 }
