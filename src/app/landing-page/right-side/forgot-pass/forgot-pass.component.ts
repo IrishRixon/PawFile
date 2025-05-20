@@ -34,7 +34,7 @@ export class ForgotPassComponent {
     private formBuilder: FormBuilder
   ) {}
 
-  urlRoot: string = 'https://pawfile-server.onrender.com';
+  urlRoot: string = 'https://pawfile-server.onrender.com/pawfile';
   forgotPassForm!: FormGroup;
 
   @Output() signinFormState: EventEmitter<FORMSTATE> =

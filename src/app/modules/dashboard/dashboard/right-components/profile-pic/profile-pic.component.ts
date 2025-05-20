@@ -58,7 +58,7 @@ export class ProfilePicComponent {
 
   profilePic: string = ``;
   _id!: string;
-  urlRoot: string = 'https://pawfile-server.onrender.com';
+  urlRoot: string = 'https://pawfile-server.onrender.com/pawfile';
 
   visible: boolean = false; 
 

@@ -23,7 +23,7 @@ export class EmailVerificationComponent {
   @Output() message: EventEmitter<ToastMessage> = new EventEmitter<ToastMessage>();
 
   code: string = '';
-  urlRoot: string = 'https://pawfile-server.onrender.com';
+  urlRoot: string = 'https://pawfile-server.onrender.com/pawfile';
   resendCountdown: number = 120;
   isResendCountdownActive: boolean = false;
 

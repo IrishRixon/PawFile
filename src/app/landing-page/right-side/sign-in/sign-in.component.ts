@@ -46,7 +46,7 @@ export class SignInComponent {
   @Output() forgotFormState: EventEmitter<FORMSTATE> = new EventEmitter<FORMSTATE>();
   @Output() message: EventEmitter<ToastMessage> = new EventEmitter<ToastMessage>();
 
-  urlRoot: string = 'https://pawfile-server.onrender.com';
+  urlRoot: string = 'https://pawfile-server.onrender.com/pawfile';
   signInForm!: FormGroup;
 
   isLoading: boolean = false;

@@ -24,7 +24,7 @@ export class MedicalDetailsComponent {
 
   visible: boolean = false;
 
-  urlRoot: string = 'https://pawfile-server.onrender.com';
+  urlRoot: string = 'https://pawfile-server.onrender.com/pawfile';
 
   onSave() {
     const medicalDetails: MedicalDetailsForm = {...this.medicalDetailsForm.value /*, name: this.petName */ };

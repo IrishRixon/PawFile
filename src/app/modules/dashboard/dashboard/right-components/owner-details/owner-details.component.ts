@@ -27,7 +27,7 @@ export class OwnerDetailsComponent {
   address!: string;
   email!: string;
 
-  urlRoot: string = 'https://pawfile-server.onrender.com';
+  urlRoot: string = 'https://pawfile-server.onrender.com/pawfile';
 
   visible: boolean = false;
 
