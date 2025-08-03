@@ -103,7 +103,7 @@ export class DashboardComponent {
           this.isThereSelectedPet = true;
           this.petProfileDetails = res;
           this.SSService.setPetProfileDetails(res);
-          this.petQRCode = `http://localhost:4200/dashboard/${res.petDetails._id}`;
+          this.petQRCode = `https://pawfile.netlify.app/dashboard/${res.petDetails._id}`;
           console.log(this.petQRCode, 'petQRCode');
           this.speedDialItemsService.toggleIsPetMissing(res.petDetails.isMissing);
           this.speedDialItemsService._id = res.petDetails._id;
