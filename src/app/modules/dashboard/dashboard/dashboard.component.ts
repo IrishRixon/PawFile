@@ -12,6 +12,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastMessage } from '../interfaces/toast-message/toast-message';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UpdateDetailsFormsService } from '../services/update-details-forms/update-details-forms.service';
+import { GlobalVarService } from '../../../services/globalVar/global-var.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -31,7 +32,8 @@ export class DashboardComponent {
     private messageService: MessageService,
     private formBuilder: FormBuilder,
     private updateDetailsFormsService: UpdateDetailsFormsService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+    private globalVar: GlobalVarService
   ) { }
 
   petQRCode: string = '';
@@ -243,6 +245,7 @@ export class DashboardComponent {
   }
 
   ngOnInit(): void {
+    this.urlRoot = this.globalVar.urlRoot;
     this.getIdUrlParams();
 
     this.speedDialItems = this.speedDialItemsService.getItems();

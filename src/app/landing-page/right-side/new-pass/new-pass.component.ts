@@ -7,6 +7,7 @@ import { PasswordModule } from 'primeng/password';
 import { DividerModule } from 'primeng/divider';
 import { NewPass, UserEmail } from '../../../interfaces/authentication';
 import { AuthenticationService } from '../../../services/authentication/authentication.service';
+import { GlobalVarService } from '../../../services/globalVar/global-var.service';
 
 @Component({
   selector: 'app-new-pass',
@@ -25,7 +26,8 @@ import { AuthenticationService } from '../../../services/authentication/authenti
 export class NewPassComponent {
   constructor(
     private formBuilder: FormBuilder,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private globalVar: GlobalVarService
   ) {}
 
   @ViewChild('newPass') newPass!: ElementRef;
@@ -52,6 +54,8 @@ export class NewPassComponent {
   }
 
   ngOnInit() {
+    this.urlRoot = this.globalVar.urlRoot;
+    
     this.newPassForm = this.formBuilder.group({
       oldPass: ['', [Validators.required, Validators.minLength(8)]],
       newPass: ['', [Validators.required,  Validators.minLength(8)]]

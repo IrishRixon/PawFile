@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { SharedServiceService } from '../../../services/shared-service/shared-service.service';
 import { UpdateDetailsFormsService } from '../../../services/update-details-forms/update-details-forms.service';
 import { PetDetailsForm } from '../../../interfaces/pet-profile-details/pet-profile-details';
+import { GlobalVarService } from '../../../../../services/globalVar/global-var.service';
 
 @Component({
   selector: 'app-pet-details',
@@ -13,7 +14,8 @@ import { PetDetailsForm } from '../../../interfaces/pet-profile-details/pet-prof
 })
 export class PetDetailsComponent {
   constructor(private formBuilder: FormBuilder, private SSService: SharedServiceService,
-    private updateDetailsForm: UpdateDetailsFormsService
+    private updateDetailsForm: UpdateDetailsFormsService,
+    private globalVar: GlobalVarService
   ) {}
 
   petDetailsForm!: FormGroup;
@@ -43,6 +45,8 @@ export class PetDetailsComponent {
   }
 
   ngOnInit(): void {
+    this.urlRoot = this.globalVar.urlRoot;
+    
     this.SSService.petProfileDetailsObs.subscribe(val => {
       this.gender = val.petDetails.gender;
       this.petName = val.petDetails.name;

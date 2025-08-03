@@ -7,6 +7,7 @@ import { AuthenticationService } from '../../../services/authentication/authenti
 import { FORMSTATE } from '../../enum/formState';
 import { finalize } from 'rxjs';
 import { ToastMessage } from '../../../interfaces/toast-message';
+import { GlobalVarService } from '../../../services/globalVar/global-var.service';
 
 @Component({
   selector: 'app-email-verification',
@@ -16,7 +17,7 @@ import { ToastMessage } from '../../../interfaces/toast-message';
   standalone: true,
 })
 export class EmailVerificationComponent {
-  constructor(private authenticationService: AuthenticationService) {}
+  constructor(private authenticationService: AuthenticationService, private globalVar: GlobalVarService) {}
 
   @Input() userCredentials!: User;
   @Output() incorrectEmail: EventEmitter<FORMSTATE> = new EventEmitter<FORMSTATE>();
@@ -97,5 +98,9 @@ export class EmailVerificationComponent {
 
   ngAfterViewInit(): void {
     this.sendEmailVerification();
+  }
+
+  ngOnInit(): void {
+    this.urlRoot = this.globalVar.urlRoot;
   }
 }

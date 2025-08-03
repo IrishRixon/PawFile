@@ -4,6 +4,7 @@ import { FormsValueHolderService } from '../services/forms-value-holder.service'
 import { filter, finalize, retry, switchMap, tap } from 'rxjs';
 import { FileUpload } from 'primeng/fileupload';
 import { Router } from '@angular/router';
+import { GlobalVarService } from '../../../../services/globalVar/global-var.service';
 
 @Component({
   selector: 'app-proceed',
@@ -15,7 +16,8 @@ export class ProceedComponent {
   constructor(
     private reqForms: RequestFormsService,
     private formValHolder: FormsValueHolderService,
-    private router: Router
+    private router: Router,
+    private globalVar: GlobalVarService
   ) { }
 
   @ViewChild('fileUpload') fileUpload!: FileUpload;
@@ -87,5 +89,9 @@ export class ProceedComponent {
     setTimeout(() => {
       this.router.navigate(['dashboard']);
     }, 1000)
+  }
+  
+  ngOnInit(): void {
+    this.urlRoot = this.globalVar.urlRoot;
   }
 }

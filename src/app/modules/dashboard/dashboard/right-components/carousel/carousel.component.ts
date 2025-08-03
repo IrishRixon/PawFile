@@ -3,6 +3,7 @@ import { SharedServiceService } from '../../../services/shared-service/shared-se
 import { ConfirmationService } from 'primeng/api';
 import { UpdateDetailsFormsService } from '../../../services/update-details-forms/update-details-forms.service';
 import { ToastMessage } from '../../../interfaces/toast-message/toast-message';
+import { GlobalVarService } from '../../../../../services/globalVar/global-var.service';
 
 @Component({
   selector: 'app-carousel',
@@ -16,7 +17,8 @@ export class CarouselComponent {
   constructor(
     private SSService: SharedServiceService,
     private confirmationService: ConfirmationService,
-    private updateDetailsFormsService: UpdateDetailsFormsService
+    private updateDetailsFormsService: UpdateDetailsFormsService,
+    private globalVar: GlobalVarService
   ) { }
 
   @Output() toastMessage: EventEmitter<ToastMessage> = new EventEmitter<ToastMessage>();
@@ -132,6 +134,8 @@ export class CarouselComponent {
   }
 
   ngOnInit(): void {
+    this.urlRoot = this.globalVar.urlRoot;
+    
     this.SSService.petProfileDetailsObs.subscribe((val) => {
       this._id = val.petDetails._id;
       val.petDetails.images.forEach((image) => {

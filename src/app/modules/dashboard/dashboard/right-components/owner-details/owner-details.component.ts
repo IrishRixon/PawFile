@@ -4,6 +4,7 @@ import { SharedServiceService } from '../../../services/shared-service/shared-se
 import { Address, OwnerDetailsForm, PetProfileDetails } from '../../../interfaces/pet-profile-details/pet-profile-details';
 import { group } from '@angular/animations';
 import { UpdateDetailsFormsService } from '../../../services/update-details-forms/update-details-forms.service';
+import { GlobalVarService } from '../../../../../services/globalVar/global-var.service';
 
 @Component({
   selector: 'app-owner-details',
@@ -16,7 +17,8 @@ export class OwnerDetailsComponent {
   constructor(
     private formBuilder: FormBuilder,
     private SSService: SharedServiceService,
-    private updateDetailsForm: UpdateDetailsFormsService
+    private updateDetailsForm: UpdateDetailsFormsService,
+    private globalVar: GlobalVarService
   ) {}
 
   ownerDetailsForm!: FormGroup;
@@ -60,6 +62,8 @@ export class OwnerDetailsComponent {
   }
 
   ngOnInit(): void {
+    this.urlRoot = this.globalVar.urlRoot;
+    
     this.SSService.petProfileDetailsObs.subscribe((val) => {
       this.address =
         val.ownerDetails.address.street +

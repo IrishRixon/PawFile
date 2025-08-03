@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { UpdateDetailsFormsService } from '../../../services/update-details-forms/update-details-forms.service';
 import { NameForm } from '../../../interfaces/pet-profile-details/pet-profile-details';
 import { SharedServiceService } from '../../../services/shared-service/shared-service.service';
+import { GlobalVarService } from '../../../../../services/globalVar/global-var.service';
 
 @Component({
   selector: 'app-name',
@@ -13,7 +14,9 @@ import { SharedServiceService } from '../../../services/shared-service/shared-se
 })
 export class NameComponent {
 
-  constructor(private formBuilder: FormBuilder, private updateDetailsFormsService: UpdateDetailsFormsService, private SSService: SharedServiceService) {}
+  constructor(private formBuilder: FormBuilder, private updateDetailsFormsService: UpdateDetailsFormsService, private SSService: SharedServiceService,
+    private globalVar: GlobalVarService
+  ) {}
 
   @Output() newName: EventEmitter<string> = new EventEmitter<string>();
 
@@ -44,6 +47,8 @@ export class NameComponent {
   }
 
   ngOnInit(): void {
+    this.urlRoot = this.globalVar.urlRoot;
+
     this.SSService.petProfileDetailsObs.subscribe( val => {
       this.name = val.petDetails.name;
 

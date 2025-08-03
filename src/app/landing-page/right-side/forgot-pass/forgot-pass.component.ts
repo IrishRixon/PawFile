@@ -13,6 +13,7 @@ import { FORMSTATE } from '../../enum/formState';
 import { AuthenticationService } from '../../../services/authentication/authentication.service';
 import { User, UserEmail } from '../../../interfaces/authentication';
 import { ToastMessage } from '../../../interfaces/toast-message';
+import { GlobalVarService } from '../../../services/globalVar/global-var.service';
 
 
 @Component({
@@ -30,7 +31,7 @@ import { ToastMessage } from '../../../interfaces/toast-message';
 export class ForgotPassComponent {
   constructor(
     private authenticationService: AuthenticationService,
-
+    private globalVar: GlobalVarService,
     private formBuilder: FormBuilder
   ) {}
 
@@ -91,6 +92,8 @@ export class ForgotPassComponent {
   }
 
   ngOnInit() {
+    this.urlRoot = this.globalVar.urlRoot;
+    
     this.forgotPassForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
     });

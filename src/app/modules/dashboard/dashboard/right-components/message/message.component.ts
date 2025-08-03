@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { SharedServiceService } from '../../../services/shared-service/shared-service.service';
 import { UpdateDetailsFormsService } from '../../../services/update-details-forms/update-details-forms.service';
 import { MessageDetailsForm } from '../../../interfaces/pet-profile-details/pet-profile-details';
+import { GlobalVarService } from '../../../../../services/globalVar/global-var.service';
 
 @Component({
   selector: 'app-message',
@@ -15,7 +16,8 @@ export class MessageComponent {
   constructor(
     private formBuilder: FormBuilder,
     private SSService: SharedServiceService,
-    private updateDetailsForm: UpdateDetailsFormsService
+    private updateDetailsForm: UpdateDetailsFormsService,
+    private globalVar: GlobalVarService
   ) {}
 
   message!: FormGroup;
@@ -39,6 +41,8 @@ export class MessageComponent {
   }
 
   ngOnInit(): void {
+    this.urlRoot = this.globalVar.urlRoot;
+    
     this.SSService.petProfileDetailsObs.subscribe((val) => {
       this.petName = val.petDetails.name;
       this.message = this.formBuilder.group({
