@@ -7,5 +7,6 @@ export class GlobalVarService {
 
   constructor() { }
 
-  urlRoot: string = "http://localhost:4200/pawfile";
+  urlRoot: string = "http://localhost:3000/pawfile";
+  isOwner: boolean = false;
 }

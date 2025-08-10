@@ -15,7 +15,7 @@ import { GlobalVarService } from '../../../../../services/globalVar/global-var.s
 export class PetDetailsComponent {
   constructor(private formBuilder: FormBuilder, private SSService: SharedServiceService,
     private updateDetailsForm: UpdateDetailsFormsService,
-    private globalVar: GlobalVarService
+    public globalVar: GlobalVarService
   ) {}
 
   petDetailsForm!: FormGroup;

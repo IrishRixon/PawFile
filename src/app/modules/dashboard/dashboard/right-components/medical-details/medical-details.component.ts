@@ -17,7 +17,7 @@ export class MedicalDetailsComponent {
     private formBuilder: FormBuilder,
     private SSService: SharedServiceService,
     private updateDetailsForm: UpdateDetailsFormsService,
-    private globalVar: GlobalVarService
+    public globalVar: GlobalVarService
   ) {}
 
   petName!: string;

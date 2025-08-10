@@ -1,6 +1,6 @@
 <div class="wrapper">
     <p-confirmpopup />
-    <p-button icon="pi pi-pen-to-square" [rounded]="true" [text]="true" severity="secondary"
+    <p-button icon="pi pi-pen-to-square" [rounded]="true" [text]="true" severity="secondary" *ngIf="globalVar.isOwner"
         (onClick)="visible = true" />
     @if(petImages.length == 0) {
     <div class="empty">

@@ -2,7 +2,7 @@
     <div class="image">
         <p-image [src]="profilePic" alt="Image" width="250" />
 
-        <div class="overlay">
+        <div class="overlay" *ngIf="globalVarService.isOwner">
             <p-button icon="pi pi-pen-to-square" [rounded]="true" severity="secondary" (onClick)="visible = true"/>
         </div>
     </div>
@@ -11,7 +11,6 @@
         <p-dialog header="Upload New Profile Picture" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }" maskStyleClass="backdrop-blur-sm">
             <p-fileupload #fu mode="basic" chooseLabel="Choose" chooseIcon="pi pi-upload" name="petProfilePic" url="" accept="image/*" maxFileSize="1000000" (onSelect)="emitSelectedFile($event)" />
             
-    
             <div class="gap-2 mt-5">
                 <p-button label="Upload" (onClick)="onUpload()" severity="success" [fluid]="true" />
                 <!-- <p-button label="Cancel" severity="secondary" (click)="visible = false" />

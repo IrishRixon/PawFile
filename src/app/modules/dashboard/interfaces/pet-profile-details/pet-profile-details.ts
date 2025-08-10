@@ -2,6 +2,7 @@ export interface PetProfileDetails {
     petDetails: PetDetails;
     ownerDetails: Owner;
     medicalDetails: Medical;
+    isOwner?: boolean;
 }
 
 export interface PetDetails {

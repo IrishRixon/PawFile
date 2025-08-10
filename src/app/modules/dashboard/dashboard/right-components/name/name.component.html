@@ -3,7 +3,7 @@
         <span>
             {{ name }}
 
-            <div class="btn">
+            <div class="btn" *ngIf="globalVar.isOwner">
                 <p-button icon="pi pi-pen-to-square" [rounded]="true" [text]="true" severity="secondary"
                     (onClick)="visible = true" />
             </div>

@@ -17,7 +17,8 @@ export class ProfilePicComponent {
     private sharedService: SharedServiceService,
     private updateDetailsFormsService: UpdateDetailsFormsService,
     private SSService: SharedServiceService,
-    private globalVar: GlobalVarService
+    private globalVar: GlobalVarService,
+    public globalVarService: GlobalVarService
   ) {}
 
   @Output() toastMessage: EventEmitter<ToastMessage> =

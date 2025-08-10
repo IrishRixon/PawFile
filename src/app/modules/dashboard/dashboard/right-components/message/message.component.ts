@@ -17,7 +17,7 @@ export class MessageComponent {
     private formBuilder: FormBuilder,
     private SSService: SharedServiceService,
     private updateDetailsForm: UpdateDetailsFormsService,
-    private globalVar: GlobalVarService
+    public globalVar: GlobalVarService
   ) {}
 
   message!: FormGroup;

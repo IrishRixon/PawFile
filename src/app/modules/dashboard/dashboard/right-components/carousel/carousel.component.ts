@@ -18,7 +18,7 @@ export class CarouselComponent {
     private SSService: SharedServiceService,
     private confirmationService: ConfirmationService,
     private updateDetailsFormsService: UpdateDetailsFormsService,
-    private globalVar: GlobalVarService
+    public globalVar: GlobalVarService
   ) { }
 
   @Output() toastMessage: EventEmitter<ToastMessage> = new EventEmitter<ToastMessage>();

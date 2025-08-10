@@ -33,7 +33,7 @@ export class DashboardComponent {
     private formBuilder: FormBuilder,
     private updateDetailsFormsService: UpdateDetailsFormsService,
     private confirmationService: ConfirmationService,
-    private globalVar: GlobalVarService
+    public globalVar: GlobalVarService
   ) { }
 
   petQRCode: string = '';
@@ -126,12 +126,15 @@ export class DashboardComponent {
     if (idUrlParams != null) {
       this.getPetDetailsAPI
         .getPetDetails(
-          `${this.urlRoot}/dashboard/getPetProfileDetails/${idUrlParams}`
+          `${this.urlRoot}/dashboard/getPetProfileDetails/qr/${idUrlParams}`
         )
         .subscribe({
           next: (res) => {
             this.isThereSelectedPet = true;
             this.petProfileDetails = res;
+            this.globalVar.isOwner = res.isOwner!;
+            console.log(this.globalVar.isOwner);
+            
             this.SSService.setPetProfileDetails(res);
           },
         });
@@ -272,16 +275,16 @@ export class DashboardComponent {
       gender: ['male'],
     })
 
-    this.getPetsCardAPI
-      .getPetsCard(`${this.urlRoot}/dashboard/getPetsCard`)
-      .subscribe({
-        next: (res) => {
-          console.log(res, 'getting pets cards');
-          this.petsCard = res;
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
+    // this.getPetsCardAPI
+    //   .getPetsCard(`${this.urlRoot}/dashboard/getPetsCard`)
+    //   .subscribe({
+    //     next: (res) => {
+    //       console.log(res, 'getting pets cards');
+    //       this.petsCard = res;
+    //     },
+    //     error: (err) => {
+    //       console.log(err);
+    //     },
+    //   });
   }
 }

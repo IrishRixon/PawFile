@@ -256,6 +256,10 @@
     aside.right {
         width: 70% !important;
     }
+
+    aside.right.full {
+        width: 100% !important;
+    }
 }
 
 @media(max-width: 768px) {

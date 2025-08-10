@@ -1,6 +1,6 @@
 <div class="wrapper">
-  <div class="board">
-    <aside class="left w-0 overflow-hidden" [class.drawer-open]="drawer">
+  <div class="board" >
+    <aside class="left w-0 overflow-hidden" [class.drawer-open]="drawer" *ngIf="globalVar.isOwner">
       <div class="logo">
         <img src="\assets\Logo\logo_pic.png" alt="Pawfile Logo" />
       </div>
@@ -32,11 +32,11 @@
       </div>
     </aside>
 
-    <aside class="right w-full" [class.missing]="isPetMissing">
+    <aside class="right w-full" [class.missing]="isPetMissing" [class.full]="!globalVar.isOwner">
       <app-nav [isPetMissing]="isPetMissing" (openDrawer)="openDrawer()"></app-nav>
 
       <section>
-        <div class="delete-btn" *ngIf="isThereSelectedPet">
+        <div class="delete-btn" *ngIf="isThereSelectedPet && globalVar.isOwner">
           <p-button (click)="deleteConfirm($event)" icon="pi pi-trash" severity="danger" [outlined]="true" [text]="true"
             [rounded]="true" />
         </div>
@@ -93,7 +93,7 @@
   </div>
 
   <p-speeddial [model]="speedDialItems" direction="up" [style]="{ position: 'absolute', right: 0, bottom: 0 }"
-    [buttonProps]="{ severity: 'info', rounded: true }" [tooltipOptions]="{ tooltipPosition: 'left' }" [mask]="true" />
+    [buttonProps]="{ severity: 'info', rounded: true }" [tooltipOptions]="{ tooltipPosition: 'left' }" [mask]="true" *ngIf="globalVar.isOwner"/>
 
   <div class="dialog" [formGroup]="addPetForm">
     <p-dialog header="Your Pet QR code" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }"

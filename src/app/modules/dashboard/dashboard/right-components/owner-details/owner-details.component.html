@@ -1,5 +1,5 @@
 <div class="wrapper grid grid-cols-3 gap-5" [formGroup]="ownerDetailsForm">
-  <div class="btn">
+  <div class="btn" *ngIf="globalVar.isOwner">
     <p-button
       icon="pi pi-pen-to-square"
       [rounded]="true"

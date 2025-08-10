@@ -12,10 +12,11 @@ import { GlobalVarService } from '../../../../../services/globalVar/global-var.s
   templateUrl: './name.component.html',
   styleUrl: './name.component.scss'
 })
+
 export class NameComponent {
 
   constructor(private formBuilder: FormBuilder, private updateDetailsFormsService: UpdateDetailsFormsService, private SSService: SharedServiceService,
-    private globalVar: GlobalVarService
+    public globalVar: GlobalVarService
   ) {}
 
   @Output() newName: EventEmitter<string> = new EventEmitter<string>();
