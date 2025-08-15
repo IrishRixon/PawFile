@@ -133,8 +133,8 @@ export class DashboardComponent {
             this.isThereSelectedPet = true;
             this.petProfileDetails = res;
             this.globalVar.isOwner = res.isOwner!;
-            console.log(this.globalVar.isOwner);
-            
+            this.speedDialItemsService.toggleIsPetMissing(res.petDetails.isMissing);
+            console.log(this.isPetMissing);
             this.SSService.setPetProfileDetails(res);
           },
         });
@@ -275,16 +275,18 @@ export class DashboardComponent {
       gender: ['male'],
     })
 
-    // this.getPetsCardAPI
-    //   .getPetsCard(`${this.urlRoot}/dashboard/getPetsCard`)
-    //   .subscribe({
-    //     next: (res) => {
-    //       console.log(res, 'getting pets cards');
-    //       this.petsCard = res;
-    //     },
-    //     error: (err) => {
-    //       console.log(err);
-    //     },
-    //   });
+    if(this.globalVar.isOwner) {
+      this.getPetsCardAPI
+      .getPetsCard(`${this.urlRoot}/dashboard/getPetsCard`)
+      .subscribe({
+        next: (res) => {
+          console.log(res, 'getting pets cards');
+          this.petsCard = res;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+    }
   }
 }
