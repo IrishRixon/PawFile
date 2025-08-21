@@ -291,4 +291,21 @@
     .right section {
         padding: 50px 10px 10px 10px!important;
     }
+
+    .wrapper {
+        padding: 0 !important;
+    }
+
+    .board {
+        padding: 0 !important;
+    }
+
+    aside.right {
+        border-radius: 0 !important;
+    }
+
+    .empty {
+        font-size: 1.5rem !important;
+        text-align: center;
+    }
 }
