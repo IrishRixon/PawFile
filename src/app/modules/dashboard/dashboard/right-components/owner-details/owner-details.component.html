@@ -1,4 +1,4 @@
-<div class="wrapper grid grid-cols-3 gap-5" [formGroup]="ownerDetailsForm">
+<div class="grid grid-cols-3 gap-5 wrapper" [formGroup]="ownerDetailsForm">
   <div class="btn" *ngIf="globalVar.isOwner">
     <p-button
       icon="pi pi-pen-to-square"
@@ -12,9 +12,9 @@
         <p-button icon="pi pi-check" [rounded]="true" [text]="true" severity="success" /> -->
   </div>
 
-  <div class="pic col-span-3">
+  <div class="col-span-3 pic">
     <p-avatar
-      image="\assets\Images\aOQjQ96_700b.jpg"
+      image="\assets\Images\Default.jpg"
       class="mr-2"
       size="large"
       shape="circle"
@@ -70,8 +70,8 @@
       [style]="{ width: 'auto' }"
       maskStyleClass="backdrop-blur-sm"
     >
-      <div class="grid grid-cols-2 gap-4 pt-2 box-border">
-        <div class="flex items-center gap-4 col-span-1">
+      <div class="box-border grid grid-cols-2 gap-4 pt-2">
+        <div class="flex items-center col-span-1 gap-4">
           <p-floatlabel variant="on">
             <input
               pInputText
@@ -83,7 +83,7 @@
           </p-floatlabel>
         </div>
 
-        <!-- <div class="flex items-center gap-4 col-span-1">
+        <!-- <div class="flex items-center col-span-1 gap-4">
           <p-floatlabel variant="on">
             <input
               pInputText
@@ -95,7 +95,7 @@
           </p-floatlabel>
         </div> -->
 
-        <div class="flex items-center gap-4 col-span-1" formGroupName="address">
+        <div class="flex items-center col-span-1 gap-4" formGroupName="address">
           <p-floatlabel variant="on">
             <input
               pInputText
@@ -107,7 +107,7 @@
           </p-floatlabel>
         </div>
 
-        <div class="flex items-center gap-4 col-span-1" formGroupName="address">
+        <div class="flex items-center col-span-1 gap-4" formGroupName="address">
           <p-floatlabel variant="on">
             <input
               pInputText
@@ -119,7 +119,7 @@
           </p-floatlabel>
         </div>
 
-        <div class="flex items-center gap-4 col-span-1" formGroupName="address">
+        <div class="flex items-center col-span-1 gap-4" formGroupName="address">
           <p-floatlabel variant="on">
             <input
               pInputText
@@ -131,7 +131,7 @@
           </p-floatlabel>
         </div>
 
-        <div class="flex items-center gap-4 col-span-1" formGroupName="address">
+        <div class="flex items-center col-span-1 gap-4" formGroupName="address">
           <p-floatlabel variant="on">
             <input
               pInputText
@@ -143,7 +143,7 @@
           </p-floatlabel>
         </div>
       </div>
-      <!-- <span class="p-text-secondary block mb-8">Update pet information.</span> -->
+      <!-- <span class="block mb-8 p-text-secondary">Update pet information.</span> -->
       <div class="flex justify-end gap-2 mt-5">
         <p-button
           label="Cancel"
