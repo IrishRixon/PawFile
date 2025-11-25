@@ -5,10 +5,10 @@
         <img src="\assets\Logo\logo_pic.png" alt="Pawfile Logo" />
       </div>
 
-      <article>
-        <app-search-bar></app-search-bar>
+      <article class="flex flex-col">
+        <!-- <app-search-bar></app-search-bar> -->
 
-        <div class="cards w-full grid grid-cols-1 xl:grid-cols-2 gap-7 px-6 lg:px-10">
+        <div class="cards w-full grid grid-cols-1 xl:grid-cols-2 gap-x-7 gap-y-2 px-6 lg:px-10 mt-10 flex flex-grow">
           @if(petsCard.petsCard.length >= 1){
           @for(card of petsCard.petsCard;track card; let i = $index) {
           <app-card class="col-span-1" [name]="card.name" [id]="card._id" [index]="i" [profilePic]="card.profilePic"
@@ -24,6 +24,10 @@
           <p-skeleton height="220px" width="100%" class="col-span-1" />
           <p-skeleton height="220px" width="100%" class="col-span-1" />
           }
+        </div>
+
+        <div class="h-[50px] w-full bg-red flex items-center">
+          <p-button icon="pi pi-sign-out" [rounded]="true" [text]="true" severity="secondary" label="Log out" (onClick)="onLogOut()"/>
         </div>
       </article>
 

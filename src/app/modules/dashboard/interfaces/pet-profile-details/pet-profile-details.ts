@@ -65,6 +65,8 @@ export interface MedicalDetailsForm {
 }
 
 export interface OwnerDetailsForm {
+    lastname: string;
+    firstname: string;
     phoneNumber: string;
     profilePic: string;
     address: {

@@ -66,4 +66,14 @@ nav.missing {
     nav {
         border-radius: 0 !important;
     }
+
+    h1 {
+        font-size: 24px !important;
+    }
+
+    .drawer-btn {
+        ::ng-deep p-button button {
+            border: none;
+        }
+    }
 }

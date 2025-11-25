@@ -45,6 +45,9 @@ export class OwnerDetailsComponent {
       )
       .subscribe({
         next: (res) => {
+          console.log(res);
+          
+          this.ownerName = `${res.lastname} ${res.firstname}`;
           this.ownerDetailsForm.patchValue(res);
           this.address =
             res.address.street +
@@ -80,6 +83,8 @@ export class OwnerDetailsComponent {
       this.email = val.ownerDetails.email;
 
       this.ownerDetailsForm = this.formBuilder.group({
+        lastname: [`${val.ownerDetails.lastname}`],
+        firstname: [`${val.ownerDetails.lastname}`],
         phoneNumber: [`${val.ownerDetails.phoneNumber}`],
         address: this.formBuilder.group({
           street: [`${val.ownerDetails.address.street}`],

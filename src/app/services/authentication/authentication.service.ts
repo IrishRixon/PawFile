@@ -29,4 +29,8 @@ export class AuthenticationService {
   changePass = (url: string, body: NewPass): Observable<NewPass> => {
     return this.api.put(url, body);
   }
+
+  logOut = (url: string, body: {}): Observable<{}> => {
+    return this.api.post(url, body);
+  }
 }

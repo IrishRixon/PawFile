@@ -7,12 +7,13 @@ import { SharedServiceService } from '../services/shared-service/shared-service.
 import { SpeeddialItem } from '../interfaces/speeddial/speeddial';
 import { SpeeddialItemsService } from '../services/speeddial-items/speeddial-items.service';
 import { SafeUrl } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastMessage } from '../interfaces/toast-message/toast-message';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UpdateDetailsFormsService } from '../services/update-details-forms/update-details-forms.service';
 import { GlobalVarService } from '../../../services/globalVar/global-var.service';
+import { AuthenticationService } from '../../../services/authentication/authentication.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -33,7 +34,9 @@ export class DashboardComponent {
     private formBuilder: FormBuilder,
     private updateDetailsFormsService: UpdateDetailsFormsService,
     private confirmationService: ConfirmationService,
-    public globalVar: GlobalVarService
+    public globalVar: GlobalVarService,
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) { }
 
   petQRCode: string = '';
@@ -245,6 +248,19 @@ export class DashboardComponent {
 
   updateProfilePic(event: string) {
     this.petsCard.petsCard[this.selectedPetIndex].profilePic = event;
+  }
+
+  onLogOut() {
+    this.authenticationService.logOut(`${this.urlRoot}/logOut`, {})
+    .subscribe({
+      next: (res) => {
+        this.router.navigate(["/"])
+        this.globalVar.isOwner = false;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
   }
 
   ngOnInit(): void {
