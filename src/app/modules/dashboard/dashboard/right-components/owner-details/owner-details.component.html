@@ -1,181 +1,182 @@
 <div class="grid grid-cols-3 gap-5 wrapper" [formGroup]="ownerDetailsForm">
-  <div class="btn" *ngIf="globalVar.isOwner">
-    <p-button
-      icon="pi pi-pen-to-square"
-      [rounded]="true"
-      [text]="true"
-      severity="secondary"
-      (onClick)="visible = true"
-    />
-
-    <!-- <p-button icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary" />
+  @if (globalVar.isOwner) {
+    <div class="btn">
+      <p-button
+        icon="pi pi-pen-to-square"
+        [rounded]="true"
+        [text]="true"
+        severity="secondary"
+        (onClick)="visible = true"
+        />
+        <!-- <p-button icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary" />
         <p-button icon="pi pi-check" [rounded]="true" [text]="true" severity="success" /> -->
-  </div>
+      </div>
+    }
 
-  <div class="col-span-3 pic">
-    <p-avatar
-      image="\assets\Images\Default.jpg"
-      class="mr-2"
-      size="large"
-      shape="circle"
-    />
-    <span>{{ ownerName }}</span>
-  </div>
+    <div class="col-span-3 pic">
+      <p-avatar
+        image="\assets\Images\Default.jpg"
+        class="mr-2"
+        size="large"
+        shape="circle"
+        />
+        <span>{{ ownerName }}</span>
+      </div>
 
-  <div class="col-span-3 md:col-span-1">
-    <p-floatlabel variant="on">
-      <input
-        pInputText
-        id="on_label"
-        formControlName="phoneNumber"
-        variant="filled"
-        [readonly]="true"
-        [disabled]="true"
-      />
-      <label for="on_label">Phone Number</label>
-    </p-floatlabel>
-  </div>
-
-  <div class="col-span-3 md:col-span-1">
-    <p-floatlabel variant="on">
-      <input
-        pInputText
-        id="on_label"
-        [value]="email"
-        variant="filled"
-        [readonly]="true"
-      />
-      <label for="on_label">Email</label>
-    </p-floatlabel>
-  </div>
-
-  <div class="col-span-3 md:col-span-1">
-    <p-floatlabel variant="on">
-      <input
-        pInputText
-        id="on_label"
-        [value]="address"
-        variant="filled"
-        [readonly]="true"
-      />
-      <label for="on_label">Address</label>
-    </p-floatlabel>
-  </div>
-
-  <div class="dialog">
-    <p-dialog
-      header="Edit Owner Info"
-      [modal]="true"
-      [(visible)]="visible"
-      [style]="{ width: 'auto' }"
-      maskStyleClass="backdrop-blur-sm"
-    >
-      <div class="box-border grid grid-cols-2 gap-4 pt-2">
-        <div class="flex items-center col-span-1 gap-4">
-          <p-floatlabel variant="on">
-            <input
-              pInputText
-              id="on_label"
-              autocomplete="off"
-              formControlName="lastname"
-            />
-            <label for="on_label">Lastname</label>
-          </p-floatlabel>
-        </div>
-        
-        <div class="flex items-center col-span-1 gap-4">
-          <p-floatlabel variant="on">
-            <input
-              pInputText
-              id="on_label"
-              autocomplete="off"
-              formControlName="firstname"
-            />
-            <label for="on_label">Firstname</label>
-          </p-floatlabel>
-        </div>
-
-        <div class="flex items-center col-span-1 gap-4">
-          <p-floatlabel variant="on">
-            <input
-              pInputText
-              id="on_label"
-              autocomplete="off"
-              formControlName="phoneNumber"
+      <div class="col-span-3 md:col-span-1">
+        <p-floatlabel variant="on">
+          <input
+            pInputText
+            id="on_label"
+            formControlName="phoneNumber"
+            variant="filled"
+            [readonly]="true"
+            [disabled]="true"
             />
             <label for="on_label">Phone Number</label>
           </p-floatlabel>
         </div>
 
-        <!-- <div class="flex items-center col-span-1 gap-4">
+        <div class="col-span-3 md:col-span-1">
           <p-floatlabel variant="on">
             <input
               pInputText
               id="on_label"
-              autocomplete="off"
-              formControlName="email"
-            />
-            <label for="on_label">Email</label>
-          </p-floatlabel>
-        </div> -->
+              [value]="email"
+              variant="filled"
+              [readonly]="true"
+              />
+              <label for="on_label">Email</label>
+            </p-floatlabel>
+          </div>
 
-        <div class="flex items-center col-span-1 gap-4" formGroupName="address">
-          <p-floatlabel variant="on">
-            <input
-              pInputText
-              id="on_label"
-              autocomplete="off"
-              formControlName="street"
-            />
-            <label for="on_label">Street</label>
-          </p-floatlabel>
-        </div>
+          <div class="col-span-3 md:col-span-1">
+            <p-floatlabel variant="on">
+              <input
+                pInputText
+                id="on_label"
+                [value]="address"
+                variant="filled"
+                [readonly]="true"
+                />
+                <label for="on_label">Address</label>
+              </p-floatlabel>
+            </div>
 
-        <div class="flex items-center col-span-1 gap-4" formGroupName="address">
-          <p-floatlabel variant="on">
-            <input
-              pInputText
-              id="on_label"
-              autocomplete="off"
-              formControlName="barangay"
-            />
-            <label for="on_label">Barangay</label>
-          </p-floatlabel>
-        </div>
+            <div class="dialog">
+              <p-dialog
+                header="Edit Owner Info"
+                [modal]="true"
+                [(visible)]="visible"
+                [style]="{ width: 'auto' }"
+                maskStyleClass="backdrop-blur-sm"
+                >
+                <div class="box-border grid grid-cols-2 gap-4 pt-2">
+                  <div class="flex items-center col-span-1 gap-4">
+                    <p-floatlabel variant="on">
+                      <input
+                        pInputText
+                        id="on_label"
+                        autocomplete="off"
+                        formControlName="lastname"
+                        />
+                        <label for="on_label">Lastname</label>
+                      </p-floatlabel>
+                    </div>
 
-        <div class="flex items-center col-span-1 gap-4" formGroupName="address">
-          <p-floatlabel variant="on">
-            <input
-              pInputText
-              id="on_label"
-              autocomplete="off"
-              formControlName="municipality"
-            />
-            <label for="on_label">Municipality</label>
-          </p-floatlabel>
-        </div>
+                    <div class="flex items-center col-span-1 gap-4">
+                      <p-floatlabel variant="on">
+                        <input
+                          pInputText
+                          id="on_label"
+                          autocomplete="off"
+                          formControlName="firstname"
+                          />
+                          <label for="on_label">Firstname</label>
+                        </p-floatlabel>
+                      </div>
 
-        <div class="flex items-center col-span-1 gap-4" formGroupName="address">
-          <p-floatlabel variant="on">
-            <input
-              pInputText
-              id="on_label"
-              autocomplete="off"
-              formControlName="province"
-            />
-            <label for="on_label">Province</label>
-          </p-floatlabel>
-        </div>
-      </div>
-      <!-- <span class="block mb-8 p-text-secondary">Update pet information.</span> -->
-      <div class="flex justify-end gap-2 mt-5">
-        <p-button
-          label="Cancel"
-          severity="secondary"
-          (click)="visible = false"
-        />
-        <p-button label="Save" (click)="visible = false" (onClick)="onSave()" />
-      </div>
-    </p-dialog>
-  </div>
-</div>
+                      <div class="flex items-center col-span-1 gap-4">
+                        <p-floatlabel variant="on">
+                          <input
+                            pInputText
+                            id="on_label"
+                            autocomplete="off"
+                            formControlName="phoneNumber"
+                            />
+                            <label for="on_label">Phone Number</label>
+                          </p-floatlabel>
+                        </div>
+
+                        <!-- <div class="flex items-center col-span-1 gap-4">
+                        <p-floatlabel variant="on">
+                          <input
+                            pInputText
+                            id="on_label"
+                            autocomplete="off"
+                            formControlName="email"
+                            />
+                            <label for="on_label">Email</label>
+                          </p-floatlabel>
+                        </div> -->
+
+                        <div class="flex items-center col-span-1 gap-4" formGroupName="address">
+                          <p-floatlabel variant="on">
+                            <input
+                              pInputText
+                              id="on_label"
+                              autocomplete="off"
+                              formControlName="street"
+                              />
+                              <label for="on_label">Street</label>
+                            </p-floatlabel>
+                          </div>
+
+                          <div class="flex items-center col-span-1 gap-4" formGroupName="address">
+                            <p-floatlabel variant="on">
+                              <input
+                                pInputText
+                                id="on_label"
+                                autocomplete="off"
+                                formControlName="barangay"
+                                />
+                                <label for="on_label">Barangay</label>
+                              </p-floatlabel>
+                            </div>
+
+                            <div class="flex items-center col-span-1 gap-4" formGroupName="address">
+                              <p-floatlabel variant="on">
+                                <input
+                                  pInputText
+                                  id="on_label"
+                                  autocomplete="off"
+                                  formControlName="municipality"
+                                  />
+                                  <label for="on_label">Municipality</label>
+                                </p-floatlabel>
+                              </div>
+
+                              <div class="flex items-center col-span-1 gap-4" formGroupName="address">
+                                <p-floatlabel variant="on">
+                                  <input
+                                    pInputText
+                                    id="on_label"
+                                    autocomplete="off"
+                                    formControlName="province"
+                                    />
+                                    <label for="on_label">Province</label>
+                                  </p-floatlabel>
+                                </div>
+                              </div>
+                              <!-- <span class="block mb-8 p-text-secondary">Update pet information.</span> -->
+                              <div class="flex justify-end gap-2 mt-5">
+                                <p-button
+                                  label="Cancel"
+                                  severity="secondary"
+                                  (click)="visible = false"
+                                  />
+                                  <p-button label="Save" (click)="visible = false" (onClick)="onSave()" />
+                                </div>
+                              </p-dialog>
+                            </div>
+                          </div>

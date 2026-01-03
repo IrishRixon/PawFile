@@ -1,12 +1,14 @@
 <nav [class.missing]="isPetMissing">
-    <!-- <ul>
-        @for(list of navBtns; track list) {
-            <li><p-button [label]="list.label" (onClick)="list.command()"/></li>
-        }
-    </ul> -->
-    <h1 *ngIf="isPetMissing">Missing</h1>
+  <!-- <ul>
+  @for(list of navBtns; track list) {
+    <li><p-button [label]="list.label" (onClick)="list.command()"/></li>
+  }
+</ul> -->
+@if (isPetMissing) {
+  <h1>Missing</h1>
+}
 
-    <div class="drawer-btn">
-        <p-button icon="pi pi-bars" [rounded]="false" size=large [outlined]="true" severity="secondary" (onClick)="emitOpenDrawer()"/>
-    </div>
+<div class="drawer-btn">
+  <p-button icon="pi pi-bars" [rounded]="false" size=large [outlined]="true" severity="secondary" (onClick)="emitOpenDrawer()"/>
+</div>
 </nav>

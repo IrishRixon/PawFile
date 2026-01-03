@@ -10,7 +10,7 @@
       [feedback]="false"
     >
     </p-password>
-    <label for="in_label">Old Password</label>
+    <label for="in_label">New Password</label>
   </p-floatlabel>
 
   <p-floatlabel variant="in">
@@ -21,7 +21,7 @@
       formControlName="newPass"
     >
       <ng-template #footer>
-        <ul class="pl-2 ml-2 my-0 leading-normal">
+        <ul class="pl-2 my-0 ml-2 leading-normal">
           <li>At least one lowercase</li>
           <li>At least one uppercase</li>
           <li>At least one numeric</li>
@@ -29,7 +29,7 @@
         </ul>
       </ng-template>
     </p-password>
-    <label for="in_label">New Password</label>
+    <label for="in_label">Confirm Password</label>
   </p-floatlabel>
 
   <p-button label="Submit" [fluid]="true" [disabled]="!newPassForm.valid" (onClick)="onSubmit()"/>

@@ -1,137 +1,139 @@
 <div class="wrapper">
   <div class="board" >
-    <aside class="left w-0 overflow-hidden" [class.drawer-open]="drawer" *ngIf="globalVar.isOwner">
-      <div class="logo">
-        <img src="\assets\Logo\logo_pic.png" alt="Pawfile Logo" />
-      </div>
-
-      <article class="flex flex-col">
-        <!-- <app-search-bar></app-search-bar> -->
-
-        <div class="cards w-full grid grid-cols-1 xl:grid-cols-2 gap-x-7 gap-y-2 px-6 lg:px-10 mt-10 flex flex-grow">
-          @if(petsCard.petsCard.length >= 1){
-          @for(card of petsCard.petsCard;track card; let i = $index) {
-          <app-card class="col-span-1" [name]="card.name" [id]="card._id" [index]="i" [profilePic]="card.profilePic"
-            [selectedPetIndex]="selectedPetIndex" (petSelected)="onPetSelected($event)"
-            (indexOut)="setSelectedPetIndex($event)"></app-card>
-          }
-          }
-          @else {
-          <p-skeleton height="220px" width="100%" class="col-span-1" />
-          <p-skeleton height="220px" width="100%" class="col-span-1" />
-          <p-skeleton height="220px" width="100%" class="col-span-1" />
-          <p-skeleton height="220px" width="100%" class="col-span-1" />
-          <p-skeleton height="220px" width="100%" class="col-span-1" />
-          <p-skeleton height="220px" width="100%" class="col-span-1" />
+    @if (globalVar.isOwner) {
+      <aside class="w-0 overflow-hidden left" [class.drawer-open]="drawer">
+        <div class="logo">
+          <img src="\assets\Logo\logo_pic.png" alt="Pawfile Logo" />
+        </div>
+        <article class="flex flex-col">
+          <!-- <app-search-bar></app-search-bar> -->
+          <div class="flex grid flex-grow w-full grid-cols-1 px-6 mt-10 cards xl:grid-cols-2 gap-x-7 gap-y-2 lg:px-10">
+            @if(petsCard.petsCard.length >= 1){
+              @for(card of petsCard.petsCard;track card; let i = $index) {
+                <app-card class="col-span-1" [name]="card.name" [id]="card._id" [index]="i" [profilePic]="card.profilePic"
+                  [selectedPetIndex]="selectedPetIndex" (petSelected)="onPetSelected($event)"
+                (indexOut)="setSelectedPetIndex($event)"></app-card>
+              }
+            }
+            @else {
+            <p-skeleton height="220px" width="100%" class="col-span-1" />
+            <p-skeleton height="220px" width="100%" class="col-span-1" />
+            <p-skeleton height="220px" width="100%" class="col-span-1" />
+            <p-skeleton height="220px" width="100%" class="col-span-1" />
+            <p-skeleton height="220px" width="100%" class="col-span-1" />
+            <p-skeleton height="220px" width="100%" class="col-span-1" />
           }
         </div>
-
         <div class="h-[50px] w-full bg-red flex items-center">
           <p-button icon="pi pi-sign-out" [rounded]="true" [text]="true" severity="secondary" label="Log out" (onClick)="onLogOut()"/>
         </div>
       </article>
-
       <div class="drawer-cls-btn" [class.open]="drawer">
         <p-button icon="pi pi-times" [rounded]="false" size=large [text]="true" severity="secondary" (onClick)="closeDrawer()" />
       </div>
     </aside>
+  }
 
-    <aside class="right w-full" [class.missing]="isPetMissing" [class.full]="!globalVar.isOwner">
-      <app-nav [isPetMissing]="isPetMissing" (openDrawer)="openDrawer()"></app-nav>
+  <aside class="w-full right" [class.missing]="isPetMissing" [class.full]="!globalVar.isOwner">
+    <app-nav [isPetMissing]="isPetMissing" (openDrawer)="openDrawer()"></app-nav>
 
-      <section>
-        <div class="delete-btn" *ngIf="isThereSelectedPet && globalVar.isOwner">
+    <section>
+      @if (isThereSelectedPet && globalVar.isOwner) {
+        <div class="delete-btn">
           <p-button (click)="deleteConfirm($event)" icon="pi pi-trash" severity="danger" [outlined]="true" [text]="true"
             [rounded]="true" />
-        </div>
+          </div>
+        }
 
         @if(isThereSelectedPet) {
-        <div class="profile-message">
-          <app-profile-pic (toastMessage)="showToastMessage($event)" (clearToastMessage)="clearToastMessage()"
+          <div class="profile-message">
+            <app-profile-pic (toastMessage)="showToastMessage($event)" (clearToastMessage)="clearToastMessage()"
             (updateProfilePic)="updateProfilePic($event)"></app-profile-pic>
-          <app-name></app-name>
-          <app-message></app-message>
-        </div>
-
-        <div class="carousel">
-          <app-carousel (toastMessage)="showToastMessage($event)"
-            (clearToastMessage)="clearToastMessage()"></app-carousel>
-        </div>
-
-        <div class="profile-details">
-          <div class="wrapper">
-            <p-tabs value="0" [scrollable]="true" [showNavigators]="false">
-              <p-tablist>
-                <p-tab value="0">Pet</p-tab>
-                <p-tab value="1">Owner</p-tab>
-                <p-tab value="2">Medical</p-tab>
-              </p-tablist>
-              <p-tabpanels>
-                <p-tabpanel value="0">
-                  <p class="m-0">
-                    <app-pet-details></app-pet-details>
-                  </p>
-                </p-tabpanel>
-                <p-tabpanel value="1">
-                  <p class="m-0">
-                    <app-owner-details></app-owner-details>
-                  </p>
-                </p-tabpanel>
-                <p-tabpanel value="2">
-                  <p class="m-0">
-                    <app-medical-details></app-medical-details>
-                  </p>
-                </p-tabpanel>
-              </p-tabpanels>
-            </p-tabs>
+            <app-name></app-name>
+            <app-message></app-message>
           </div>
-        </div>
+
+          <div class="carousel">
+            <app-carousel (toastMessage)="showToastMessage($event)"
+            (clearToastMessage)="clearToastMessage()"></app-carousel>
+          </div>
+
+          <div class="profile-details">
+            <div class="wrapper">
+              <p-tabs value="0" [scrollable]="true" [showNavigators]="false">
+                <p-tablist>
+                  <p-tab value="0">Pet</p-tab>
+                  <p-tab value="1">Owner</p-tab>
+                  <p-tab value="2">Medical</p-tab>
+                </p-tablist>
+                <p-tabpanels>
+                  <p-tabpanel value="0">
+                    <p class="m-0">
+                      <app-pet-details></app-pet-details>
+                    </p>
+                  </p-tabpanel>
+                  <p-tabpanel value="1">
+                    <p class="m-0">
+                      <app-owner-details></app-owner-details>
+                    </p>
+                  </p-tabpanel>
+                  <p-tabpanel value="2">
+                    <p class="m-0">
+                      <app-medical-details></app-medical-details>
+                    </p>
+                  </p-tabpanel>
+                </p-tabpanels>
+              </p-tabs>
+            </div>
+          </div>
         } @else {
-        <div class="empty">
-          <h1>Select a Pet you want to display</h1>
-        </div>
+          <div class="empty">
+            <h1>Select a Pet you want to display</h1>
+          </div>
         }
 
       </section>
     </aside>
   </div>
 
-  <p-speeddial [model]="speedDialItems" direction="up" [style]="{ position: 'absolute', right: 0, bottom: 0 }"
-    [buttonProps]="{ severity: 'info', rounded: true }" [tooltipOptions]="{ tooltipPosition: 'left' }" [mask]="true" *ngIf="globalVar.isOwner"/>
+  @if (globalVar.isOwner) {
+    <p-speeddial [model]="speedDialItems" direction="up" [style]="{ position: 'absolute', right: 0, bottom: 0 }"
+      [buttonProps]="{ severity: 'info', rounded: true }" [tooltipOptions]="{ tooltipPosition: 'left' }" [mask]="true"/>
+  }
 
   <div class="dialog" [formGroup]="addPetForm">
     <p-dialog header="Your Pet QR code" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }"
       maskStyleClass="backdrop-blur-sm">
       @if(petProfileDetails.petDetails.name == '') {
-      <div class="empty">
-        <h1 class="text-gray-400">Please select pet first.</h1>
-      </div>
+        <div class="empty">
+          <h1 class="text-gray-400">Please select pet first.</h1>
+        </div>
       } @else {
-      <div class="qrcodeImage flex align-center flex-1 flex-col">
-        <qrcode class="flex justify-center" [qrdata]="petQRCode" [allowEmptyString]="true"
-          (qrCodeURL)="onChangeURL($event)" [ariaLabel]="'QR Code image with the following content...'"
-          [cssClass]="'center'" [colorDark]="'#000000ff'" [colorLight]="'#ffffffff'" [elementType]="'canvas'"
-          [errorCorrectionLevel]="'M'" [imageSrc]="'/assets/Logo/logo_2.png'" [imageHeight]="75" [imageWidth]="75"
+        <div class="flex flex-col flex-1 qrcodeImage align-center">
+          <qrcode class="flex justify-center" [qrdata]="petQRCode" [allowEmptyString]="true"
+            (qrCodeURL)="onChangeURL($event)" [ariaLabel]="'QR Code image with the following content...'"
+            [cssClass]="'center'" [colorDark]="'#000000ff'" [colorLight]="'#ffffffff'" [elementType]="'canvas'"
+            [errorCorrectionLevel]="'M'" [imageSrc]="'/assets/Logo/logo_2.png'" [imageHeight]="75" [imageWidth]="75"
           [margin]="4" [scale]="1" [title]="'A custom title attribute'" [width]="300"></qrcode>
 
-        <div class="downloadButton">
-          <a color="primary" [href]="qrCodeDownloadLink"
+          <div class="downloadButton">
+            <a color="primary" [href]="qrCodeDownloadLink"
             [download]="petProfileDetails.petDetails.name + ' qr-code'">Download QR Code Image</a>
+          </div>
         </div>
-      </div>
       }
     </p-dialog>
 
-    <p-dialog header="Your Pet QR code" [modal]="true" [(visible)]="addDialogVisible" [style]="{ width: '30rem' }"
+    <p-dialog header="Add pet profile" [modal]="true" [(visible)]="addDialogVisible" [style]="{ width: '30rem' }"
       maskStyleClass="backdrop-blur-sm">
-      <div class="input-fields p-1 grid grid-cols-1 gap-2 sm:grid-cols-2">
+      <div class="grid grid-cols-1 gap-2 p-1 input-fields sm:grid-cols-2">
         <div class="col-span-1">
           <p-floatlabel variant="in">
             <input pInputText id="in_label" autocomplete="off" formControlName="name" />
             <label for="in_label">Name</label>
           </p-floatlabel>
         </div>
-        
+
         <div class="col-span-1">
           <p-floatlabel variant="in">
             <input pInputText id="in_label" autocomplete="off" formControlName="species" />
@@ -167,7 +169,7 @@
           </p-floatlabel>
         </div>
 
-        <div class="gender mt-4 flex gap-2">
+        <div class="flex gap-2 mt-4 gender">
           <label>Gender: </label>
           <p-radiobutton name="gender" value="male" inputId="male" formControlName="gender" />
           <label for="gender" class="ml-2">Male</label>
